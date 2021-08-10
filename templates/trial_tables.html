@@ -1,0 +1,72 @@
+
+
+<div class="">
+    <a href="{{url_for('calculate_results')}}"><button class="myButton" name="btn" value="upload">Check Prices</button></a>
+</div>
+
+    <div class="national">
+        <div class="name">
+            <h3>Resultados nacionales</h3>
+        </div>
+        <div class="parties">
+            {% for party in national_results %}
+            <h3>{{party[0]}}: {{party[1]}}</h3>
+            {% endfor %}
+        </div>
+        <div class="resume">
+
+        </div>
+
+    </div>
+
+
+
+<div class="container">
+
+    {% for x in range(0,8) %}
+
+  <div class="row">
+
+    {% for y in range(0,3) %}
+    <div class="col-lg-4">
+      <div class="province">
+        <div class="name">
+        <h3>{{provinces_results[(x*3)+y][0]}}</h3>
+        </div>
+        <div class="parties">
+            {% for party in provinces_results[(x*3)+y][1] %}
+            <h3>{{party[0]}}</h3>
+            {% endfor %}
+        </div>
+          <div class="percentage">
+              {% for party in provinces_results[(x*3)+y][1] %}
+            <h3> {{party[2]}}%</h3>
+              {% endfor %}
+          </div>
+          <div class="seats">
+              {% for party in provinces_results[(x*3)+y][1] %}
+            <h3>{{party[3]}}</h3>
+              {% endfor %}
+          </div>
+
+        <div class="resume">
+
+        </div>
+
+    </div>
+    </div>
+    {% endfor %}
+
+
+
+  </div>
+    {% endfor %}
+</div>
+
+
+
+
+      <h3 class="subs">The 12 lowest-price laptops</h3>
+
+
+ -->

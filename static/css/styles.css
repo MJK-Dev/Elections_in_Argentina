@@ -1,0 +1,1492 @@
+:root {
+  --map-height: 40px;
+  --main-background-color:#f6f6f6;
+  --titles-background-color:#411b45;
+                         /* #5c0866 */
+
+}
+
+
+
+body{
+    font-family: 'Montserrat';
+    text-align: center;
+    background-color:var(--main-background-color);
+    letter-spacing:0.5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
+
+h2 {
+
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+h3 {
+    font-weight: bold;
+
+}
+
+p{
+    color: #8f8f8f;
+}
+
+.nav-bar-texts-position{
+max-width: 1455px;
+}
+
+/* Headings */
+
+.big-heading {
+font-family: 'Montserrat';
+font-weight: bold;
+font-size: 3.5rem;
+line-height: 1.5;
+color: #fff;
+}
+
+
+#title {
+background-color: var(--titles-background-color);
+color: #fff;
+text-align: center;
+padding: 0% 0% 0% 0%;
+}
+
+.container-fluid{
+    padding: 3% 15% 7%;
+
+
+}
+
+.navbar {
+    padding: 0%;
+
+}
+
+.navbar-brand{
+    font-family: "Ubuntu";
+    font-size: 1.0rem;
+    font-weight: None;
+}
+
+.nav-item {
+    padding: 0 18px;
+    color: #fff;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-family: "Montserrat";
+    font-weight: 100;
+}
+
+.download-button{
+    margin: 5% 3% 5% 0%;
+}
+
+.title-image{
+    width: 60%;
+    transform: rotate(25deg);
+    padding: 3%;
+    position: absolute;
+    right: 20%;
+
+
+}
+
+.province-svg{
+max-height: 400px;
+fill: #b34180;
+color:blue;
+}
+
+.filter{
+filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);
+}
+
+
+.myButton2 {
+    position: absolute;
+    top: -1px;
+    left:312px;
+	background:linear-gradient(to bottom, #cd66bb  5%, #5b4172  100%);
+	background-color:#f274dd;
+	border-radius:8px;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:10px;
+	font-weight:bold;
+	padding:0;
+	letter-spacing:0.1rem;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+	height:26px;
+	width:70px;
+	text-align: center;
+
+}
+.myButton2:hover {
+	background:linear-gradient(to bottom, #4f848c 5%, #f274dd 100%);
+	background-color:#4f848c;
+}
+.myButton2:focus {
+outline: none
+}
+
+
+
+.svg-size2{
+height:100%;
+width:100%;
+filter: drop-shadow(2px 2px 3px #685e12);
+
+}
+.svg-size2 g:hover{
+filter: drop-shadow(2px 2px 100px #685e12);
+}
+.svg-size2 g path{
+transition: all 0.5s;
+
+}
+.svg-size2 g path:hover{
+cursor:zoom-in;
+opacity:1;
+transform: scale(1.1);
+stroke: black;
+stroke-width: 30px;
+
+}
+
+.svg-color2{
+fill: red;
+opacity:1;
+transition: opacity 0.3s ease-in;
+}
+
+
+
+
+#pepe{
+transform:  translate(60px, 10px) scale(3%,-3%);;
+
+}
+
+#pepe path{
+
+ }
+#pepe path:hover{
+transform: scale(1.1);
+box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+#pepe2{
+transition: all 0.5s;
+transform: scale(50%,50%);
+}
+
+#pepe2:hover{
+
+box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+opacity:0.3;
+}
+
+#pepito{
+transform: scale(50%,50%);
+}
+
+.svg-color{
+fill: #ecdd6d;
+opacity:1;
+stroke: 2px;
+}
+
+
+
+.country-map{
+position:relative;
+background-color:var(--main-background-color);
+height:700px;
+width:500px;
+left:10px;
+top:2px;
+border-radius:15px;
+}
+
+.no-senate-election{
+}
+
+.disabled-provinces{
+pointer-events: none;
+opacity:0.3;
+}
+
+.disabled-provinces-color{
+fill: #83827c !important;
+}
+
+#Salta{
+transform:  translate(60px, calc(var(--map-height) - 30px)) scale(2.8%,-2.8%);
+
+}
+
+#Jujuy{
+transform:  translate(77px, calc(var(--map-height) - 76px)) scale(2.8%,-2.8%);
+}
+
+#Formosa{
+transform:  translate(170px, calc(var(--map-height) - 24px)) scale(2.8%,-2.8%);
+}
+
+#Chaco{
+transform:  translate(155px, calc(var(--map-height) - 0px)) scale(2.8%,-2.8%);
+}
+
+#Santiago_Del_Estero{
+transform:  translate(115px, calc(var(--map-height) + 54px)) scale(2.8%,-2.8%);
+}
+
+#Tucuman{
+transform:  translate(95px, calc(var(--map-height) - 0px)) scale(2.8%,-2.8%);
+}
+
+#Catamarca{
+transform:  translate(49px, calc(var(--map-height) + 39px)) scale(2.8%,-2.8%);
+}
+
+#La_Rioja{
+transform:  translate(37px, calc(var(--map-height) + 88px)) scale(2.8%,-2.8%);
+}
+
+#San_Juan{
+transform:  translate(18px, calc(var(--map-height) + 100px)) scale(2.8%,-2.8%);
+}
+
+#Cordoba{
+transform:  translate(100px, calc(var(--map-height) + 152px)) scale(2.8%,-2.8%);
+}
+
+#Santa_Fe{
+transform:  translate(167px, calc(var(--map-height) + 130px)) scale(2.8%,-2.8%);
+}
+
+#Entre_Rios{
+transform:  translate(207px, calc(var(--map-height) + 135px)) scale(2.8%,-2.8%);
+}
+
+#Corrientes{
+transform:  translate(233px, calc(var(--map-height) + 58px)) scale(2.8%,-2.8%);
+}
+
+#Misiones{
+transform:  translate(293px, calc(var(--map-height) + 6px)) scale(2.8%,-2.8%);
+}
+
+#Mendoza{
+transform:  translate(18px, calc(var(--map-height) + 210px)) scale(2.8%,-2.8%);
+}
+
+#San_Luis{
+transform:  translate(75px, calc(var(--map-height) + 177px)) scale(2.8%,-2.8%);
+}
+
+#Buenos_Aires{
+transform:  translate(164px, calc(var(--map-height) + 274px)) scale(2.8%,-2.8%);
+}
+
+#CABA{
+transform:  translate(320px, calc(var(--map-height) + 190px)) scale(2.8%,-2.8%);
+}
+
+#La_Pampa{
+transform:  translate(64px, calc(var(--map-height) + 252px)) scale(2.8%,-2.8%);
+}
+
+#Neuquen{
+transform:  translate(3px, calc(var(--map-height) + 290px)) scale(2.8%,-2.8%);
+}
+
+#Rio_Negro{
+transform:  translate(11px, calc(var(--map-height) + 311px)) scale(2.8%,-2.8%);
+}
+
+#Chubut{
+transform:  translate(6px, calc(var(--map-height) + 402px)) scale(2.8%,-2.8%);
+}
+
+#Santa_Cruz{
+transform:  translate(16px, calc(var(--map-height) + 533px)) scale(2.8%,-2.8%);
+}
+
+#Tierra_Del_Fuego{
+transform:  translate(83px, calc(var(--map-height) + 578px)) scale(2.8%,-2.8%);
+}
+
+#Islas_Malvinas{
+transform:  translate(195px, calc(var(--map-height) + 525px)) scale(2.8%,-2.8%);
+}
+
+.province-results-div{
+position:absolute;
+background-color:#d7ba52;
+min-height:200px;
+width:420px;
+left:380px;
+top:200px;
+border-radius:15px;
+z-index:3;
+visibility: hidden;
+opacity: 0;
+transition: 0.3s;
+box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.25);
+border: 2px solid var(--titles-background-color);
+padding-bottom:30px;
+}
+
+.province-results-div h1{
+text-align:left;
+padding:2% 0 0 2%;
+font-size: 1.6rem;
+}
+
+.province-results-div-hr{
+position:absolute;
+height:1px;
+background: #411b45;
+border-radius: 5px;
+z-index:4;
+width:400px;
+top:24px;
+left:10px;
+opacity:0.8;
+}
+
+.temporary-results-div{
+position:absolute;
+background-color:#d7ba52;
+min-height:200px;
+padding-bottom:5%;
+width:420px;
+left:-2px;
+top:78px;
+border-radius:0px 0px 15px 15px;
+border-right: 2px solid var(--titles-background-color);
+border-left: 2px solid var(--titles-background-color);
+border-bottom: 2px solid var(--titles-background-color);
+box-shadow: 0px 15px 10px 15px rgba(0, 0, 0, 0.25);
+clip-path: inset(0px -150px -100px -150px);
+}
+
+.temporary-results-div h3{
+font-size: 1rem;
+}
+
+.party-results-div-top-title-spacing-div{
+position:relative;
+background-color:transparent;
+height:7px;
+width:408px;
+left:0px;
+}
+
+
+.party-results-div{
+position:relative;
+background-color:var(--main-background-color);
+height:30px;
+width:408px;
+left:3px;
+margin-bottom:0.6%;
+text-align:left;
+}
+
+.party-results-div h3{
+font-size:0.9rem;
+display:inline;
+margin-left:4%;
+}
+.party-results-div input{
+font-size:1rem;
+display:inline;
+width:4rem;
+border-radius: 5px;
+}
+
+
+
+
+
+.province-results-sum-div{
+position:relative;
+background-color:var(--main-background-color);
+height:30px;
+width:408px;
+left:3px;
+margin-top:15px;
+text-align:left;
+border-radius:5px;
+}
+
+.province-results-sum-div h3{
+font-size:0.9rem;
+display:inline;
+margin-left:4%;
+}
+.province-results-sum-div input{
+font-size:1rem;
+display:inline;
+width:4rem;
+background-color:#d3fece;
+border-radius: 5px;
+transition: all 0.3s;
+}
+
+.party-results-sum-alert-div{
+position:absolute;
+height:30px;
+width:160px;
+left:115px;
+}
+
+.party-results-sum-alert-div h3 {
+font-size:0.7rem;
+font-style: italic;
+opacity:0.7;
+}
+
+.sum-not-hundred{
+background-color:#ff0000c2 !important;
+color: white !important;
+font-weight:bold;
+box-shadow: 0px 3px 11px 6px rgba(246, 40, 40, 0.5);
+}
+
+.national-results-div{
+position:absolute;
+background-color: var(--titles-background-color);
+height:320px;
+width:400px;
+right:10px;
+top:50px;
+border-radius:15px;
+color:white;
+text-align: left;
+padding: 1% 1% 1% 0.5%;
+}
+
+.national-results-div h1{
+font-size:1.2rem;
+}
+
+.temporary-national-results-div{
+position:absolute;
+background-color:#d3bda6;
+max-height:191px;
+width:390px;
+left:5px;
+top:80px;
+border-radius:0px;
+overflow-y: auto;
+color:black;
+}
+
+
+
+.party-national-results-div{
+position:relative;
+background-color: var(--main-background-color);
+height:30px;
+width:373px;
+margin-bottom:0.5%;
+text-align:left;
+}
+
+.party-national-results-div h3{
+font-size:0.9rem;
+}
+
+.info-not-relevant{
+font-size:0.7rem !important;
+text-align:center;
+}
+
+.allegiance-national-results-div{
+position:relative;
+background-color: var(--main-background-color);
+height:30px;
+width:390px;
+margin-bottom:0.5%;
+text-align:left;
+}
+
+.allegiance-national-results-div h3{
+font-size:0.9rem;
+}
+
+
+
+.national-results-div-top-title-party{
+position:absolute;
+height:30px;
+width:150px;
+left:0px;
+top:50px;
+text-align:left;
+border-right: 1px solid;
+}
+
+.national-results-div-top-title-party h3{
+padding:4% 0% 0% 6%;
+}
+
+.national-results-div-top-title-allegiance{
+position:absolute;
+height:30px;
+width:120px;
+left:150px;
+top:50px;
+text-align:left;
+padding-left:1%;
+border-right: 1px solid;
+}
+
+.national-results-div-top-title-allegiance h3{
+padding:5% 0% 0% 5%;
+}
+
+.national-results-div-top-title-percentage{
+position:absolute;
+height:30px;
+width:60px;
+left:270px;
+top:50px;
+text-align:center;
+padding-left:0%;
+border-right: 1px solid;
+}
+
+.national-results-div-top-title-percentage h3{
+padding:9% 0% 0% 5%;
+}
+
+.national-results-div-top-title-seats{
+position:absolute;
+height:30px;
+width:50px;
+left:330px;
+top:50px;
+text-align:left;
+padding-right:0%;
+}
+
+.national-results-div-top-title-seats h3{
+padding:9% 0% 0% 10%;
+}
+
+.party-name-in-national-results{
+position:absolute;
+height:30px;
+width:150px;
+left:0px;
+overflow:hidden;
+}
+
+.party-name-in-national-results h3{
+padding-left:4%;
+padding-top:7%;
+}
+
+
+.allegiance-name-in-national-results{
+position:absolute;
+height:30px;
+width:120px;
+left:150px;
+padding-top:1%;
+}
+
+
+
+.party-percentage-in-national-results{
+position:absolute;
+height:30px;
+width:70px;
+left:270px;
+text-align:right;
+}
+.party-percentage-in-national-results h3{
+padding-right:26%;
+padding-top:15%;
+}
+
+
+.party-seats-in-national-results{
+position:absolute;
+height:30px;
+width:30px;
+left:340px;
+text-align:center;
+}
+.party-seats-in-national-results h3{
+padding:35% 0 0 5%;
+}
+
+
+.select-allegiance{
+width:120px;
+font-size:0.9rem;
+}
+
+input{
+text-align:right;
+}
+
+
+
+.party-results-div-name{
+position:absolute;
+height:30px;
+width:150px;
+left:0px;
+overflow:hidden;
+padding:0.5% 0 0 0;
+}
+
+.party-results-div-allegiance{
+position:absolute;
+height:30px;
+width:100px;
+left:150px;
+padding:0.5% 0 0 0;
+}
+
+.party-results-div-percentage{
+position:absolute;
+height:30px;
+width:50px;
+left:280px;
+}
+
+.party-results-div-seats{
+position:absolute;
+height:30px;
+width:50px;
+left:338px;
+text-align:right;
+padding:0.5% 0 0 0;
+}
+.party-results-div-seats h3{
+font-weight:bold !important;
+font-size:0.9rem !important;
+}
+
+.party-results-div-bottom-title{
+position:absolute;
+height:30px;
+width:150px;
+left:0px;
+}
+
+.party-results-div-total-percentage{
+position:absolute;
+height:30px;
+width:50px;
+left:280px;
+}
+
+.party-results-div-total-seats{
+position:absolute;
+height:30px;
+width:50px;
+left:370px;
+}
+
+.subs-style{
+font-size: 0.9rem;
+padding-top:12px;
+}
+
+.party-results-div-top-title-party{
+position:absolute;
+height:30px;
+width:150px;
+left:0px;
+top:40px;
+text-align:left;
+padding-left:2%;
+}
+
+.party-results-div-top-title-allegiance{
+position:absolute;
+height:30px;
+width:100px;
+left:150px;
+top:40px;
+text-align:left;
+padding-left:2%;
+}
+
+.party-results-div-top-title-percentage{
+position:absolute;
+height:30px;
+width:50px;
+left:300px;
+top:40px;
+text-align:left;
+padding-left:3%;
+}
+
+.party-results-div-top-title-seats{
+position:absolute;
+height:30px;
+width:30px;
+left:350px;
+top:40px;
+text-align:left;
+padding-left:1%;
+}
+
+
+.show-party-results-div{
+opacity: 1 !important;
+visibility:visible !important;
+
+}
+
+
+.close-cross{
+cursor:pointer;
+color:#a80000;
+position:relative;
+left:175px;
+bottom:35px;
+}
+
+.province-total-in-div{
+color: #grey;
+}
+
+
+
+.full-results-div{
+position:absolute;
+background-color:transparent;
+min-height:200px;
+width:680px;
+right:420px;
+top:50px;
+border-radius:15px;
+}
+
+.full-results-title-div{
+position:absolute;
+background-color: var(--titles-background-color);
+height:50px;
+width:680px;
+right:0px;
+top:0px;
+border-radius:15px;
+color: white;
+}
+
+.full-results-dynamic-div{
+position:absolute;
+background-color:#b4b4b4;
+min-height:100px;
+width:670px;
+left:0px;
+top:50px;
+margin: 0.5% 0 0 0;
+}
+
+.province-full-results-div{
+position:relative;
+background-color:var(--main-background-color);
+height:20px;
+width:670px;
+margin-bottom:0.3%;
+text-align:left;
+color: #434343;
+transition: all 0.5s;
+z-index:1;
+}
+
+.full-results-title-district{
+position:absolute;
+width:120px;
+height:50px;
+padding:2% 0 0 3%;
+background-color:transparent;
+text-align:left;
+border-right: 1px solid;
+
+}
+
+.full-results-title-party{
+position:absolute;
+width:120px;
+height:30px;
+padding-top:1%;
+background-color:transparent;
+border-right: 1px solid;
+}
+
+.full-results-title-district h5, .full-results-title-party h5 {
+font-size:1rem;
+}
+
+
+.full-results-title-party1{
+left:120px;
+}
+.full-results-title-seats-party1{
+left:180px;
+border-right: 1px solid;
+}
+
+.full-results-title-party2{
+left:240px;
+}
+.full-results-title-seats-party2{
+left:300px;
+border-right: 1px solid;
+}
+
+.full-results-title-party3{
+left:360px;
+}
+.full-results-title-seats-party3{
+left:420px;
+border-right: 1px solid;
+}
+
+.full-results-title-party4{
+left:480px;
+}
+.full-results-title-seats-party4{
+left:540px;
+border-right: 1px solid;
+}
+
+.full-results-title-percentage{
+position:absolute;
+width:60px;
+height:20px;
+padding-top:0%;
+background-color:transparent;
+top:30px;
+padding-left:2%;
+}
+
+.full-results-title-seats{
+position:absolute;
+width:60px;
+height:20px;
+padding-top:0%;
+background-color:transparent;
+top:30px;
+}
+
+.full-results-title-percentage h5, .full-results-title-seats h5{
+font-size:0.8rem;
+}
+
+.full-results-title-total-seats{
+position:absolute;
+width:80px;
+height:50px;
+top:0px;
+left:600px;
+background-color:transparent;
+}
+
+.full-results-title-total-seats h5{
+font-size:0.9rem;
+padding:10% 0 0 0;
+}
+
+
+.full-results-totals-div{
+position:absolute;
+background-color:transparent;
+height:90px;
+width:680px;
+border-radius:15px;
+z-index:1
+}
+
+.full-results-bottom-titles{
+position:absolute;
+width:120px;
+height:22px;
+padding:0.5% 0% 0% 0.5%;
+background-color: var(--titles-background-color);
+color:white;
+z-index: 2;
+text-align:left;
+border-radius: 5px 0px 0px 5px;
+}
+
+.full-results-bottom-titles h5{
+font-size:0.9rem;
+padding: 0 0 0 2%;
+}
+
+.full-results-seats-won-title{
+top:5px;
+}
+
+.full-results-seats-not-up-for-election-title{
+top:35px;
+}
+
+
+.full-results-seats-total-title{
+top:65px;
+}
+
+.full-results-bottom-results{
+position:absolute;
+width:120px;
+height:22px;
+padding-top:0%;
+background-color:#e8dcdc;
+z-index: 1;
+}
+
+.full-results-bottom-results h4{
+font-size: 1.2rem;
+}
+
+.full-results-party1-seats-won{
+top:5px;
+left:120px;
+}
+
+.full-results-party1-seats-not-up-for-election{
+top:35px;
+left:120px;
+}
+
+.full-results-party1-seats-total{
+top:65px;
+left:120px;
+}
+
+.full-results-party2-seats-won{
+top:5px;
+left:240px;
+}
+
+.full-results-party2-seats-not-up-for-election{
+top:35px;
+left:240px;
+}
+
+.full-results-party2-seats-total{
+top:65px;
+left:240px;
+}
+
+.full-results-party1-seats-winner{
+text-shadow:1px 0px 2px #e8d0d0, -1px 0px 2px grey, 0px 1px 2px grey;
+color:#000;
+border-radius: 5px;
+border: 1px solid;
+background-color:rgba(254,219,44,1);
+}
+
+.full-results-party2-seats-winner{
+text-shadow:1px 0px 2px #e8d0d0, -1px 0px 2px grey, 0px 1px 2px grey;
+color:#000;
+border-radius: 5px;
+border: 1px solid;
+background-color:rgba(80,149,238,1);
+}
+
+.full-results-bottom-info-div{
+position:absolute;
+width:300px;
+height:60px;
+top:15px;
+left:370px;
+text-shadow:1px 0px 10px #aa39c7;
+background-color: var(--titles-background-color);
+color:white;
+border-radius:15px;
+}
+
+.full-results-bottom-info-div h3{
+padding:6% 0 0 0;
+font-size:1.1rem;
+}
+
+
+
+.province-full-results-div:hover{
+overflow:hidden;
+transform: scale(1.03);
+box-shadow: 0 0 3pt 2pt  var(--titles-background-color);
+border-radius:5px;
+cursor:pointer;
+background-color:#f8fcb2;
+z-index:2;
+}
+
+.province-name-in-table{
+position:absolute;
+width:120px;
+overflow:hidden;
+}
+
+.province-full-results-div h5{
+font-size:0.9rem;
+padding:4% 0 0 0%;
+}
+
+.province-name-in-table h3{
+font-size:0.9rem;
+padding:2% 0 0 2%;
+
+}
+
+
+
+.party1-result-in-table{
+position:absolute;
+width:60px;
+text-align:right;
+left:120px;
+height: 20px;
+
+}
+
+.party1-seats-in-table{
+position:absolute;
+width:60px;
+text-align:center;
+left:180px;
+height: 20px;
+}
+
+.party1-win{
+background-color:rgba(254,219,44,0.7);
+}
+
+.party2-result-in-table{
+position:absolute;
+width:60px;
+text-align:right;
+left:240px;
+height: 20px;
+}
+
+.party2-seats-in-table{
+position:absolute;
+width:60px;
+text-align:center;
+left:300px;
+height: 20px;
+}
+
+.party2-win{
+background-color:rgba(80,149,238,0.7);
+}
+
+.party3-result-in-table{
+position:absolute;
+width:60px;
+text-align:right;
+left:360px;
+height: 20px;
+}
+
+.party3-seats-in-table{
+position:absolute;
+width:60px;
+text-align:center;
+left:420px;
+height: 20px;
+}
+
+.party3-win{
+background-color:rgba(169,173,180,0.7);
+
+}
+
+.restParties-result-in-table{
+position:absolute;
+width:60px;
+text-align:right;
+left:480px;
+height: 20px;
+
+}
+
+.restParties-seats-in-table{
+position:absolute;
+width:60px;
+text-align:center;
+left:540px;
+height: 20px;
+}
+
+.total-seats-in-table{
+position:absolute;
+width:80px;
+text-align:center;
+left:600px;
+height: 20px;
+}
+
+
+.party-winner-results-highlight{
+/* text-shadow:1px 0px 2px #e8d0d0, -1px 0px 2px grey, 0px 1px 2px grey;   */
+color:#000;
+border-radius: 5px 0px 0px 5px;
+border-left: 1px solid;
+border-top: 1px solid;
+border-bottom: 1px solid;
+}
+
+.party-winner-seats-highlight{
+/* text-shadow:1px 0px 2px #e8d0d0, -1px 0px 2px grey, 0px 1px 2px grey; */
+color:#000;
+border-radius: 0px 5px 5px 0px;
+border-right: 1px solid;
+border-top: 1px solid;
+border-bottom: 1px solid;
+}
+
+.switch-senate-house-div{
+position:absolute;
+height:34px;
+width:300px;
+margin-bottom:0%;
+text-align:left;
+background-color:var(--main-background-color);
+left:25px;
+top:10px;
+border-radius:10px;
+z-index:1;
+
+}
+
+.switch-senate-house-div h3{
+font-size: 1.1rem;
+}
+
+.selected-switch{
+text-shadow:1px 0px 2px #370c45, -1px 0px 2px #370c45, 0px 1px 2px #370c45;
+padding-right:2%;
+color:#fff
+}
+
+.selected-switch-div{
+border-radius:11px;
+box-shadow: 2px 8px 14px rgba(81, 15, 102, 0.25);
+background-color: var(--titles-background-color);
+}
+
+
+.switch-house-div{
+position:absolute;
+height:34px;
+width:125px;
+left:0px;
+margin-bottom:0.5%;
+text-align:center;
+color: #434343;
+transition: all 0.5s;
+padding: 2% 0 0 0%;
+}
+
+.switch-senate-div{
+position:absolute;
+height:34px;
+width:125px;
+left:200px;
+margin-bottom:0.5%;
+text-align:center;
+color: #434343;
+transition: all 0.5s;
+padding: 2% 0 0 0%;
+}
+
+.slider-div{
+position:absolute;
+height:34px;
+width:80px;
+left:133px;
+padding: 2% 0 0 0;
+}
+/* The switch - the box around the slider */
+.switch-senate-house {
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 24px;
+  left:0px;
+  padding: 3% 0 0 0;
+}
+
+/* Hide default HTML checkbox */
+.switch-senate-house input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--titles-background-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--titles-background-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+#results-graph{
+
+}
+
+.graph-div{
+    position: absolute;
+    background-color: var(--titles-background-color);
+    height:360px;
+    width: 100%;
+    max-width:400px;
+    right: 10px;
+    top: 380px;
+    border-radius: 15px;
+    color: white;
+    padding: 0%;
+    box-shadow: 2px 8px 14px rgba(81, 15, 102, 0.25);
+}
+
+.results-graph-dynamic-div{
+position: absolute;
+    background-color: var(--titles-background-color);
+    height:280px;
+    width: 100%;
+    max-width:380px;
+    right: 10px;
+    top: 70px;
+    border-radius: 15px;
+    color: white;
+    text-align: left;
+    padding: 0%;
+}
+
+.results-graph-title-div{
+position:absolute;
+background-color: transparent;
+height:30px;
+width:380px;
+left:10px;
+top:15px;
+color: white;
+text-align:left;
+}
+
+.results-graph-title-div h1{
+font-size:1.2rem;
+}
+.results-graph-title-div h3{
+font-size:0.8rem;
+}
+
+
+.switch-parties-allegiances-div{
+position:absolute;
+height:34px;
+width:220px;
+margin-bottom:0%;
+text-align:left;
+background-color:var(--titles-background-color);
+left:10px;
+top:280px;
+border-radius:10px;
+z-index:1;
+
+}
+
+.switch-parties-allegiances-div h3{
+font-size: 0.8rem;
+}
+
+.selected-switch-parties-allegiances{
+text-shadow:1px 0px 1px #000;
+padding-right:2%;
+color:var(--titles-background-color);
+}
+
+.selected-switch-parties-allegiances-div{
+border-radius:11px;
+box-shadow: 2px 8px 14px rgba(81, 15, 102, 0.25);
+background-color: #fff;
+}
+
+
+.switch-parties-div{
+position:absolute;
+height:24px;
+width:75px;
+left:5px;
+top:4px;
+margin-bottom:0.5%;
+text-align:center;
+color: #fff;
+transition: all 0.5s;
+padding: 2% 0 0 0%;
+}
+
+.switch-allegiances-div{
+position:absolute;
+height:24px;
+width:75px;
+top:4px;
+left:155px;
+margin-bottom:0.5%;
+text-align:center;
+color: #fff;
+transition: all 0.5s;
+padding: 2% 0 0 0%;
+}
+
+.slider-parties-allegiances-div{
+position:absolute;
+height:34px;
+width:80px;
+left:88px;
+padding: 2% 0 0 0;
+}
+/* The switch - the box around the slider */
+.switch-parties-allegiances {
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 24px;
+  left:0px;
+  padding: 3% 0 0 0;
+}
+
+/* Hide default HTML checkbox */
+.switch-parties-allegiances input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider-parties-allegiances {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #905ba2;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider-parties-allegiances:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider-parties-allegiances {
+  background-color: #905ba2;
+}
+
+input:focus + .slider-parties-allegiances {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider-parties-allegiances:before {
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+
+/* Rounded sliders */
+.slider-parties-allegiances.round {
+  border-radius: 34px;
+}
+
+.slider-parties-allegiances.round:before {
+  border-radius: 50%;
+}
+
+
+.safe-seats-select-allegiance{
+width:120px;
+font-size:0.9rem;
+}
+
+.party-change-safe-seats-div{
+width:230px;
+}
+
+.allegiance-change-safe-seats-div{
+left:230px;
+}
+
+.safe-seats-comment{
+position:absolute;
+top:18px;
+left:160px;
+font-size:0.9rem;
+}
