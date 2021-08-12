@@ -6,7 +6,9 @@
 
 }
 
-
+.list::-webkit-scrollbar {
+    -webkit-appearance: scrollbartrack-vertical;
+}
 
 body{
     font-family: 'Montserrat';
@@ -299,7 +301,7 @@ transform:  translate(164px, calc(var(--map-height) + 274px)) scale(2.8%,-2.8%);
 }
 
 #CABA{
-transform:  translate(320px, calc(var(--map-height) + 190px)) scale(2.8%,-2.8%);
+transform:  translate(285px, calc(var(--map-height) + 180px)) scale(2.8%,-2.8%);
 }
 
 #La_Pampa{
@@ -343,7 +345,7 @@ visibility: hidden;
 opacity: 0;
 transition: 0.3s;
 box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.25);
-border: 2px solid var(--titles-background-color);
+border: 3px solid var(--titles-background-color);
 padding-bottom:30px;
 }
 
@@ -1177,7 +1179,7 @@ z-index:1;
 }
 
 .switch-senate-house-div h3{
-font-size: 1.1rem;
+font-size: 0.9rem;
 }
 
 .selected-switch{
@@ -1196,32 +1198,32 @@ background-color: var(--titles-background-color);
 .switch-house-div{
 position:absolute;
 height:34px;
-width:125px;
+width:100px;
 left:0px;
 margin-bottom:0.5%;
 text-align:center;
 color: #434343;
 transition: all 0.5s;
-padding: 2% 0 0 0%;
+padding: 3% 0 0 0%;
 }
 
 .switch-senate-div{
 position:absolute;
 height:34px;
-width:125px;
-left:200px;
+width:100px;
+left:180px;
 margin-bottom:0.5%;
 text-align:center;
 color: #434343;
 transition: all 0.5s;
-padding: 2% 0 0 0%;
+padding: 3% 0 0 0%;
 }
 
 .slider-div{
 position:absolute;
 height:34px;
 width:80px;
-left:133px;
+left:111px;
 padding: 2% 0 0 0;
 }
 /* The switch - the box around the slider */
@@ -1489,4 +1491,211 @@ position:absolute;
 top:18px;
 left:160px;
 font-size:0.9rem;
+}
+
+
+
+.buttonSeatsDetailed {
+    position: absolute;
+    top: 8px;
+    left:275px;
+	background:linear-gradient(to bottom, #cd66bb  5%, #5b4172  100%);
+	background-color:#f274dd;
+	border-radius:8px;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:0.5rem;
+	font-weight:bold;
+	padding:0;
+	letter-spacing:0.1rem;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+	height:28px;
+	width:80px;
+	text-align: center;
+
+}
+
+.buttonSeatsDetailed:hover {
+background:linear-gradient(to bottom, #4f848c 5%, #f274dd 100%);
+	background-color:#4f848c;
+}
+
+.buttonSeatsDetailed:focus {
+outline: none
+}
+
+.detailed-seat-distribution-div{
+position:absolute;
+background-color:#d7ba52;
+min-height:200px;
+max-width:920px;
+left:480px;
+top:260px;
+border-radius:15px;
+z-index:4;
+visibility: hidden;
+opacity: 0;
+transition: 0.3s;
+box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.25);
+border: 3px solid var(--titles-background-color);
+padding: 1% 0.4% 1% 0.4%;
+overflow-x: auto;
+}
+
+.block-container {
+    display: flex;
+    justify-content: left;
+    min-height:50px;
+    min-width:200px;
+    position:relative;
+    padding: 0.5% 0% 0% 0%;
+}
+
+.detailed-seat-distribution-div-top-left-title{
+background-color:#d7ba52;
+height:50px;
+min-width:150px;
+border-top: 1px solid;
+border-left: 1px solid;
+}
+
+.detailed-seat-distribution-div-title-seats{
+position:relative;
+background-color:#d7ba52;
+height:25px;
+min-width:150px;
+left:0px;
+top:-25px;
+z-index:3;
+}
+
+.detailed-seat-distribution-div-title-seats h3{
+position:absolute;
+left:50px;
+top:5px;
+font-size:1rem;
+}
+
+.detailed-seat-distribution-div-arrow{
+position:relative;
+background-color:#d7ba52;
+height:25px;
+width:20px;
+left:120px;
+top:-40px;
+z-index:2
+}
+
+.detailed-seat-distribution-div-arrow h3{
+color: var(--titles-background-color);
+transform: rotate(90deg);
+font-size:2rem;
+}
+
+.detailed-seat-distribution-div-title-parties{
+position:relative;
+background-color:#d7ba52;
+height:25px;
+min-width:150px;
+left:0px;
+top:25px;
+}
+
+.detailed-seat-distribution-div-title-parties h3{
+position:absolute;
+left:5px;
+font-size:1rem;
+}
+
+.detailed-seat-distribution-div-arrow-parties{
+position:relative;
+background-color:#d7ba52;
+height:25px;
+width:20px;
+left:70px;
+top:-58px;
+z-index:2
+}
+
+.detailed-seat-distribution-div-arrow-parties h3{
+color: var(--titles-background-color);
+font-size:2rem;
+}
+
+
+.detailed-seat-distribution-div-title-seat-number{
+background-color:#d7ba52;
+height:50px;
+min-width:50px;
+padding: 1%;
+margin-left:0.7px;
+border-top: 1px solid;
+border-left: 1px solid;
+}
+
+
+
+.detailed-seat-distribution-div-title-totals{
+background-color:#d7ba52;
+height:50px;
+min-width:100px;
+padding:2%;
+margin-left:1px;
+border-top: 1px solid;
+border-left: 1px solid;
+border-right: 1px solid;
+}
+
+.detailed-seat-distribution-div-title-totals h3{
+font-size:1rem;
+}
+
+
+.detailed-seat-distribution-div-party-name{
+background-color:#fff;
+height:50px;
+min-width:150px;
+max-width:150px;
+text-align: left;
+padding:1% 0% 0% 0%;
+overflow:hidden;
+}
+
+.detailed-seat-distribution-div-party-name h3{
+font-size: 0.9rem;
+margin-left: 4%;
+}
+
+.detailed-seat-distribution-div-party-total{
+background-color:#fff;
+height:50px;
+min-width:100px;
+padding:1.5%;
+margin-left:1px;
+}
+
+.detailed-seat-distribution-div-party-total h3{
+font-size:1.2rem;
+}
+
+.detailed-seat-distribution-div-each-allocation{
+background-color:#fff;
+height:50px;
+min-width:50px;
+margin-left:1px;
+}
+
+.detailed-seat-distribution-div-each-allocation h3{
+font-size:1rem;
+}
+
+.detailed-seat-distribution-div-each-allocation h5{
+font-size:0.8rem;
+}
+
+.allocation-winner{
+border: 2px solid;
+background-color: #bbf2a5;
+border-radius:5px;
 }

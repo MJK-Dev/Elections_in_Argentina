@@ -33,6 +33,7 @@ function showProvince(selectedProvince){
 
     $('body').append('<div class="province-results-div">'
         + '<h1>Sin selección</h1>'
+        +'<button class="buttonSeatsDetailed" onclick="calculateDetailedSeatsDistribution()">¿Cómo se asignan?</button>'
         + '<a class="close-cross" onclick="closeProvinceDiv()">✘</a>'
         + '<hr class="province-results-div-hr">'
         + '<div id="" class="party-results-div-top-title-party"><h3 class="subs-style">Partido</h3></div>'
@@ -82,6 +83,9 @@ function closeProvinceDiv(){
     $(".province-results-div").remove();
 }
 
+function closeDetailedSeatDistributionDiv(){
+    $(".detailed-seat-distribution-div").remove();
+}
 
 //Open Each Province Results when clicking on each province map------------------------------------------------------------------------------------------------------------
 
@@ -106,6 +110,7 @@ $( "body" ).on('click', ".province-full-results-div", function() {
     }
     selectedProvince = ((this.id).replaceAll("_", " ")).slice(0,-6);
     showProvince(selectedProvince);
+
 })
 
 
@@ -115,10 +120,27 @@ $(document).mouseup(function(e)
 {
     var container = $(".province-results-div");
     // if the target of the click isn't the container nor a descendant of the container
+    if($(".detailed-seat-distribution-div").hasClass("show-party-results-div")){
+
+    } else {
+
     if($(".province-results-div").hasClass("show-party-results-div")){
     if (!container.is(e.target) && container.has(e.target).length === 0)
     {
         closeProvinceDiv();
+    }
+    }
+    }
+});
+
+$(document).mouseup(function(e)
+{
+    var container = $(".detailed-seat-distribution-div");
+    // if the target of the click isn't the container nor a descendant of the container
+    if($(".detailed-seat-distribution-div").hasClass("show-party-results-div")){
+    if (!container.is(e.target) && container.has(e.target).length === 0)
+    {
+        closeDetailedSeatDistributionDiv();
     }
     }
 });
@@ -128,9 +150,12 @@ $(document).mouseup(function(e)
 
 
 window.calculateDistribution = function(seats,results){
+        //House distribution (D'Hondt)-------------------------------------------------------------------
         if ($('.input-senate-house').hasClass("show-house")) {
+
         for (a=0; a < seats ; a++){
             var reminder = 0;
+
             var votes = 0;
             for (i=0; i < results[1].length ; i++){
                 votes = parseFloat(results[1][i][2] /(results[1][i][3]+1));
@@ -141,6 +166,7 @@ window.calculateDistribution = function(seats,results){
             }
             results[1][seat_won_by][3] += 1
           }
+        //Senate distribution (2/1)------------------------------------------------------------------------------
         } else{
         var first = results[1][0];
         var second = results[1][1];
@@ -170,6 +196,94 @@ window.calculateDistribution = function(seats,results){
         }
        return results;
 }
+
+function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
+     $('body').append('<div class="detailed-seat-distribution-div"></div>');
+     var numberSeatsTitle = ""
+
+      for (i=0; i < seats ; i++){
+      numberSeatsTitle += "<div class='detailed-seat-distribution-div-title-seat-number'><h3>"+(i+1)+"</h3></div>"
+      }
+     $('.detailed-seat-distribution-div').append('<div class="block-container">'
+     +' <div class="detailed-seat-distribution-div-top-left-title">'
+     + '<div class="detailed-seat-distribution-div-title-parties"><h3>Partido</h3></div>'
+     + '<div class="detailed-seat-distribution-div-title-seats"><h3>Diputado #</h3></div>'
+     + '<div class="detailed-seat-distribution-div-arrow"><h3>⮥</h3></div>'
+     + '<div class="detailed-seat-distribution-div-arrow-parties"><h3>↴</h3></div>'
+     + '</div>'
+     + numberSeatsTitle
+     + '<div class="detailed-seat-distribution-div-title-totals"><h3>Totales</h3></div>'
+     + '</div>');
+
+     for (i=0; i < seatsDistributionDetailed.length ; i++){
+         var thisPartyAllocation = ""
+         for (a=1; a < seats+1 ; a++){
+             if (seatsDistributionDetailed[i][a][3] === false){
+                thisPartyAllocation += "<div class='detailed-seat-distribution-div-each-allocation'><h3>"+round(seatsDistributionDetailed[i][a][2],2)+"</h3>"
+                                        + "<h5>("+seatsDistributionDetailed[i][a][0]+"/"+ seatsDistributionDetailed[i][a][1] + ")</h5>"
+                                        +"</div>"
+             } else {
+                thisPartyAllocation += "<div class='detailed-seat-distribution-div-each-allocation allocation-winner'><h3>"+round(seatsDistributionDetailed[i][a][2],2)+"</h3>"
+                                        + "<h5>("+seatsDistributionDetailed[i][a][0]+"/"+ seatsDistributionDetailed[i][a][1] + ")</h5>"
+                                        +"</div>"
+             }
+         }
+         $('.detailed-seat-distribution-div').append('<div class="block-container">'
+         +' <div class="detailed-seat-distribution-div-party-name"><h3>'+seatsDistributionDetailed[i][0][0]+'</h3></div>'
+         + thisPartyAllocation
+         + '<div class="detailed-seat-distribution-div-party-total"><h3>'+seatsDistributionDetailed[i][0][1]+'</h3></div>'
+         + '</div>');
+
+
+     }
+
+
+
+ requestAnimationFrame(() =>
+      setTimeout(() => {
+      $(".detailed-seat-distribution-div").toggleClass("show-party-results-div");
+      })
+  );
+}
+
+
+window.calculateDetailedSeatsDistribution = function(){
+
+     var seatsDistributionDetailed = []
+
+     var found = provincesResults.find(function(foundProvince) {
+              return foundProvince[0] == selectedProvince;
+            });
+     var thisProvince = JSON.parse(JSON.stringify(found));
+     var seats = 0
+     for(i=0; i <(thisProvince[1].length) ; i++){
+            seats = seats + thisProvince[1][i][3];
+            thisProvince[1][i][3] = 0;
+            seatsDistributionDetailed.push([[thisProvince[1][i][0],0]]);
+     }
+     var arrayPosition = 0
+     for (a=0; a < seats ; a++){
+                var reminder = 0;
+                var votes = 0;
+                for (i=0; i < thisProvince[1].length ; i++){
+                    votes = parseFloat(thisProvince[1][i][2] /(thisProvince[1][i][3]+1));
+                    seatsDistributionDetailed[i].push([thisProvince[1][i][2],thisProvince[1][i][3]+1,votes,false]);
+                    if (votes > reminder){
+                        reminder = votes;
+                        var seat_won_by = thisProvince[1].indexOf(thisProvince[1][i])
+                    }
+                }
+                arrayPosition += 1
+                thisProvince[1][seat_won_by][3] += 1
+                seatsDistributionDetailed[seat_won_by][0][1] +=1
+                seatsDistributionDetailed[seat_won_by][arrayPosition][3] = true;
+     }
+
+  displayDetailedSeatsDistribution(seatsDistributionDetailed, seats)
+
+}
+
+
 
 
 //Detect changes on Province Results Div Input and update all if sum of votes is equal to 100 (function)------------------------------
@@ -456,7 +570,6 @@ $('body').on('change','.select-allegiance', function () {
       return foundNationalParty[1] == thisParty;
     });
   foundNational[0] = newAllegiance;
-  console.log(foundNational);
   for(i=0; i < thisProvincesResults.length ; i++){
       var found = thisProvincesResults[i][1].find(function(foundParty) {
           return foundParty[0] == thisParty;
@@ -629,7 +742,6 @@ $('body').on('change','.safe-seats-select-allegiance', function () {
   //ways to retrieve selected option and text outside handler
   var thisParty = (this.id).replaceAll("_", " ").slice( 10,).trim();
   var newAllegiance = $(this).find('option').filter(':selected').text();
-  console.log(thisParty, newAllegiance);
   if ($('.input-senate-house').hasClass("show-house")) {
            var thisSafeSeats = safeSeats[0][1];
          } else {

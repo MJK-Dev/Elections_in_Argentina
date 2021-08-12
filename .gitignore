@@ -1,5 +1,7 @@
 node_modules
 
+templates/backup.html
+templates/trial_tables.html
 
 # Created by https://www.toptal.com/developers/gitignore/api/flask
 # Edit at https://www.toptal.com/developers/gitignore?templates=flask
