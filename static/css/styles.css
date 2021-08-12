@@ -116,7 +116,7 @@ filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%
     position: absolute;
     top: -1px;
     left:312px;
-	background:linear-gradient(to bottom, #cd66bb  5%, #5b4172  100%);
+	background:linear-gradient(to bottom, #791967  5%, #5b4172  100%);
 	background-color:#f274dd;
 	border-radius:8px;
 	cursor:pointer;
@@ -130,10 +130,11 @@ filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%
 	height:26px;
 	width:70px;
 	text-align: center;
+	border: 1.5px solid;
 
 }
 .myButton2:hover {
-	background:linear-gradient(to bottom, #4f848c 5%, #f274dd 100%);
+	background:linear-gradient(to bottom, #99518c 5%, #99518c 100%);
 	background-color:#4f848c;
 }
 .myButton2:focus {
@@ -1498,26 +1499,26 @@ font-size:0.9rem;
 .buttonSeatsDetailed {
     position: absolute;
     top: 8px;
-    left:275px;
-	background:linear-gradient(to bottom, #cd66bb  5%, #5b4172  100%);
+    left:277px;
+	background:linear-gradient(to bottom, #875313  5%, #512709  100%);
 	background-color:#f274dd;
-	border-radius:8px;
+	border-radius:9px;
 	cursor:pointer;
 	color:#ffffff;
-	font-size:0.5rem;
+	font-size:0.55rem;
 	font-weight:bold;
-	padding:0;
+	padding:0 0 0 0%;
 	letter-spacing:0.1rem;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #3d768a;
-	height:28px;
+	height:29px;
 	width:80px;
 	text-align: center;
 
 }
 
 .buttonSeatsDetailed:hover {
-background:linear-gradient(to bottom, #4f848c 5%, #f274dd 100%);
+background:linear-gradient(to bottom, var(--titles-background-color) 5%, #992386 100%);
 	background-color:#4f848c;
 }
 
