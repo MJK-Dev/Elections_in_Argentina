@@ -41,6 +41,15 @@ p{
 max-width: 1455px;
 }
 
+/* Sections */
+.main-section{
+position:relative;
+top:0px;
+height:800px;
+width:auto;
+
+}
+
 /* Headings */
 
 .big-heading {
@@ -211,7 +220,7 @@ stroke: 2px;
 
 
 .country-map{
-position:relative;
+position:absolute;
 background-color:var(--main-background-color);
 height:700px;
 width:500px;
@@ -473,8 +482,8 @@ position:absolute;
 background-color: var(--titles-background-color);
 height:320px;
 width:400px;
-right:10px;
-top:50px;
+left:1100px;
+top:10px;
 border-radius:15px;
 color:white;
 text-align: left;
@@ -780,8 +789,8 @@ position:absolute;
 background-color:transparent;
 min-height:200px;
 width:680px;
-right:420px;
-top:50px;
+top:10px;
+left:400px;
 border-radius:15px;
 }
 
@@ -1303,8 +1312,8 @@ input:checked + .slider:before {
     height:360px;
     width: 100%;
     max-width:400px;
-    right: 10px;
-    top: 380px;
+    left: 1100px;
+    top: 335px;
     border-radius: 15px;
     color: white;
     padding: 0%;
