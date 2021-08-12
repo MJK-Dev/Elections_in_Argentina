@@ -25,15 +25,17 @@ function showProvince(selectedProvince){
         var found = provincesResults.find(function(foundProvince) {
               return foundProvince[0] == selectedProvince;
             });
+        var showButton = '<button class="buttonSeatsDetailed" onclick="calculateDetailedSeatsDistribution()">¿Cómo se asignan?</button>'
     } else {
         var found = provincesSenateResults.find(function(foundProvince) {
               return foundProvince[0] == selectedProvince;
             });
+        var showButton = "";
     }
 
     $('body').append('<div class="province-results-div">'
         + '<h1>Sin selección</h1>'
-        +'<button class="buttonSeatsDetailed" onclick="calculateDetailedSeatsDistribution()">¿Cómo se asignan?</button>'
+        + showButton
         + '<a class="close-cross" onclick="closeProvinceDiv()">✘</a>'
         + '<hr class="province-results-div-hr">'
         + '<div id="" class="party-results-div-top-title-party"><h3 class="subs-style">Partido</h3></div>'
