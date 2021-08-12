@@ -210,8 +210,8 @@ function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
      +' <div class="detailed-seat-distribution-div-top-left-title">'
      + '<div class="detailed-seat-distribution-div-title-parties"><h3>Partido</h3></div>'
      + '<div class="detailed-seat-distribution-div-title-seats"><h3>Diputado #</h3></div>'
-     + '<div class="detailed-seat-distribution-div-arrow"><h3>⮥⤸ ➥ ↵</h3></div>'
-     + '<div class="detailed-seat-distribution-div-arrow-parties"><h3>↴</h3></div>'
+     + '<div class="detailed-seat-distribution-div-arrow"></div>'
+     + '<div class="detailed-seat-distribution-div-arrow-parties"></div>'
      + '</div>'
      + numberSeatsTitle
      + '<div class="detailed-seat-distribution-div-title-totals"><h3>Totales</h3></div>'
