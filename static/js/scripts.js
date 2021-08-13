@@ -207,6 +207,8 @@ function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
       numberSeatsTitle += "<div class='detailed-seat-distribution-div-title-seat-number'><h3>"+(i+1)+"</h3></div>"
       }
      $('.detailed-seat-distribution-div').append('<div class="block-container">'
+     +' <div class="detailed-seat-distribution-div-top-main-title"><h1>Los '+seats+' diputados se asignan de la siguiente forma:</h1></div></div>'
+     +' <div class="block-container">'
      +' <div class="detailed-seat-distribution-div-top-left-title">'
      + '<div class="detailed-seat-distribution-div-title-parties"><h3>Partido</h3></div>'
      + '<div class="detailed-seat-distribution-div-title-seats"><h3>Diputado #</h3></div>'
@@ -235,17 +237,14 @@ function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
          + thisPartyAllocation
          + '<div class="detailed-seat-distribution-div-party-total"><h3>'+seatsDistributionDetailed[i][0][1]+'</h3></div>'
          + '</div>');
-
-
      }
-
-
 
  requestAnimationFrame(() =>
       setTimeout(() => {
       $(".detailed-seat-distribution-div").toggleClass("show-party-results-div");
       })
   );
+  console.log(seatsDistributionDetailed);
 }
 
 
@@ -319,7 +318,7 @@ $('body').on('change', '.province-results-div input', function(){
         found = calculateDistribution(seats,found);
         var partySeats = $('.party-results-div-seats');
         for(i=0; i <(partySeats.length) ; i++){
-            $('.party-results-div-seats')[i].innerText =(found[1][i][3]);
+            $('.party-results-div-seats h3')[i].innerText =(found[1][i][3]);
         }
         $(".province-total-in-div").removeClass("sum-not-hundred")
         $('.party-results-sum-alert-div h3').text("")

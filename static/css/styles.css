@@ -344,7 +344,7 @@ transform:  translate(195px, calc(var(--map-height) + 525px)) scale(2.8%,-2.8%);
 
 .province-results-div{
 position:absolute;
-background-color:#d7ba52;
+background-color:#e8d46b;
 min-height:200px;
 width:420px;
 left:380px;
@@ -444,7 +444,7 @@ border-radius:5px;
 }
 
 .province-results-sum-div h3{
-font-size:0.9rem;
+font-size:1.2rem;
 display:inline;
 margin-left:4%;
 }
@@ -701,6 +701,7 @@ position:absolute;
 height:30px;
 width:150px;
 left:0px;
+padding: 1% 0 0 0;
 }
 
 .party-results-div-total-percentage{
@@ -715,6 +716,7 @@ position:absolute;
 height:30px;
 width:50px;
 left:370px;
+padding: 1% 0 0 0;
 }
 
 .subs-style{
@@ -1372,7 +1374,7 @@ font-size: 0.8rem;
 }
 
 .selected-switch-parties-allegiances{
-text-shadow:1px 0px 1px #000;
+text-shadow:0px 0px 0px #000;
 padding-right:2%;
 color:var(--titles-background-color);
 }
@@ -1537,11 +1539,11 @@ outline: none
 
 .detailed-seat-distribution-div{
 position:absolute;
-background-color:#d7ba52;
+background-color:#e6d26a;
 min-height:200px;
 max-width:920px;
 left:480px;
-top:260px;
+top:140px;
 border-radius:15px;
 z-index:4;
 visibility: hidden;
@@ -1562,8 +1564,21 @@ overflow-x: auto;
     padding: 0.5% 0% 0% 0%;
 }
 
+.detailed-seat-distribution-div-top-main-title{
+background-color:#e6d26a;
+height:30px;
+min-width:150px;
+padding: 0 0 0 1%;
+}
+
+.detailed-seat-distribution-div-top-main-title h1{
+font-style:italic;
+font-size:0.9rem;
+padding: 2% 0 0 0;
+}
+
 .detailed-seat-distribution-div-top-left-title{
-background-color:#d7ba52;
+background-color:#e6d26a;
 height:50px;
 min-width:150px;
 border-top: 1px solid;
@@ -1572,7 +1587,7 @@ border-left: 1px solid;
 
 .detailed-seat-distribution-div-title-seats{
 position:relative;
-background-color:#d7ba52;
+background-color:#e6d26a;
 height:25px;
 min-width:150px;
 left:0px;
@@ -1589,7 +1604,7 @@ font-size:1rem;
 
 .detailed-seat-distribution-div-arrow{
 position:relative;
-background-color:#d7ba52;
+background-color:#e6d26a;
 height:31px;
 width:38px;
 left:108px;
@@ -1607,7 +1622,7 @@ font-size:2rem;
 
 .detailed-seat-distribution-div-title-parties{
 position:relative;
-background-color:#d7ba52;
+background-color:#e6d26a;
 height:25px;
 min-width:150px;
 left:0px;
@@ -1622,7 +1637,7 @@ font-size:1rem;
 
 .detailed-seat-distribution-div-arrow-parties{
 position:relative;
-background-color:#d7ba52;
+background-color:#e6d26a;
 height:22px;
 width:20px;
 left:72px;
@@ -1641,7 +1656,7 @@ font-size:2rem;
 
 
 .detailed-seat-distribution-div-title-seat-number{
-background-color:#d7ba52;
+background-color:#e6d26a;
 height:50px;
 min-width:50px;
 padding: 1%;
@@ -1653,7 +1668,7 @@ border-left: 1px solid;
 
 
 .detailed-seat-distribution-div-title-totals{
-background-color:#d7ba52;
+background-color:#e6d26a;
 height:50px;
 min-width:100px;
 padding:2%;
