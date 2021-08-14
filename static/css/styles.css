@@ -14,12 +14,12 @@ body{
     font-family: 'Montserrat';
     text-align: center;
     background-color:var(--main-background-color);
-    letter-spacing:0.5px;
+    letter-spacing:0.3px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat';
-    font-weight: bold;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight:400;
 }
 
 h2 {
@@ -28,10 +28,6 @@ h2 {
     line-height: 1.5;
 }
 
-h3 {
-    font-weight: bold;
-
-}
 
 p{
     color: #8f8f8f;
@@ -80,9 +76,10 @@ padding: 0% 0% 0% 0%;
 }
 
 .navbar-brand{
-    font-family: "Ubuntu";
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight:400;
     font-size: 1.0rem;
-    font-weight: None;
+
 }
 
 .nav-item {
@@ -140,6 +137,8 @@ filter: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%
 	width:70px;
 	text-align: center;
 	border: 1.5px solid;
+	font-family: 'Noto Sans JP', sans-serif;
+    font-weight:400;
 
 }
 .myButton2:hover {
@@ -422,10 +421,12 @@ display:inline;
 margin-left:4%;
 }
 .party-results-div input{
-font-size:1rem;
+font-size:0.9rem;
 display:inline;
 width:4rem;
 border-radius: 5px;
+font-family: 'Noto Sans JP', sans-serif;
+font-weight:300;
 }
 
 
@@ -444,16 +445,18 @@ border-radius:5px;
 }
 
 .province-results-sum-div h3{
-font-size:1.2rem;
+font-size:1.1rem;
 display:inline;
 margin-left:4%;
 }
 .province-results-sum-div input{
-font-size:1rem;
+font-size:0.9rem;
 display:inline;
 width:4rem;
 background-color:#d3fece;
 border-radius: 5px;
+font-family: 'Noto Sans JP', sans-serif;
+font-weight:300;
 transition: all 0.3s;
 }
 
@@ -462,6 +465,7 @@ position:absolute;
 height:30px;
 width:160px;
 left:115px;
+top:1px;
 }
 
 .party-results-sum-alert-div h3 {
@@ -665,7 +669,7 @@ height:30px;
 width:150px;
 left:0px;
 overflow:hidden;
-padding:0.5% 0 0 0;
+padding:0.8% 0 0 0;
 }
 
 .party-results-div-allegiance{
@@ -673,7 +677,7 @@ position:absolute;
 height:30px;
 width:100px;
 left:150px;
-padding:0.5% 0 0 0;
+padding:0.8% 0 0 0;
 }
 
 .party-results-div-percentage{
@@ -681,6 +685,7 @@ position:absolute;
 height:30px;
 width:50px;
 left:280px;
+top:2px;
 }
 
 .party-results-div-seats{
@@ -689,7 +694,7 @@ height:30px;
 width:50px;
 left:338px;
 text-align:right;
-padding:0.5% 0 0 0;
+padding:0.8% 0 0 0;
 }
 .party-results-div-seats h3{
 font-weight:bold !important;
@@ -709,6 +714,7 @@ position:absolute;
 height:30px;
 width:50px;
 left:280px;
+top:1px;
 }
 
 .party-results-div-total-seats{
@@ -778,6 +784,14 @@ color:#a80000;
 position:relative;
 left:175px;
 bottom:35px;
+}
+
+.close-cross-detailed-seat-distribution{
+cursor:pointer;
+color:#a80000;
+position:absolute;
+right:10px;
+top:5px;
 }
 
 .province-total-in-div{
@@ -973,7 +987,7 @@ z-index: 1;
 }
 
 .full-results-bottom-results h4{
-font-size: 1.2rem;
+font-size: 1.1rem;
 }
 
 .full-results-party1-seats-won{
@@ -1012,6 +1026,10 @@ color:#000;
 border-radius: 5px;
 border: 1px solid;
 background-color:rgba(254,219,44,1);
+}
+
+.full-results-party1-seats-winner h4{
+padding: 0% 0% 1% 0%;
 }
 
 .full-results-party2-seats-winner{
@@ -1165,6 +1183,11 @@ border-radius: 5px 0px 0px 5px;
 border-left: 1px solid;
 border-top: 1px solid;
 border-bottom: 1px solid;
+
+}
+
+.party-winner-results-highlight h5{
+padding: 2% 0 0 0;
 }
 
 .party-winner-seats-highlight{
@@ -1174,6 +1197,10 @@ border-radius: 0px 5px 5px 0px;
 border-right: 1px solid;
 border-top: 1px solid;
 border-bottom: 1px solid;
+}
+
+.party-winner-seats-highlight h5{
+padding: 2% 0 0 0;
 }
 
 .switch-senate-house-div{
@@ -1517,7 +1544,6 @@ font-size:0.9rem;
 	cursor:pointer;
 	color:#ffffff;
 	font-size:0.55rem;
-	font-weight:bold;
 	padding:0 0 0 0%;
 	letter-spacing:0.1rem;
 	text-decoration:none;
@@ -1525,6 +1551,8 @@ font-size:0.9rem;
 	height:29px;
 	width:80px;
 	text-align: center;
+	font-family: 'Noto Sans JP', sans-serif;
+    font-weight:400;
 
 }
 
@@ -1567,8 +1595,9 @@ overflow-x: auto;
 .detailed-seat-distribution-div-top-main-title{
 background-color:#e6d26a;
 height:30px;
-min-width:150px;
+max-width:320px;
 padding: 0 0 0 1%;
+text-align:left;
 }
 
 .detailed-seat-distribution-div-top-main-title h1{

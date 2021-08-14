@@ -207,7 +207,8 @@ function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
       numberSeatsTitle += "<div class='detailed-seat-distribution-div-title-seat-number'><h3>"+(i+1)+"</h3></div>"
       }
      $('.detailed-seat-distribution-div').append('<div class="block-container">'
-     +' <div class="detailed-seat-distribution-div-top-main-title"><h1>Los '+seats+' diputados se asignan de la siguiente forma:</h1></div></div>'
+     +' <div class="detailed-seat-distribution-div-top-main-title"><h1>Los '+seats+' diputados de esta provincia se asignan de la siguiente forma:</h1></div></div>'
+     + "<a class='close-cross-detailed-seat-distribution' onclick='closeDetailedSeatDistributionDiv()'>✘</a>"
      +' <div class="block-container">'
      +' <div class="detailed-seat-distribution-div-top-left-title">'
      + '<div class="detailed-seat-distribution-div-title-parties"><h3>Partido</h3></div>'
