@@ -7,15 +7,16 @@
     <h3 class="selected-switch">Diputados</h3>
         </div>
         <div class="slider-div">
-<label class="switch-senate-house">
-  <input type="checkbox" class="input-senate-house show-house">
-  <span class="slider round"></span>
-</label>
+    <label class="switch-senate-house">
+      <input type="checkbox" class="input-senate-house show-house">
+      <span class="slider round"></span>
+    </label>
              </div>
      <div class="switch-senate-div">
     <h3 class="">Senadores</h3>
         </div>
 </div>
+    <div class="help-sign help-sign-map"></div>
 
     <svg class="svg-size2" version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="988.000000pt" height="660.000000pt" viewBox="0 0 588.000000 460.000000"
@@ -783,7 +784,7 @@ fill="#000000" stroke="none">
  -->
 
 <div class="full-results-div">
-
+<div class="help-sign help-sign-full-results"></div>
 </div>
 
 
@@ -813,7 +814,7 @@ fill="#000000" stroke="none">
 
     </div>
 
-
+<div class="help-sign help-sign-national-results"></div>
 
 </div>
 
@@ -826,6 +827,7 @@ fill="#000000" stroke="none">
         <button class="myButton2" onclick="updateSafeSeats()">Cambiar</button>
 
     </div>
+    <div class="help-sign help-sign-graph"></div>
 </div>
 </div>
 
@@ -843,11 +845,19 @@ fill="#000000" stroke="none">
     var safeSeatsTemp = '{{not_up_for_election_seats|tojson|safe}}';
     var safeSeats = JSON.parse(safeSeatsTemp);
 
+    var pageHelpTemp = '{{page_help|tojson|safe}}';
+        console.log(pageHelpTemp[11124],pageHelpTemp[11125],pageHelpTemp[11126],pageHelpTemp[11127],pageHelpTemp[11128],pageHelpTemp[11134],pageHelpTemp[11135])
+
+    console.log(pageHelpTemp[11129],pageHelpTemp[11130],pageHelpTemp[11131],pageHelpTemp[11132],pageHelpTemp[11133],pageHelpTemp[11134],pageHelpTemp[11135])
+    var pageHelpOriginal = JSON.parse(pageHelpTemp);
+    console.log(pageHelpOriginal);
+
   </script>
 <br>
 <br>
 
 </section>
+
 
 
 

@@ -55,3 +55,21 @@ class DataInput:
                 branch_composition.append([party, allegiance, seats])
             all_branches.append([branch["Branch"][0],branch_composition])
         return all_branches
+
+    def csv_page_help_extractor(self, page_help):
+        slides =[]
+        for i in range(0, len(page_help["Slide"])):
+            data = {'Slide_X': int(page_help["Slide_X"][i]),
+                    'Slide_Y': int(page_help["Slide_Y"][i]),
+                    'H1': str(page_help["H1"][i]),
+                    'H3': str(page_help["H3"][i]),
+                    'Arrow_Show': int(page_help["Arrow_Show"][i]),
+                    'Arrow_X': int(page_help["Arrow_X"][i]),
+                    'Arrow_Y': int(page_help["Arrow_Y"][i]),
+                    'Arrow_Degrees': int(page_help["Arrow_Degrees"][i]),
+                    'Arrow_Clockwise': float(page_help["Arrow_Clockwise"][i]),
+                    'Arrow_Anticlockwise': float(page_help["Arrow_Anticlockwise"][i]),
+                    'Cover_Divs': list(map(int,(page_help["Cover_Divs"][i]).split(',')))
+                    }
+            slides.append([int(page_help["Slide"][i]),data])
+        return slides

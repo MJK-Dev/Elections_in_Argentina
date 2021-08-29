@@ -3,6 +3,9 @@
 
 var selectedProvince = "";
 var finalQuorum =[["",0]]
+var helpSlideNumber = 0;
+var pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
+var slideNumberOnTable = 0;
 
 //Round float value with passed precision when calling it (function)---------------------------------------------------------------------------------------------
 
@@ -13,7 +16,205 @@ function round(value, precision) {
 
 // Helper Function-----------------------------------------------------------------------------------------------------------------
 
+function helpDiv(x,y,textTop, textBottom){
+$('body').append('<div class="help-div show-party-results-div"><h1></h1><h3></h3></div>')
+$('.help-div').css('left', x)
+$('.help-div').css('top', y)
+$('.help-div h1').text(textTop)
+$('.help-div h3').text(textBottom)
+}
+
+function helpArrow(show,x,y,degrees,clock,anticlock){
+if (show === 1){
+if (slideNumberOnTable !== 26){
+    $('body').append('<div class="help-arrow"></div>')
+    $('.help-arrow').css('left', x)
+    $('.help-arrow').css('top', y)
+    $('.help-arrow').css({
+      '-webkit-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+         '-moz-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+          '-ms-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+           '-o-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+              'transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+                   'zoom' : 1
+        });
+    } else {
+    var thisArrow = "this-arrow-"+y;
+    $('body').append('<div class="help-arrow '+thisArrow+'"></div>')
+    $('.help-arrow.'+thisArrow).css('left', x)
+    $('.help-arrow.'+thisArrow).css('top', y)
+    $('.help-arrow.'+thisArrow).css({
+      '-webkit-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+         '-moz-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+          '-ms-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+           '-o-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+              'transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+                   'zoom' : 1
+        });
+
+    }
+    }
+}
+
+function coverDivs(display){
+     $('.main-section').append('<div class="main-section-cover-div"></div>')
+
+     coverDivList = ['<div class="cover-div house-senate-cover-div"></div>',
+     '<div class="cover-div country-map-cover-div"></div>',
+     '<div class="cover-div full-results-title-cover-div"></div>',
+     '<div class="cover-div full-results-first-province-cover-div"></div>',
+     '<div class="cover-div full-results-rest-provinces-cover-div"></div>',
+     '<div class="cover-div full-results-bottom-count-cover-div"></div>',
+     '<div class="cover-div full-results-bottom-info-div-cover-div"></div>',
+     '<div class="cover-div national-results-top-cover-div"></div>',
+     '<div class="cover-div national-results-bottom-cover-div"></div>',
+     '<div class="cover-div graph-div-top-cover-div"></div>',
+     '<div class="cover-div graph-div-bottom-cover-div"></div>']
+
+     for(i=0; i < display.length ; i++){
+        if (display[i] === 1){
+            $('.main-section-cover-div').append(coverDivList[i])
+        }
+     }
+}
+
+$( "body" ).on('click', ".help-slide-button", function() {
+
+    if ($(this).hasClass("help-slide-left")){
+        if (helpSlideNumber > 0){
+        helpSlideNumber -= 1;
+        } else {
+        helpSlideNumber = pageHelp.length - 1
+        }
+
+    } else {
+        if (helpSlideNumber < pageHelp.length -1){
+        helpSlideNumber += 1;
+        } else {
+        helpSlideNumber =0
+        }
+
+    }
+
+    $('.main-section-cover-div').remove();
+    $('.help-arrow').remove();
+    $('.help-div').remove();
+    slideNumberOnTable =pageHelp[helpSlideNumber][0]
+
+     if (slideNumberOnTable === 2 ||slideNumberOnTable === 7 || slideNumberOnTable === 11){
+     closeDetailedSeatDistributionDiv();
+     closeProvinceDiv();
+     }
+     if (slideNumberOnTable === 3){
+
+     closeProvinceDiv();
+     }
+     if (slideNumberOnTable === 21 || slideNumberOnTable === 23 || slideNumberOnTable === 26){
+     closeProvinceDiv();
+     }
+
+
+    if (slideNumberOnTable === 4 || slideNumberOnTable === 5 || slideNumberOnTable === 6
+        || slideNumberOnTable === 7 || slideNumberOnTable === 8 || slideNumberOnTable === 9|| slideNumberOnTable === 10){
+        $( "#Mendoza-table" ).trigger( "click" );
+        $( ".province-results-div" ).css( "z-index", 1001 );
+        $( ".province-results-div" ).css('pointer-events', 'none')
+
+    }
+    if(slideNumberOnTable === 8 || slideNumberOnTable === 9 || slideNumberOnTable === 10){
+        closeDetailedSeatDistributionDiv();
+        calculateDetailedSeatsDistribution()
+        $('.detailed-seat-distribution-div').css( "z-index", 1002 );
+        $('.detailed-seat-distribution-div').css('pointer-events', 'none');
+    }
+
+    if(slideNumberOnTable === 20){
+         $(".input-parties-allegiances").trigger('click');
+    } else if (slideNumberOnTable !== 20 && $(".input-parties-allegiances").hasClass('show-allegiances')){
+         $(".input-parties-allegiances").trigger('click');
+    }
+    if(slideNumberOnTable === 24 || slideNumberOnTable === 25){
+        closeProvinceDiv();
+        updateSafeSeats();
+        $('.province-results-div').css( "z-index", 1002 );
+        $('.province-results-div').css('pointer-events', 'none');
+    }
+
+    showSlide(pageHelp[helpSlideNumber])
+    if(slideNumberOnTable === 26){
+        helpArrow(1,220,655,20,1.2,1.2)
+        helpArrow(1,430,85,335,1.2,-1.2)
+        helpArrow(1,1390,300,20,1.2,1.2)
+        helpArrow(1,1390,654,20,1.2,1.2)
+    }
+})
+
+
+$( "body" ).on('click', ".exit-help", function() {
+    $('.main-section-cover-div').remove();
+    $('.help-arrow').remove();
+    $('.help-div').remove();
+    $('.exit-help').remove();
+    $('.help-slide-left').remove();
+    $('.help-slide-right').remove();
+    closeDetailedSeatDistributionDiv();
+    closeProvinceDiv();
+    helpSlideNumber = 0
+});
+
+$( "body" ).on('click', ".help-sign", function() {
+        pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
+    if($(this).hasClass("help-sign-map")){
+        pageHelp = pageHelp.slice(1,10)
+    } else if ($(this).hasClass("help-sign-full-results")) {
+        pageHelp = pageHelp.slice(10,16)
+    } else if ($(this).hasClass("help-sign-national-results")) {
+        pageHelp = pageHelp.slice(16,20)
+    } else if ($(this).hasClass("help-sign-graph")) {
+        pageHelp = pageHelp.slice(20,25)
+    }
+
+showHelp(pageHelp);
+
+});
+
+function showSlide(helpSlide){
+
+    coverDivs(helpSlide[1]["Cover_Divs"])
+    helpDiv(helpSlide[1]["Slide_X"],helpSlide[1]["Slide_Y"],helpSlide[1]["H1"],helpSlide[1]["H3"])
+    helpArrow(helpSlide[1]["Arrow_Show"],helpSlide[1]["Arrow_X"],helpSlide[1]["Arrow_Y"],helpSlide[1]["Arrow_Degrees"],helpSlide[1]["Arrow_Clockwise"], helpSlide[1]["Arrow_Anticlockwise"])
+
+}
+
+function showHelp(helpSection){
+if($('.input-senate-house').hasClass("show-senate")){
+        $('.input-senate-house').trigger('click');
+    }
+    if ($(".input-parties-allegiances").hasClass("show-allegiances")){
+        $(".input-parties-allegiances").trigger('click');
+    }
+
+     $('body').append('<button class="help-slide-button help-slide-arrow help-slide-left">'
+     + '<svg class="help-slide-svg" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">'
+     + '<polyline class="help-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 45.63,75.8 0.375,38.087 45.63,0.375 "/>'
+     + '</svg></button>')
+
+      $('body').append('<button class="help-slide-button help-slide-arrow help-slide-right onclick="pepe()">'
+     + '<svg class="help-slide-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">'
+     + '<polyline class="help-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 0.375,0.375 45.63,38.087 0.375,75.8 "/>'
+     + '</svg></button>')
+
+     $('body').append('<button class="exit-help"><h1>Salir</h1></button>')
+
+     showSlide(pageHelp[0])
+
+
+}
+
 function trial(){
+
+    pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
+    showHelp(pageHelp);
 
 }
 
@@ -120,6 +321,9 @@ $( "body" ).on('click', ".province-full-results-div", function() {
 
 $(document).mouseup(function(e)
 {
+    if ($('.main-section-cover-div').length){
+
+    } else {
     var container = $(".province-results-div");
     // if the target of the click isn't the container nor a descendant of the container
     if($(".detailed-seat-distribution-div").hasClass("show-party-results-div")){
@@ -133,16 +337,22 @@ $(document).mouseup(function(e)
     }
     }
     }
+    }
 });
 
 $(document).mouseup(function(e)
 {
+
+    if ($('.main-section-cover-div').length){
+
+    } else {
     var container = $(".detailed-seat-distribution-div");
     // if the target of the click isn't the container nor a descendant of the container
     if($(".detailed-seat-distribution-div").hasClass("show-party-results-div")){
     if (!container.is(e.target) && container.has(e.target).length === 0)
     {
         closeDetailedSeatDistributionDiv();
+    }
     }
     }
 });
@@ -245,7 +455,7 @@ function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
       $(".detailed-seat-distribution-div").toggleClass("show-party-results-div");
       })
   );
-  console.log(seatsDistributionDetailed);
+
 }
 
 
@@ -624,6 +834,9 @@ $( "body" ).on('click', ".input-parties-allegiances", function() {
         $('.switch-allegiances-div').removeClass('selected-switch-parties-allegiances-div');
         $('.switch-parties-div h3').addClass('selected-switch-parties-allegiances');
         $('.switch-allegiances-div h3').removeClass('selected-switch-parties-allegiances');
+        $('.national-results-div-top-title-party h3').text('Partido');
+        $('.national-results-div-top-title-allegiance h3').text('Alianza');
+        $('.national-results-div-top-title-party').css('border-right', '1px solid');
     } else {
         $(this).removeClass("show-parties");
         $(this).toggleClass("show-allegiances")
@@ -631,6 +844,9 @@ $( "body" ).on('click', ".input-parties-allegiances", function() {
         $('.switch-allegiances-div').addClass('selected-switch-parties-allegiances-div');
         $('.switch-parties-div h3').removeClass('selected-switch-parties-allegiances');
         $('.switch-allegiances-div h3').addClass('selected-switch-parties-allegiances');
+        $('.national-results-div-top-title-party h3').text('Alianza');
+        $('.national-results-div-top-title-allegiance h3').text('');
+        $('.national-results-div-top-title-party').css('border-right', '0px solid');
     }
     calculateNationalResults();
 });

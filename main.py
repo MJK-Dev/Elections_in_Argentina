@@ -6,6 +6,7 @@ from pprint import pprint
 from dhondt_calculator import DhondtCalculator
 from arrange_data import ArrangeData
 from data_input import DataInput
+import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "pepe"
@@ -27,6 +28,12 @@ provinces_senate = di.csv_extractor(senate)
 not_up_for_election_seats_file = pd.read_csv("Congreso_No_Renuevan.csv")
 not_up_for_election_seats_DF= pd.DataFrame(not_up_for_election_seats_file)
 not_up_for_election_seats = di.csv_seats_not_up_for_election_extractor(not_up_for_election_seats_DF)
+
+page_help_file = pd.read_csv("Calculador_Ayuda.csv")
+page_help_DF = pd.DataFrame(page_help_file)
+page_help = di.csv_page_help_extractor(page_help_DF)
+pprint(page_help)
+
 
 
 full_results_house = []
@@ -54,7 +61,8 @@ def home():
                            national_results_senate=final_results_senate,
                            provinces_results=full_results_house,
                            provinces_senate_results= full_results_senate,
-                           not_up_for_election_seats = not_up_for_election_seats)
+                           not_up_for_election_seats = not_up_for_election_seats,
+                           page_help=page_help)
 
 @app.route("/results", methods=["GET", "POST"])
 def calculate_results():

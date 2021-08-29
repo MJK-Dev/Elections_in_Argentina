@@ -38,13 +38,22 @@ max-width: 1455px;
 }
 
 /* Sections */
-.main-section{
+.landing-section{
 position:relative;
-top:0px;
-height:800px;
+top:45px;
+height:760px;
 width:auto;
 
 }
+
+.main-section{
+position:relative;
+top:40px;
+height:760px;
+width:auto;
+}
+
+#foot
 
 /* Headings */
 
@@ -72,6 +81,7 @@ padding: 0% 0% 0% 0%;
 
 .navbar {
     padding: 0%;
+    background-color: var(--titles-background-color);
 
 }
 
@@ -86,11 +96,15 @@ padding: 0% 0% 0% 0%;
     padding: 0 18px;
     color: #fff;
 }
+.nav-item:hover {
+    cursor:pointer;
+}
 
 .nav-link {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-family: "Montserrat";
     font-weight: 100;
+    color:rgba(255,255,255,0.8) !important;
 }
 
 .download-button{
@@ -655,6 +669,7 @@ padding:35% 0 0 5%;
 .select-allegiance{
 width:120px;
 font-size:0.9rem;
+border-radius: 5px;
 }
 
 input{
@@ -1046,7 +1061,7 @@ width:300px;
 height:60px;
 top:15px;
 left:370px;
-text-shadow:1px 0px 10px #aa39c7;
+text-shadow:1px 0px 5px #000000;
 background-color: var(--titles-background-color);
 color:white;
 border-radius:15px;
@@ -1515,6 +1530,7 @@ input:checked + .slider-parties-allegiances:before {
 .safe-seats-select-allegiance{
 width:120px;
 font-size:0.9rem;
+border-radius: 5px;
 }
 
 .party-change-safe-seats-div{
@@ -1675,7 +1691,6 @@ z-index:2;
 background-image: url("../images/arrow.png");
 background-size: 100% 100%;
 transform: rotate(80deg) scale(1, -1);
-
 }
 
 .detailed-seat-distribution-div-arrow-parties h3{
@@ -1758,4 +1773,287 @@ font-size:0.8rem;
 border: 2px solid;
 background-color: #bbf2a5;
 border-radius:5px;
+}
+
+.main-section-cover-div{
+position:absolute;
+z-index:999;
+background-color: rgba(0,0,0,0.0);
+height:100%;
+width:100%;
+top:0;
+left:0;
+}
+
+.cover-div{
+position:absolute;
+z-index:1000;
+background-color: rgba(59,39,67,0.8)
+}
+
+.house-senate-cover-div{
+height:60px;
+width:370px;
+top:0;
+left:0;
+}
+
+.country-map-cover-div{
+height:641px;
+width:370px;
+top:60px;
+left:0;
+}
+
+.full-results-title-cover-div{
+height:60px;
+width:715px;
+top:0px;
+left:370px;
+}
+
+.full-results-first-province-cover-div{
+height:25px;
+width:715px;
+top:60px;
+left:370px;
+}
+
+.full-results-rest-provinces-cover-div{
+height:506px;
+width:715px;
+top:85px;
+left:370px;
+}
+
+.full-results-bottom-count-cover-div{
+height:110px;
+width:395px;
+top:591px;
+left:370px;
+}
+
+.full-results-bottom-info-div-cover-div{
+height:110px;
+width:320px;
+top:591px;
+left:765px;
+}
+
+.national-results-top-cover-div{
+height:290px;
+width:434px;
+top:0px;
+left:1085px;
+}
+
+.national-results-bottom-cover-div{
+height:40px;
+width:434px;
+top:290px;
+left:1085px;
+}
+
+.graph-div-top-cover-div{
+height:75px;
+width:434px;
+top:330px;
+left:1085px;
+}
+
+.graph-div-bottom-cover-div{
+height:296px;
+width:434px;
+top:405px;
+left:1085px;
+}
+
+
+.help-div{
+position:absolute;
+background-color:var(--titles-background-color);
+min-height:50px;
+width:420px;
+left:380px;
+top:200px;
+border-radius:15px;
+z-index:2000;
+visibility: hidden;
+opacity: 0;
+transition: 0.3s;
+box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.25);
+border: 3px solid #e7deea;
+padding:1.5% 1% 1.5% 1%;
+}
+
+.help-div h1{
+text-align:left;
+padding:0% 0 0 0%;
+font-size: 1.2rem;
+color:white;
+white-space:pre-wrap;
+}
+
+.help-div h3{
+line-height:1.4;
+text-align:left;
+font-size: 0.9rem;
+color:white;
+white-space:pre-wrap;
+padding:3% 0% 0% 0%;
+font-weight:300;
+}
+
+
+.help-div-hr{
+position:absolute;
+height:1px;
+background: #411b45;
+border-radius: 5px;
+z-index:4;
+width:400px;
+top:24px;
+left:10px;
+opacity:0.8;
+}
+
+.help-arrow{
+position:absolute;
+background-color:transparent;
+height:50px;
+width:65px;
+left:72px;
+top:-54px;
+z-index:2000;
+background-image: url("../images/arrow.png");
+background-size: 100% 100%;
+transform: rotate(270deg) scale(1, -1);
+color:white;
+filter: invert(76%) sepia(32%) saturate(7347%) hue-rotate(261deg) brightness(85%) contrast(89%);
+filter: invert(40%) sepia(99%) saturate(370%) hue-rotate(61deg) brightness(103%) contrast(95%)
+}
+
+
+.help-slide-button {
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  outline:0;
+}
+
+.help-slide-svg {
+  padding: 5px;
+}
+
+.help-slide-arrow {
+  cursor: pointer;
+  position: absolute;
+  margin-top: -45px;
+  margin-left: -35px;
+  width: 70px;
+  height: 90px;
+  background-color:#3c9e21;
+  border-radius:10px;
+  z-index:2000;
+  top:650px;
+  left:100px;
+  border:1px solid white;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+.help-slide-arrow:focus {
+outline:none;
+}
+
+.help-slide-left {
+  left: 350px;
+}
+
+.help-slide-right {
+  left: 1120px;
+}
+
+.help-slide-left:hover polyline {
+stroke-width: 5;
+}
+
+.help-slide-left:active polyline {
+  stroke-width: 8;
+  transition: all 100ms ease-in-out;
+}
+
+.help-slide-right:hover polyline {
+  stroke-width: 5;
+}
+
+.help-slide-right:active polyline {
+  stroke-width: 8;
+  transition: all 100ms ease-in-out;
+}
+
+.help-slide-polyline {
+stroke-width: 4;
+  transition: all 250ms ease-in-out;
+}
+
+.exit-help{
+  cursor: pointer;
+  position: absolute;
+  width: 120px;
+  height: 40px;
+  background-color:#c72323;
+  border-radius:10px;
+  z-index:2000;
+  top:20px;
+  left:1380px;
+  border:2px solid white;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+
+}
+
+.exit-help:focus {
+outline: none;
+}
+
+.exit-help h1{
+font-size: 1.8rem;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight:300;
+  color:white;
+  line-height:1.1
+}
+
+.help-sign{
+position:absolute;
+background-color:transparent;
+height:15px;
+width:15px;
+z-index:2;
+background-image: url("../images/help.png");
+background-size: 100% 100%;
+}
+.help-sign:hover{
+cursor:pointer;
+}
+
+.help-sign-map{
+left:280px;
+top:653px;
+}
+
+.help-sign-graph{
+left:360px;
+top:320px;
+}
+
+.help-sign-national-results{
+left:360px;
+top:290px;
+filter: invert(99%) sepia(0%) saturate(1%) hue-rotate(333deg) brightness(104%) contrast(100%);
+}
+
+.help-sign-full-results{
+left:99px;
+top:16px;
+filter: invert(99%) sepia(0%) saturate(1%) hue-rotate(333deg) brightness(104%) contrast(100%);
 }
