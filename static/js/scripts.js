@@ -6,6 +6,39 @@ var finalQuorum =[["",0]]
 var helpSlideNumber = 0;
 var pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
 var slideNumberOnTable = 0;
+var simulationSeats = 12;
+var simulation = ["Simulation",[["Partido A","AA",52,0],["Partido B","BB",25,0],["Partido C","CC",23,0]]];
+
+
+
+
+(function ($) {
+    "use strict"; // Start of use strict
+    // Smooth scrolling using anime.js
+    $('a.nav-link[href*="#"]:not([href="#"])').on('click', function (e) {
+        console.log(e.target);
+        var target = $(this)[0].hash.slice(1);
+        console.log(target)
+
+        if (target === "main-section-help"){
+        target="main-section"
+        if ($('.main-section-cover-div').length){
+    } else {
+    trial();
+    }
+       }
+        var position = $("#"+target)[0].offsetTop -37
+        anime({
+          targets: 'html, body',
+          scrollTop: position,
+          duration: 1000,
+          easing: 'easeInOutExpo'
+        });
+        return false;
+    });
+})(jQuery); // End of use strict
+
+
 
 //Round float value with passed precision when calling it (function)---------------------------------------------------------------------------------------------
 
@@ -17,7 +50,7 @@ function round(value, precision) {
 // Helper Function-----------------------------------------------------------------------------------------------------------------
 
 function helpDiv(x,y,textTop, textBottom){
-$('body').append('<div class="help-div show-party-results-div"><h1></h1><h3></h3></div>')
+$('.main-section').append('<div class="help-div show-party-results-div"><h1></h1><h3></h3></div>')
 $('.help-div').css('left', x)
 $('.help-div').css('top', y)
 $('.help-div h1').text(textTop)
@@ -26,8 +59,8 @@ $('.help-div h3').text(textBottom)
 
 function helpArrow(show,x,y,degrees,clock,anticlock){
 if (show === 1){
-if (slideNumberOnTable !== 26){
-    $('body').append('<div class="help-arrow"></div>')
+if (slideNumberOnTable !== 27){
+    $('.main-section').append('<div class="help-arrow"></div>')
     $('.help-arrow').css('left', x)
     $('.help-arrow').css('top', y)
     $('.help-arrow').css({
@@ -40,7 +73,7 @@ if (slideNumberOnTable !== 26){
         });
     } else {
     var thisArrow = "this-arrow-"+y;
-    $('body').append('<div class="help-arrow '+thisArrow+'"></div>')
+    $('.main-section').append('<div class="help-arrow '+thisArrow+'"></div>')
     $('.help-arrow.'+thisArrow).css('left', x)
     $('.help-arrow.'+thisArrow).css('top', y)
     $('.help-arrow.'+thisArrow).css({
@@ -78,7 +111,7 @@ function coverDivs(display){
      }
 }
 
-$( "body" ).on('click', ".help-slide-button", function() {
+$( ".main-section" ).on('click', ".help-slide-button", function() {
 
     if ($(this).hasClass("help-slide-left")){
         if (helpSlideNumber > 0){
@@ -101,7 +134,7 @@ $( "body" ).on('click', ".help-slide-button", function() {
     $('.help-div').remove();
     slideNumberOnTable =pageHelp[helpSlideNumber][0]
 
-     if (slideNumberOnTable === 2 ||slideNumberOnTable === 7 || slideNumberOnTable === 11){
+     if (slideNumberOnTable === 2 ||slideNumberOnTable === 8 || slideNumberOnTable === 12){
      closeDetailedSeatDistributionDiv();
      closeProvinceDiv();
      }
@@ -109,31 +142,32 @@ $( "body" ).on('click', ".help-slide-button", function() {
 
      closeProvinceDiv();
      }
-     if (slideNumberOnTable === 21 || slideNumberOnTable === 23 || slideNumberOnTable === 26){
+     if (slideNumberOnTable === 22 || slideNumberOnTable === 24 || slideNumberOnTable === 27){
      closeProvinceDiv();
      }
 
 
     if (slideNumberOnTable === 4 || slideNumberOnTable === 5 || slideNumberOnTable === 6
-        || slideNumberOnTable === 7 || slideNumberOnTable === 8 || slideNumberOnTable === 9|| slideNumberOnTable === 10){
+        || slideNumberOnTable === 7 || slideNumberOnTable === 8 || slideNumberOnTable === 9
+        || slideNumberOnTable === 10 || slideNumberOnTable === 11){
         $( "#Mendoza-table" ).trigger( "click" );
         $( ".province-results-div" ).css( "z-index", 1001 );
         $( ".province-results-div" ).css('pointer-events', 'none')
 
     }
-    if(slideNumberOnTable === 8 || slideNumberOnTable === 9 || slideNumberOnTable === 10){
+    if(slideNumberOnTable === 9 || slideNumberOnTable === 10 || slideNumberOnTable === 11){
         closeDetailedSeatDistributionDiv();
-        calculateDetailedSeatsDistribution()
+        calculateDetailedSeatsDistribution("table")
         $('.detailed-seat-distribution-div').css( "z-index", 1002 );
         $('.detailed-seat-distribution-div').css('pointer-events', 'none');
     }
 
-    if(slideNumberOnTable === 20){
+    if(slideNumberOnTable === 21){
          $(".input-parties-allegiances").trigger('click');
-    } else if (slideNumberOnTable !== 20 && $(".input-parties-allegiances").hasClass('show-allegiances')){
+    } else if (slideNumberOnTable !== 21 && $(".input-parties-allegiances").hasClass('show-allegiances')){
          $(".input-parties-allegiances").trigger('click');
     }
-    if(slideNumberOnTable === 24 || slideNumberOnTable === 25){
+    if(slideNumberOnTable === 25 || slideNumberOnTable === 26){
         closeProvinceDiv();
         updateSafeSeats();
         $('.province-results-div').css( "z-index", 1002 );
@@ -141,16 +175,16 @@ $( "body" ).on('click', ".help-slide-button", function() {
     }
 
     showSlide(pageHelp[helpSlideNumber])
-    if(slideNumberOnTable === 26){
-        helpArrow(1,220,655,20,1.2,1.2)
-        helpArrow(1,430,85,335,1.2,-1.2)
-        helpArrow(1,1390,300,20,1.2,1.2)
-        helpArrow(1,1390,654,20,1.2,1.2)
+    if(slideNumberOnTable === 27){
+        helpArrow(1,220,610,20,1.2,1.2)
+        helpArrow(1,430,40,335,1.2,-1.2)
+        helpArrow(1,1390,255,20,1.2,1.2)
+        helpArrow(1,1390,609,20,1.2,1.2)
     }
 })
 
 
-$( "body" ).on('click', ".exit-help", function() {
+$( ".main-section" ).on('click', ".exit-help", function() {
     $('.main-section-cover-div').remove();
     $('.help-arrow').remove();
     $('.help-div').remove();
@@ -162,16 +196,16 @@ $( "body" ).on('click', ".exit-help", function() {
     helpSlideNumber = 0
 });
 
-$( "body" ).on('click', ".help-sign", function() {
+$( ".main-section" ).on('click', ".help-sign", function() {
         pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
     if($(this).hasClass("help-sign-map")){
-        pageHelp = pageHelp.slice(1,10)
+        pageHelp = pageHelp.slice(1,11)
     } else if ($(this).hasClass("help-sign-full-results")) {
-        pageHelp = pageHelp.slice(10,16)
+        pageHelp = pageHelp.slice(11,17)
     } else if ($(this).hasClass("help-sign-national-results")) {
-        pageHelp = pageHelp.slice(16,20)
+        pageHelp = pageHelp.slice(17,21)
     } else if ($(this).hasClass("help-sign-graph")) {
-        pageHelp = pageHelp.slice(20,25)
+        pageHelp = pageHelp.slice(21,26)
     }
 
 showHelp(pageHelp);
@@ -194,17 +228,17 @@ if($('.input-senate-house').hasClass("show-senate")){
         $(".input-parties-allegiances").trigger('click');
     }
 
-     $('body').append('<button class="help-slide-button help-slide-arrow help-slide-left">'
+     $('.main-section').append('<button class="help-slide-button help-slide-arrow help-slide-left">'
      + '<svg class="help-slide-svg" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">'
      + '<polyline class="help-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 45.63,75.8 0.375,38.087 45.63,0.375 "/>'
      + '</svg></button>')
 
-      $('body').append('<button class="help-slide-button help-slide-arrow help-slide-right onclick="pepe()">'
+      $('.main-section').append('<button class="help-slide-button help-slide-arrow help-slide-right onclick="pepe()">'
      + '<svg class="help-slide-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">'
      + '<polyline class="help-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 0.375,0.375 45.63,38.087 0.375,75.8 "/>'
      + '</svg></button>')
 
-     $('body').append('<button class="exit-help"><h1>Salir</h1></button>')
+     $('.main-section').append('<button class="exit-help"><h1>Salir</h1></button>')
 
      showSlide(pageHelp[0])
 
@@ -222,11 +256,12 @@ function trial(){
 //Show Each Province Results (function)------------------------------------------------------------------------------------------------------------
 
 function showProvince(selectedProvince){
+    var buttonTriggered = "table"
     if ($('.input-senate-house').hasClass("show-house")) {
         var found = provincesResults.find(function(foundProvince) {
               return foundProvince[0] == selectedProvince;
             });
-        var showButton = '<button class="buttonSeatsDetailed" onclick="calculateDetailedSeatsDistribution()">¿Cómo se asignan?</button>'
+        var showButton = '<button class="buttonSeatsDetailed" onclick="calculateDetailedSeatsDistribution(\'table\')" value="table">¿Cómo se asignan?</button>'
     } else {
         var found = provincesSenateResults.find(function(foundProvince) {
               return foundProvince[0] == selectedProvince;
@@ -234,7 +269,7 @@ function showProvince(selectedProvince){
         var showButton = "";
     }
 
-    $('body').append('<div class="province-results-div">'
+    $('.main-section').append('<div class="province-results-div">'
         + '<h1>Sin selección</h1>'
         + showButton
         + '<a class="close-cross" onclick="closeProvinceDiv()">✘</a>'
@@ -255,15 +290,28 @@ function showProvince(selectedProvince){
         var partyAllegiance = found[1][i][1];
         var partyPercentage = found[1][i][2];
         var partySeats = found[1][i][3];
+        var thisId = "national_" + partyName.replaceAll(" ", "_");
         percentageTotal = percentageTotal + found[1][i][2];
         seatsTotal = seatsTotal + found[1][i][3];
         $('.province-results-div').append("<div id='' class='party-results-div'>"
         + "<div id='' class='party-results-div-name'><h3>"+partyName+"</h3></div>"
-        + "<div id='' class='party-results-div-allegiance'><h3>"+partyAllegiance+"</h3></div>"
+        +"<div class='allegiance-name-in-national-results'> <select id='"+thisId+"' name='allegiance' class='select-allegiance'>"
+              +" <option value='"+safeSeats[2][1][0][1]+"'>"+safeSeats[2][1][0][1]+"</option>"
+              +" <option value='"+safeSeats[2][1][1][1]+"'>"+safeSeats[2][1][1][1]+"</option>"
+              +" <option value='"+safeSeats[2][1][2][1]+"'>"+safeSeats[2][1][2][1]+"</option>"
+              +" <option value='"+safeSeats[2][1][3][1]+"'>"+safeSeats[2][1][3][1]+"</option>"
+              +" <option value='"+safeSeats[2][1][4][1]+"'>"+safeSeats[2][1][4][1]+"</option>"
+              +" <option value='"+safeSeats[2][1][5][1]+"'>"+safeSeats[2][1][5][1]+"</option>"
+              +"</select></div>"
         +"<div id='' class='party-results-div-percentage'> <input type='number' value='"+ partyPercentage +"' step='1'></div>"
         +"<div id='' class='party-results-div-seats'><h3>"+partySeats+"</h3></div>"
         +"</div>");
+        console.log(partyAllegiance);
+        console.log($('#'+thisId).val())
+        $('#'+thisId).val(partyAllegiance);
     }
+
+
 
     $('.province-results-div').append("<div id='' class='province-results-sum-div'>"
     +"<div id='' class='party-results-div-bottom-title'><h3>Total</h3></div>"
@@ -292,7 +340,7 @@ function closeDetailedSeatDistributionDiv(){
 
 //Open Each Province Results when clicking on each province map------------------------------------------------------------------------------------------------------------
 
-$( "body" ).on('click', ".svg-size2 g", function() {
+$( ".main-section" ).on('click', ".svg-size2 g", function() {
     if ($(".province-results-div").hasClass("show-party-results-div")){
     closeProvinceDiv();
     }
@@ -307,7 +355,7 @@ $( "body" ).on('click', ".svg-size2 g", function() {
 //Open Each Province Results when clicking on each province line on table---------------------------------------------------------------------------------------------
 
 
-$( "body" ).on('click', ".province-full-results-div", function() {
+$( ".main-section" ).on('click', ".province-full-results-div", function() {
     if ($(".province-results-div").hasClass("show-party-results-div")){
     closeProvinceDiv();
     }
@@ -361,6 +409,7 @@ $(document).mouseup(function(e)
 //Calculate Seats distribution (D'Hondt for House, 2/1 for Senate) (function)---------------------------------------------------------------------------------------------
 
 
+
 window.calculateDistribution = function(seats,results){
         //House distribution (D'Hondt)-------------------------------------------------------------------
         if ($('.input-senate-house').hasClass("show-house")) {
@@ -410,7 +459,7 @@ window.calculateDistribution = function(seats,results){
 }
 
 function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
-     $('body').append('<div class="detailed-seat-distribution-div"></div>');
+     $('.main-section').append('<div class="detailed-seat-distribution-div"></div>');
      var numberSeatsTitle = ""
 
       for (i=0; i < seats ; i++){
@@ -459,13 +508,20 @@ function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
 }
 
 
-window.calculateDetailedSeatsDistribution = function(){
 
+
+
+window.calculateDetailedSeatsDistribution = function(whoTriggered){
+    console.log(whoTriggered)
      var seatsDistributionDetailed = []
-
-     var found = provincesResults.find(function(foundProvince) {
+    if (whoTriggered === "table"){
+    var found = provincesResults.find(function(foundProvince) {
               return foundProvince[0] == selectedProvince;
             });
+    } else if (whoTriggered === "simulation"){
+    var found = simulation
+    }
+
      var thisProvince = JSON.parse(JSON.stringify(found));
      var seats = 0
      for(i=0; i <(thisProvince[1].length) ; i++){
@@ -490,8 +546,12 @@ window.calculateDetailedSeatsDistribution = function(){
                 seatsDistributionDetailed[seat_won_by][0][1] +=1
                 seatsDistributionDetailed[seat_won_by][arrayPosition][3] = true;
      }
+    if (whoTriggered === "table"){
+        displayDetailedSeatsDistribution(seatsDistributionDetailed, seats)
+    } else if (whoTriggered === "simulation"){
+        displaySimulationDetailedSeatsDistribution(seatsDistributionDetailed, seats)
+    }
 
-  displayDetailedSeatsDistribution(seatsDistributionDetailed, seats)
 
 }
 
@@ -500,7 +560,7 @@ window.calculateDetailedSeatsDistribution = function(){
 
 //Detect changes on Province Results Div Input and update all if sum of votes is equal to 100 (function)------------------------------
 
-$('body').on('change', '.province-results-div input', function(){
+$('.main-section').on('change', '.province-results-div input', function(){
     if ($('.input-senate-house').hasClass("show-house")) {
      var found = provincesResults.find(function(foundProvince) {
           return foundProvince[0] == selectedProvince;
@@ -526,6 +586,7 @@ $('body').on('change', '.province-results-div input', function(){
         found[1][i][2] = parseFloat(partyPercentages[i].value);
         found[1][i][3] = 0;
         }
+        console.log(found)
         found = calculateDistribution(seats,found);
         var partySeats = $('.party-results-div-seats');
         for(i=0; i <(partySeats.length) ; i++){
@@ -724,12 +785,20 @@ function calculateNationalResults(){
     }
     $('.national-results-div').append("<div id='temporary-national-results-div' class='temporary-national-results-div'></div>");
     if ($('.input-parties-allegiances').hasClass("show-parties")) {
-        for(i=0; i < thisResults.length ; i++){
-              var partyName = thisResults[i][1];
-              var partyAllegiance = thisResults[i][0];
-              var partySeats = thisResults[i][2];
-              var partyPercentage = round(thisResults[i][3],2);
-              var thisId = "national_" + partyName.replaceAll(" ", "_");
+        var orderedResults = JSON.parse(JSON.stringify(thisResults));
+        orderedResults.sort(function(a, b) {
+           if (a[2] == b[2]) {
+             return b[3] - a[3];
+        }
+          return b[2] - a[2];
+        })
+
+        for(i=0; i < orderedResults.length ; i++){
+              var partyName = orderedResults[i][1];
+              var partyAllegiance = orderedResults[i][0];
+              var partySeats = orderedResults[i][2];
+              var partyPercentage = round(orderedResults[i][3],2);
+              var thisId = "province_" + partyName.replaceAll(" ", "_");
               $('.temporary-national-results-div').append("<div class='party-national-results-div'>"
               +"<div class='party-name-in-national-results'><h3>"+partyName+"</h3></div>"
               +"<div class='allegiance-name-in-national-results'> <select id='"+thisId+"' name='allegiance' class='select-allegiance'>"
@@ -747,9 +816,17 @@ function calculateNationalResults(){
         }
    } else {
       calculateQuorum();
-      for(i=0; i < finalQuorum.length ; i++){
+      var orderedQuorum = JSON.parse(JSON.stringify(finalQuorum));
+      console.log(orderedQuorum)
+      orderedQuorum.sort(function(a, b) {
+           if (a[1] == b[1]) {
+             return b[3] - a[3];
+        }
+          return b[1] - a[1];
+        })
+      for(i=0; i < orderedQuorum.length ; i++){
            if ($('.input-senate-house').hasClass("show-house")) {
-                var thisPercentage = round(finalQuorum[i][3],2);
+                var thisPercentage = round(orderedQuorum[i][3],2);
                 var additionalClass = "";
            } else{
                 var thisPercentage = "N/D";
@@ -757,9 +834,9 @@ function calculateNationalResults(){
            }
 
           $('.temporary-national-results-div').append("<div class='allegiance-national-results-div'>"
-              +"<div class='party-name-in-national-results'><h3>"+finalQuorum[i][0]+"</h3></div>"
+              +"<div class='party-name-in-national-results'><h3>"+orderedQuorum[i][0]+"</h3></div>"
               +"<div class='party-percentage-in-national-results'><h3 class='party-national-div-seats "+additionalClass+"'>"+thisPercentage+"</h3></div>"
-              + "<div class='party-seats-in-national-results'><h3 class='party-national-div-seats'>"+finalQuorum[i][1]+"</h3></div>"
+              + "<div class='party-seats-in-national-results'><h3 class='party-national-div-seats'>"+orderedQuorum[i][1]+"</h3></div>"
               +"</div>");
       }
    }
@@ -767,7 +844,7 @@ function calculateNationalResults(){
 
 // Change Allegiance on National Results (select)---------------------------------------------------------------------------------------
 
-$('body').on('change','.select-allegiance', function () {
+$('.main-section').on('change','.select-allegiance', function () {
   //ways to retrieve selected option and text outside handler
   var thisParty = (this.id).replaceAll("_", " ").slice( 8,).trim();
   var newAllegiance = $(this).find('option').filter(':selected').text();
@@ -798,7 +875,7 @@ updateAll();
 // Change House or Senate Display (function)---------------------------------------------------------------------------------------
 
 
-$( "body" ).on('click', ".input-senate-house", function() {
+$( ".main-section" ).on('click', ".input-senate-house", function() {
 
     if ($(this).hasClass("show-senate")){
         $(this).removeClass("show-senate");
@@ -825,7 +902,7 @@ $( "body" ).on('click', ".input-senate-house", function() {
 
 // Change Parties or Allegiances Display on National Results (function)---------------------------------------------------------------------------------------
 
-$( "body" ).on('click', ".input-parties-allegiances", function() {
+$( ".main-section" ).on('click', ".input-parties-allegiances", function() {
 
     if ($(this).hasClass("show-allegiances")){
         $(this).removeClass("show-allegiances");
@@ -956,7 +1033,7 @@ function drawChart() {
 
 // Change Allegiance on Safe Seats (select)---------------------------------------------------------------------------------------
 
-$('body').on('change','.safe-seats-select-allegiance', function () {
+$('.main-section').on('change','.safe-seats-select-allegiance', function () {
   //ways to retrieve selected option and text outside handler
   var thisParty = (this.id).replaceAll("_", " ").slice( 10,).trim();
   var newAllegiance = $(this).find('option').filter(':selected').text();
@@ -984,7 +1061,7 @@ function updateSafeSeats(){
        var selectedBranch = "Senadores";
        var thisSafeSeats = safeSeats[1][1]
     }
-    $('body').append('<div class="province-results-div">'
+    $('.main-section').append('<div class="province-results-div">'
         + '<h1>Sin selección</h1>'
         + '<h3 class="safe-seats-comment">(bancas que no renuevan)</h3>'
         + '<a class="close-cross" onclick="closeProvinceDiv()">✘</a>'
@@ -1023,6 +1100,214 @@ function updateSafeSeats(){
           })
       );
 }
+
+// Custom Simulation---------------------------------------------------------------------------------------
+
+function dhondtSimulation(){
+    for(i=0; i <(simulation[1].length) ; i++){
+            simulation[1][i][3] = 0;
+     }
+    calculateDistribution(simulationSeats,simulation)
+    calculateDetailedSeatsDistribution("simulation")
+}
+
+
+
+
+$('.simulation-section').on('change','#simulation-seats', function () {
+
+  simulationSeats = $('#simulation-seats')[0].value
+  showDhontSimulation()
+  checkSimulationSum()
+
+});
+
+$('.simulation-section').on('change', '.party-simulation-div-percentage input', function(){
+
+    var partyPercentages = $('.party-simulation-div-percentage input');
+    var percentageTotal = 0;
+     console.log(partyPercentages)
+    for(i=0; i <(partyPercentages.length) ; i++){
+        var partyPercentage = parseFloat(partyPercentages[i].value);
+        percentageTotal = percentageTotal + partyPercentage;
+    }
+    $(".simulation-total-in-div").val(percentageTotal);
+
+    if ($(".simulation-total-in-div").val() > 99.9999 && $(".simulation-total-in-div").val() < 100.0001 ){
+        var seats = 0
+        for(i=0; i <(simulation[1].length) ; i++){
+        seats = seats + simulation[1][i][3];
+        simulation[1][i][2] = parseFloat(partyPercentages[i].value);
+        simulation[1][i][3] = 0;
+        }
+        var partySeats = $('.party-results-div-seats');
+        for(i=0; i <(partySeats.length) ; i++){
+            $('.party-results-div-seats h3')[i].innerText =(found[1][i][3]);
+        }
+        $(".simulation-total-in-div").removeClass("sum-not-hundred")
+        $('.simulation-party-results-sum-alert-div h3').text("")
+        $('.wrong-calculation').remove();
+        showDhontSimulation()
+     } else {
+        checkSimulationSum()
+     }
+})
+
+
+function deleteSimulationParty(party){
+    if (simulation[1].length > 2){
+        simulation[1].splice(party,1)
+        showDhontSimulation()
+        checkSimulationSum()
+    } else {
+        window.alert("Se necesitan al menos 2 partidos para el cálculo")
+    }
+}
+
+function checkSimulationSum(){
+
+  if ($(".simulation-total-in-div").val() < 99.9999 || $(".simulation-total-in-div").val() > 100.0001 ){
+
+            $(".simulation-total-in-div").addClass("sum-not-hundred")
+            $('.simulation-party-results-sum-alert-div h3').text("La suma debe ser 100 ➜")
+            if (!($('.wrong-calculation').length)){
+            $('.simulation-div').append('<div id="" class="wrong-calculation"><h1 class="subs-style">Cálculo incorrecto. Chequeá que la suma dé 100</h1></div>')
+            }
+  } else {
+    $('.wrong-calculation').remove()
+  }
+    requestAnimationFrame(() =>
+      setTimeout(() => {
+      $('.wrong-calculation').addClass('general-opacity-ease-in')
+      })
+  );
+}
+
+
+$('.simulation-section').on('change', '.party-simulation-div', function(){
+    var itemId = parseInt((this.id).replace("simulation_party_id_", ""))
+    simulation[1][itemId][0] = $('#'+this.id +' .party-simulation-div-name input').val()
+    simulation[1][itemId][1] = $('#'+this.id +' .party-simulation-div-allegiance input').val()
+    simulation[1][itemId][2] = parseInt($('#'+this.id +' .party-simulation-div-percentage input').val());
+});
+
+$('.simulation-section').on('change', '.new-party-simulation-div', function(){
+    var newPartyName = $('.new-party-simulation-div .party-simulation-div-name input').val()
+    var newPartyAllegiance = $('.new-party-simulation-div .party-simulation-div-allegiance input').val()
+    var newPartyPercentage = parseInt($('.new-party-simulation-div .new-party-simulation-div-percentage input').val())
+    if (newPartyName === ""){
+        console.log("nombre");
+    } else if (newPartyPercentage === 0){
+        console.log("porcentaje");
+    } else {
+        var newParty = [newPartyName, newPartyAllegiance, newPartyPercentage,0]
+        simulation[1].push(newParty);
+        showDhontSimulation();
+        checkSimulationSum();
+        
+    }
+
+    console.log(newPartyPercentage, newPartyName);
+});
+
+
+function showDhontSimulation(){
+    $('.simulation-results-div').remove()
+    dhondtSimulation()
+    $('#simulation-seats').val(simulationSeats)
+    $('.simulation-div').append('<div class="simulation-results-div">'
+            + '<div id="" class="simulation-results-div-heading">'
+            + '<div id="" class="simulation-top-title-party"><h3 class="subs-style">Partido</h3></div>'
+            + '<div id="" class="simulation-top-title-allegiance"><h3 class="subs-style">Alianza</h3></div>'
+            + '<div id="" class="simulation-top-title-percentage"><h3 class="subs-style">%</h3></div>'
+            + '<div id="" class="simulation-top-title-seats"><h3 class="subs-style">Bancas</h3></div>'
+            + '<div id="" class="simulation-top-title-spacing-div"></div>'
+            + '</div>'
+            + '</div>'
+        )
+    var percentageTotal = 0;
+    var seatsTotal = 0;
+    for(i=0; i < simulation[1].length ; i++){
+        var partyName = simulation[1][i][0];
+        var partyAllegiance = simulation[1][i][1];
+        var partyPercentage = simulation[1][i][2];
+        var partySeats = simulation[1][i][3];
+        var thisId = "simulation_" + partyName.replaceAll(" ", "_");
+        percentageTotal = percentageTotal + simulation[1][i][2];
+        seatsTotal = seatsTotal + simulation[1][i][3];
+        $('.simulation-results-div').append("<div id='simulation_party_id_"+i+"' class='party-simulation-div'>"
+        + "<div id='' class='party-simulation-div-name'> <input class='party-simulation-div-name-input' type='text' value='"+ partyName +"'></div>"
+        +"<div class='party-simulation-div-allegiance'><input type='text' value='"+ partyAllegiance +"'></div>"
+        +"<div id='' class='party-simulation-div-percentage'> <input type='number' value='"+ partyPercentage +"' step='1'></div>"
+        +"<div id='' class='party-simulation-div-seats'><h3>"+partySeats+"</h3></div>"
+        + '<a class="delete-simulation-party" onclick="deleteSimulationParty('+i+')">✘</a>'
+        +"</div>");
+
+    }
+   $('.simulation-results-div').append("<div id='' class='new-party-simulation-div'>"
+        + "<div id='' class='party-simulation-div-name'><input type='text' placeholder='Agregar partido'></div>"
+        +"<div class='party-simulation-div-allegiance'><input type='text' placeholder='Alianza (optativo)'></div>"
+        +"<div id='' class='new-party-simulation-div-percentage'> <input type='number' value='"+ 0 +"' step='1'></div>"
+        +"<div id='' class='party-simulation-div-seats'><h3>"+0+"</h3></div>"
+        +"</div>");
+
+    $('.simulation-results-div').append("<div id='' class='simulation-sum-div'>"
+    +"<div id='' class='simulation-results-div-bottom-title'><h3>Total</h3></div>"
+    +"<div id='' class='simulation-party-results-sum-alert-div'><h3></h3></div>"
+    +"<div id='' class='simulation-div-total-percentage'><input class='simulation-total-in-div' type='text' value='"+ percentageTotal +"'step='.01'></div>"
+    +"<div id='' class='simulation-div-total-seats'><h3>"+seatsTotal+"</h3></div>"
+    +" </div>");
+
+}
+
+function displaySimulationDetailedSeatsDistribution(seatsDistributionDetailed, seats){
+     $('.simulation-detailed-seat-distribution-div').remove();
+     $('.simulation-div').append('<div class="simulation-detailed-seat-distribution-div"></div>');
+     var numberSeatsTitle = ""
+
+      for (i=0; i < seats ; i++){
+      numberSeatsTitle += "<div class='detailed-seat-distribution-div-title-seat-number simulation-standarized-color'><h3>"+(i+1)+"</h3></div>"
+      }
+     $('.simulation-detailed-seat-distribution-div').append('<div class="simulation-block-container ">'
+     +' <div class="simulation-detailed-seat-distribution-div-top-main-title"><h1>Los '+seats+' diputados calculados se asignarían de la siguiente forma:</h1></div></div>'
+     +' <div class="simulation-block-container">'
+     +' <div class="detailed-seat-distribution-div-top-left-title simulation-standarized-color">'
+     + '<div class="detailed-seat-distribution-div-title-parties simulation-standarized-color"><h3>Partido</h3></div>'
+     + '<div class="detailed-seat-distribution-div-title-seats simulation-standarized-color"><h3>Diputado #</h3></div>'
+     + '<div class="detailed-seat-distribution-div-arrow simulation-standarized-color"></div>'
+     + '<div class="detailed-seat-distribution-div-arrow-parties simulation-standarized-color"></div>'
+     + '</div>'
+     + numberSeatsTitle
+     + '<div class="detailed-seat-distribution-div-title-totals simulation-standarized-color"><h3>Totales</h3></div>'
+     + '</div>');
+
+     for (i=0; i < seatsDistributionDetailed.length ; i++){
+         var thisPartyAllocation = ""
+         for (a=1; a < seats+1 ; a++){
+             if (seatsDistributionDetailed[i][a][3] === false){
+                thisPartyAllocation += "<div class='simulation-detailed-seat-distribution-div-each-allocation'><h3>"+round(seatsDistributionDetailed[i][a][2],2)+"</h3>"
+                                        + "<h5>("+seatsDistributionDetailed[i][a][0]+"/"+ seatsDistributionDetailed[i][a][1] + ")</h5>"
+                                        +"</div>"
+             } else {
+                thisPartyAllocation += "<div class='simulation-detailed-seat-distribution-div-each-allocation simulation-allocation-winner'><h3>"+round(seatsDistributionDetailed[i][a][2],2)+"</h3>"
+                                        + "<h5>("+seatsDistributionDetailed[i][a][0]+"/"+ seatsDistributionDetailed[i][a][1] + ")</h5>"
+                                        +"</div>"
+             }
+         }
+         $('.simulation-detailed-seat-distribution-div').append('<div class="simulation-block-container">'
+         +' <div class="simulation-detailed-seat-distribution-div-party-name"><h3>'+seatsDistributionDetailed[i][0][0]+'</h3></div>'
+         + thisPartyAllocation
+         + '<div class="simulation-detailed-seat-distribution-div-party-total"><h3>'+seatsDistributionDetailed[i][0][1]+'</h3></div>'
+         + '</div>');
+     }
+     $('.simulation-detailed-seat-distribution-div').append('<div class="simulation-block-container" style="background-color:var(--simulation-lines-color);">'
+             + '</div>');
+
+}
+
+
+
+showDhontSimulation()
 
 
 // Update All - Major Function (function)---------------------------------------------------------------------------------------
