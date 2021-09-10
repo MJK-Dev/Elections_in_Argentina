@@ -19,15 +19,20 @@ var simulation = ["Simulation",[["Partido A","AA",52,0],["Partido B","BB",25,0],
         console.log(e.target);
         var target = $(this)[0].hash.slice(1);
         console.log(target)
-
-        if (target === "main-section-help"){
-        target="main-section"
-        if ($('.main-section-cover-div').length){
-    } else {
-    trial();
-    }
+        if (target === "map-section-help"){
+        target="map-section"
+            if ($('.main-section-cover-div').length){
+            } else {
+            startShowHelp();
+            }
        }
-        var position = $("#"+target)[0].offsetTop -37
+         if (target === "map-section" || target === "map-section-help"){
+            var position = $("#"+target)[0].offsetTop +63
+         } else {
+            var position = $("#"+target)[0].offsetTop -37
+         }
+
+
         anime({
           targets: 'html, body',
           scrollTop: position,
@@ -111,25 +116,11 @@ function coverDivs(display){
      }
 }
 
-$( ".main-section" ).on('click', ".help-slide-button", function() {
 
-    if ($(this).hasClass("help-slide-left")){
-        if (helpSlideNumber > 0){
-        helpSlideNumber -= 1;
-        } else {
-        helpSlideNumber = pageHelp.length - 1
-        }
 
-    } else {
-        if (helpSlideNumber < pageHelp.length -1){
-        helpSlideNumber += 1;
-        } else {
-        helpSlideNumber =0
-        }
 
-    }
-
-    $('.main-section-cover-div').remove();
+function passSlide(){
+   $('.main-section-cover-div').remove();
     $('.help-arrow').remove();
     $('.help-div').remove();
     slideNumberOnTable =pageHelp[helpSlideNumber][0]
@@ -181,10 +172,53 @@ $( ".main-section" ).on('click', ".help-slide-button", function() {
         helpArrow(1,1390,255,20,1.2,1.2)
         helpArrow(1,1390,609,20,1.2,1.2)
     }
+
+}
+
+function helpSlideNumberTracker(triggerEvent){
+    if (triggerEvent === "Left"){
+        if (helpSlideNumber > 0){
+        helpSlideNumber -= 1;
+        } else {
+        helpSlideNumber = pageHelp.length - 1
+        }
+    } else {
+        if (helpSlideNumber < pageHelp.length -1){
+        helpSlideNumber += 1;
+        } else {
+        helpSlideNumber =0
+        }
+    }
+    passSlide();
+
+}
+
+
+$( ".main-section" ).on('click', ".help-slide-button", function() {
+
+    if ($(this).hasClass("help-slide-left")){
+        helpSlideNumberTracker("Left")
+    } else {
+        helpSlideNumberTracker("Right")
+    }
 })
 
+$("body").keydown(function(e) {
+console.log(e.keyCode)
+if ($('.main-section-cover-div').length){
+  if(e.keyCode == 37) { // left
+     helpSlideNumberTracker("Left")
+  }
+  else if(e.keyCode == 39) { // right
+    helpSlideNumberTracker("Right")
+  } else if(e.keyCode == 27) { // right
+    exitHelp();
+  }
+  }
+});
 
-$( ".main-section" ).on('click', ".exit-help", function() {
+
+function exitHelp(){
     $('.main-section-cover-div').remove();
     $('.help-arrow').remove();
     $('.help-div').remove();
@@ -194,7 +228,14 @@ $( ".main-section" ).on('click', ".exit-help", function() {
     closeDetailedSeatDistributionDiv();
     closeProvinceDiv();
     helpSlideNumber = 0
+}
+
+
+$( ".main-section" ).on('click', ".exit-help", function() {
+    exitHelp();
 });
+
+
 
 $( ".main-section" ).on('click', ".help-sign", function() {
         pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
@@ -245,7 +286,7 @@ if($('.input-senate-house').hasClass("show-senate")){
 
 }
 
-function trial(){
+function startShowHelp(){
 
     pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
     showHelp(pageHelp);
