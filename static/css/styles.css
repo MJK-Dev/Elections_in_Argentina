@@ -128,7 +128,7 @@ min-height:100px;
 text-align: center;
 width:900px;
 left:300px;
-top:50px;
+top:350px;
 }
 
 .explanation-heading h1{
@@ -1917,7 +1917,7 @@ font-size:1rem;
 }
 
 .detailed-seat-distribution-div-each-allocation h5{
-font-size:0.8rem;
+font-size:0.6rem;
 }
 
 .allocation-winner{
@@ -2733,7 +2733,7 @@ font-size:1rem;
 }
 
 .simulation-detailed-seat-distribution-div-each-allocation h5{
-font-size:0.8rem;
+font-size:0.6rem;
 }
 
 .simulation-allocation-winner{

@@ -7,9 +7,12 @@ var helpSlideNumber = 0;
 var pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
 var slideNumberOnTable = 0;
 var simulationSeats = 12;
+var scrollPosition = $(window).scrollTop();
 var simulation = ["Simulation",[["Partido A","AA",52,0],["Partido B","BB",25,0],["Partido C","CC",23,0]]];
 
 
+
+//Smooth scrolling---------------------------------------------------------------------------------------------
 
 
 (function ($) {
@@ -43,7 +46,11 @@ var simulation = ["Simulation",[["Partido A","AA",52,0],["Partido B","BB",25,0],
     });
 })(jQuery); // End of use strict
 
+//Check scrollPosition---------------------------------------------------------------------------------------------
 
+$(window).scroll(function (event) {
+    scrollPosition = $(window).scrollTop();
+});
 
 //Round float value with passed precision when calling it (function)---------------------------------------------------------------------------------------------
 
@@ -52,48 +59,49 @@ function round(value, precision) {
     return Math.round(value * multiplier) / multiplier;
 }
 
-// Helper Function-----------------------------------------------------------------------------------------------------------------
+// Help Functionality-----------------------------------------------------------------------------------------------------------------
 
+  // Appending each help div with text-------------------------
 function helpDiv(x,y,textTop, textBottom){
-$('.main-section').append('<div class="help-div show-party-results-div"><h1></h1><h3></h3></div>')
-$('.help-div').css('left', x)
-$('.help-div').css('top', y)
-$('.help-div h1').text(textTop)
-$('.help-div h3').text(textBottom)
+    $('.main-section').append('<div class="help-div show-party-results-div"><h1></h1><h3></h3></div>')
+    $('.help-div').css('left', x)
+    $('.help-div').css('top', y)
+    $('.help-div h1').text(textTop)
+    $('.help-div h3').text(textBottom)
 }
-
+   // Appending each help arrow-------------------------
 function helpArrow(show,x,y,degrees,clock,anticlock){
-if (show === 1){
-if (slideNumberOnTable !== 27){
-    $('.main-section').append('<div class="help-arrow"></div>')
-    $('.help-arrow').css('left', x)
-    $('.help-arrow').css('top', y)
-    $('.help-arrow').css({
-      '-webkit-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-         '-moz-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-          '-ms-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-           '-o-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-              'transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-                   'zoom' : 1
-        });
-    } else {
-    var thisArrow = "this-arrow-"+y;
-    $('.main-section').append('<div class="help-arrow '+thisArrow+'"></div>')
-    $('.help-arrow.'+thisArrow).css('left', x)
-    $('.help-arrow.'+thisArrow).css('top', y)
-    $('.help-arrow.'+thisArrow).css({
-      '-webkit-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-         '-moz-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-          '-ms-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-           '-o-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-              'transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
-                   'zoom' : 1
-        });
+  if (show === 1){
+    if (slideNumberOnTable !== 27){
+        $('.main-section').append('<div class="help-arrow"></div>')
+        $('.help-arrow').css('left', x)
+        $('.help-arrow').css('top', y)
+        $('.help-arrow').css({
+          '-webkit-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+             '-moz-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+              '-ms-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+               '-o-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+                  'transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+                       'zoom' : 1
+            });
+        } else {
+        var thisArrow = "this-arrow-"+y;
+        $('.main-section').append('<div class="help-arrow '+thisArrow+'"></div>')
+        $('.help-arrow.'+thisArrow).css('left', x)
+        $('.help-arrow.'+thisArrow).css('top', y)
+        $('.help-arrow.'+thisArrow).css({
+          '-webkit-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+             '-moz-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+              '-ms-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+               '-o-transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+                  'transform' : 'rotate('+degrees+'deg) scale('+clock+', '+anticlock+')',
+                       'zoom' : 1
+            });
 
-    }
-    }
+        }
+  }
 }
-
+   // Appends the required cover divs, based on a 0/1 array, an depending on each slide-------------------------
 function coverDivs(display){
      $('.main-section').append('<div class="main-section-cover-div"></div>')
 
@@ -116,9 +124,7 @@ function coverDivs(display){
      }
 }
 
-
-
-
+   // Passes each slide, depending on the helpSlideNumber determined by left o right-------------------------
 function passSlide(){
    $('.main-section-cover-div').remove();
     $('.help-arrow').remove();
@@ -175,6 +181,21 @@ function passSlide(){
 
 }
 
+   // Exit Help feature function-----------------------
+function exitHelp(){
+    $('.main-section-cover-div').remove();
+    $('.help-arrow').remove();
+    $('.help-div').remove();
+    $('.exit-help').remove();
+    $('.help-slide-left').remove();
+    $('.help-slide-right').remove();
+    closeDetailedSeatDistributionDiv();
+    closeProvinceDiv();
+    helpSlideNumber = 0
+}
+
+
+   // Track the helpSlideNumber, whether clicked or changed with keyboard-------------------------
 function helpSlideNumberTracker(triggerEvent){
     if (triggerEvent === "Left"){
         if (helpSlideNumber > 0){
@@ -193,7 +214,8 @@ function helpSlideNumberTracker(triggerEvent){
 
 }
 
-
+   // Three listeners below track the click or keypressed (left or right).
+   // Also "esc" for keyboard and "Salir" button on click-------------------------
 $( ".main-section" ).on('click', ".help-slide-button", function() {
 
     if ($(this).hasClass("help-slide-left")){
@@ -204,39 +226,26 @@ $( ".main-section" ).on('click', ".help-slide-button", function() {
 })
 
 $("body").keydown(function(e) {
-console.log(e.keyCode)
-if ($('.main-section-cover-div').length){
-  if(e.keyCode == 37) { // left
-     helpSlideNumberTracker("Left")
-  }
-  else if(e.keyCode == 39) { // right
-    helpSlideNumberTracker("Right")
-  } else if(e.keyCode == 27) { // right
-    exitHelp();
-  }
-  }
+    if (scrollPosition >= 1400 && scrollPosition <= 2200){
+       if ($('.main-section-cover-div').length){
+          if(e.keyCode == 37) { // left
+             helpSlideNumberTracker("Left")
+          }
+          else if(e.keyCode == 39) { // right
+            helpSlideNumberTracker("Right")
+          } else if(e.keyCode == 27) { // right
+            exitHelp();
+          }
+          }
+    }
 });
-
-
-function exitHelp(){
-    $('.main-section-cover-div').remove();
-    $('.help-arrow').remove();
-    $('.help-div').remove();
-    $('.exit-help').remove();
-    $('.help-slide-left').remove();
-    $('.help-slide-right').remove();
-    closeDetailedSeatDistributionDiv();
-    closeProvinceDiv();
-    helpSlideNumber = 0
-}
-
 
 $( ".main-section" ).on('click', ".exit-help", function() {
     exitHelp();
 });
 
 
-
+   // Slicing the pageHelp when clicking on quetion marks (partial help for each section)------------------------
 $( ".main-section" ).on('click', ".help-sign", function() {
         pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
     if($(this).hasClass("help-sign-map")){
@@ -248,21 +257,21 @@ $( ".main-section" ).on('click', ".help-sign", function() {
     } else if ($(this).hasClass("help-sign-graph")) {
         pageHelp = pageHelp.slice(21,26)
     }
-
-showHelp(pageHelp);
-
+    showHelp(pageHelp);
 });
 
+   // Show each slide using 3 functions defined previosuly (node function) -------------------------
 function showSlide(helpSlide){
 
     coverDivs(helpSlide[1]["Cover_Divs"])
     helpDiv(helpSlide[1]["Slide_X"],helpSlide[1]["Slide_Y"],helpSlide[1]["H1"],helpSlide[1]["H3"])
     helpArrow(helpSlide[1]["Arrow_Show"],helpSlide[1]["Arrow_X"],helpSlide[1]["Arrow_Y"],helpSlide[1]["Arrow_Degrees"],helpSlide[1]["Arrow_Clockwise"], helpSlide[1]["Arrow_Anticlockwise"])
-
 }
 
+   // Preparing the initial set up depending on whole help or partial section
+   // Adding arrows and "Salir" button, and triggering show of first relative slide--
 function showHelp(helpSection){
-if($('.input-senate-house').hasClass("show-senate")){
+    if($('.input-senate-house').hasClass("show-senate")){
         $('.input-senate-house').trigger('click');
     }
     if ($(".input-parties-allegiances").hasClass("show-allegiances")){
@@ -274,7 +283,7 @@ if($('.input-senate-house').hasClass("show-senate")){
      + '<polyline class="help-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 45.63,75.8 0.375,38.087 45.63,0.375 "/>'
      + '</svg></button>')
 
-      $('.main-section').append('<button class="help-slide-button help-slide-arrow help-slide-right onclick="pepe()">'
+     $('.main-section').append('<button class="help-slide-button help-slide-arrow help-slide-right onclick="pepe()">'
      + '<svg class="help-slide-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">'
      + '<polyline class="help-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 0.375,0.375 45.63,38.087 0.375,75.8 "/>'
      + '</svg></button>')
@@ -283,15 +292,16 @@ if($('.input-senate-house').hasClass("show-senate")){
 
      showSlide(pageHelp[0])
 
-
 }
 
+   // Triggering showHelp when clicking "Ayuda" on Navbar-------------------------
 function startShowHelp(){
 
     pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
     showHelp(pageHelp);
 
 }
+
 
 
 //Show Each Province Results (function)------------------------------------------------------------------------------------------------------------
@@ -451,9 +461,9 @@ $(document).mouseup(function(e)
 
 
 
-window.calculateDistribution = function(seats,results){
+window.calculateDistribution = function(seats,results,origin){
         //House distribution (D'Hondt)-------------------------------------------------------------------
-        if ($('.input-senate-house').hasClass("show-house")) {
+        if ($('.input-senate-house').hasClass("show-house") || origin === "simulator") {
 
         for (a=0; a < seats ; a++){
             var reminder = 0;
@@ -628,7 +638,8 @@ $('.main-section').on('change', '.province-results-div input', function(){
         found[1][i][3] = 0;
         }
         console.log(found)
-        found = calculateDistribution(seats,found);
+        var origin = "elections"
+        found = calculateDistribution(seats,found,origin);
         var partySeats = $('.party-results-div-seats');
         for(i=0; i <(partySeats.length) ; i++){
             $('.party-results-div-seats h3')[i].innerText =(found[1][i][3]);
@@ -1148,7 +1159,8 @@ function dhondtSimulation(){
     for(i=0; i <(simulation[1].length) ; i++){
             simulation[1][i][3] = 0;
      }
-    calculateDistribution(simulationSeats,simulation)
+    var origin = "simulator"
+    calculateDistribution(simulationSeats,simulation,origin)
     calculateDetailedSeatsDistribution("simulation")
 }
 
@@ -1158,6 +1170,11 @@ function dhondtSimulation(){
 $('.simulation-section').on('change','#simulation-seats', function () {
 
   simulationSeats = $('#simulation-seats')[0].value
+  //adding the for loop below beacause last input does not get updated when changing seats
+  var partyPercentages = $('.party-simulation-div-percentage input');
+  for(i=0; i <(partyPercentages.length) ; i++){
+        simulation[1][i][2] = parseFloat(partyPercentages[i].value);
+    }
   showDhontSimulation()
   checkSimulationSum()
 
@@ -1171,14 +1188,15 @@ $('.simulation-section').on('change', '.party-simulation-div-percentage input', 
     for(i=0; i <(partyPercentages.length) ; i++){
         var partyPercentage = parseFloat(partyPercentages[i].value);
         percentageTotal = percentageTotal + partyPercentage;
+        simulation[1][i][2] = parseFloat(partyPercentages[i].value);
     }
+    console.log(simulation)
     $(".simulation-total-in-div").val(percentageTotal);
 
     if ($(".simulation-total-in-div").val() > 99.9999 && $(".simulation-total-in-div").val() < 100.0001 ){
         var seats = 0
         for(i=0; i <(simulation[1].length) ; i++){
         seats = seats + simulation[1][i][3];
-        simulation[1][i][2] = parseFloat(partyPercentages[i].value);
         simulation[1][i][3] = 0;
         }
         var partySeats = $('.party-results-div-seats');
@@ -1189,6 +1207,7 @@ $('.simulation-section').on('change', '.party-simulation-div-percentage input', 
         $('.simulation-party-results-sum-alert-div h3').text("")
         $('.wrong-calculation').remove();
         showDhontSimulation()
+        console.log(simulation)
      } else {
         checkSimulationSum()
      }
@@ -1272,6 +1291,7 @@ function showDhontSimulation(){
         var partyName = simulation[1][i][0];
         var partyAllegiance = simulation[1][i][1];
         var partyPercentage = simulation[1][i][2];
+        console.log(simulation[1][i][2])
         var partySeats = simulation[1][i][3];
         var thisId = "simulation_" + partyName.replaceAll(" ", "_");
         percentageTotal = percentageTotal + simulation[1][i][2];
