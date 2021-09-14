@@ -17,11 +17,11 @@ ad = ArrangeData()
 di = DataInput()
 
 
-house_file = pd.read_csv("Diputados_Promedio_2017_2019_Final.csv")
+house_file = pd.read_csv("PASO_2021.csv")
 house = pd.DataFrame(house_file)
 provinces_house = di.csv_extractor(house)
 
-senate_file = pd.read_csv("Senado_2021_Final.csv")
+senate_file = pd.read_csv("PASO_2021_Senado.csv")
 senate = pd.DataFrame(senate_file)
 provinces_senate = di.csv_extractor(senate)
 

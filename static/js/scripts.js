@@ -367,7 +367,7 @@ function showProvince(selectedProvince){
     $('.province-results-div').append("<div id='' class='province-results-sum-div'>"
     +"<div id='' class='party-results-div-bottom-title'><h3>Total</h3></div>"
     +"<div id='' class='party-results-sum-alert-div'><h3></h3></div>"
-    +"<div id='' class='party-results-div-total-percentage'><input class='province-total-in-div' type='number' value='"+ percentageTotal +"'step='.01'></div>"
+    +"<div id='' class='party-results-div-total-percentage'><input class='province-total-in-div' type='number' value='"+ round(percentageTotal,2) +"'step='.01'></div>"
     +"<div id='' class='party-results-div-total-seats'><h3>"+seatsTotal+"</h3></div>"
     +" </div>");
 
@@ -628,7 +628,7 @@ $('.main-section').on('change', '.province-results-div input', function(){
         var partyPercentage = parseFloat(partyPercentages[i].value);
         percentageTotal = percentageTotal + partyPercentage;
     }
-    $(".province-total-in-div").val(percentageTotal);
+    $(".province-total-in-div").val(round(percentageTotal,2));
 
     if ($(".province-total-in-div").val() > 99.9999 && $(".province-total-in-div").val() < 100.0001 ){
         var seats = 0
