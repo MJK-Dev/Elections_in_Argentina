@@ -3407,7 +3407,7 @@ text-align:center;
 font-size: 0.9rem;
 color:white;
 white-space:pre-wrap;
-padding:0% 3% 0% 3%;
+padding:0% 3% 0% 0%;
 font-weight:300;
 
 }
@@ -3419,7 +3419,7 @@ padding:2.5% 0% 0% 0% !important;
 
 .message-div-actual-message-h3{
 text-align:left !important;
-width:90%
+width:92%
 }
 
 .read-landing-message{
