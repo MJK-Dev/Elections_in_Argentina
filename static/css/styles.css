@@ -3021,18 +3021,18 @@ stroke-width: 4;
 
     .landing-section{
     position:relative;
-    height:70vw;
+
     width:auto;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: 110% 110%;
     background-position-x:-5vw;
     }
 
     .main-section-heading, .explanation-heading, .simulation-heading {
-    max-width:400px;
+    max-width:80vw;
     height:auto;
     text-align:center;
-    left:10%;
+    left:10vw;
     }
 
     .main-section-heading h1, .explanation-heading h1, .simulation-heading h1{
@@ -3095,20 +3095,23 @@ stroke-width: 4;
     }
     .country-map{
     left:10%;
+    width:80vw;
     }
     .full-results-div{
     top:700px;
-    left:-80px;
-    transform: scale(0.6);
+    left:-40vw;
+    transform: scale(0.4);
     }
     .national-results-div{
     top:1250px;
-    left:10%;
+    left:-10vw;
+    transform: scale(0.6);
     }
 
     .graph-div{
     top:1600px;
-    left:10%;
+    left:-10vw;
+    transform: scale(0.6);
     }
     .province-results-div{
     left:10%;
@@ -3136,11 +3139,11 @@ stroke-width: 4;
     .simulation-detailed-seat-distribution-div-top-main-title{
     top:400px;
     left:5vw;
-    width:450px;
+    width:80vw;
     }
 
     .simulation-detailed-seat-distribution-div-top-main-title h1 {
-    font-size:0.8rem;
+    font-size:0.7rem;
     }
 
 
@@ -3150,7 +3153,7 @@ stroke-width: 4;
     }
     .simulation-seats{
     top:320px;
-    left:180px;
+    left:24vw;
     z-index:10;
     }
 
@@ -3162,14 +3165,17 @@ stroke-width: 4;
 
     .simulation-results-div{
     width:100vw;
-    transform: scale(0.8);
-    left:-7%;
+    transform: scale(0.7);
+    left:-10vw;
     }
     .simulation-detailed-seat-distribution-div{
     top:400px;
-    left:-60px;
+    left:-8vw;
     transform: scale(0.7);
     max-width:110vw
+    }
+    .footer-bottom-div{
+    left:25vw !important;
     }
 
 
@@ -3463,7 +3469,7 @@ font-weight:300;
 .cafecito-button{
 position:absolute;
 top:30%;
-left:50%;
+left:30%;
 }
 
 .footer-bottom-div{
