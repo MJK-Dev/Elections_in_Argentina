@@ -69,10 +69,10 @@ function closeMessageDiv(message){
 $(".landing-section").on('click', ".read-landing-message", function() {
 
     if ($(this).hasClass("read-landing-message-yes")){
-    $(".message-div h1").remove()
-     $(".message-div").css("top",30)
-     $(".message-div").css("padding-top", "0%")
-    $(".message-div").append(
+    $(".message-div-landing h1").remove()
+     $(".message-div-landing").css("top",10)
+     $(".message-div-landing").css("padding-top", "0%")
+    $(".message-div-landing").append(
      "<h1 class='message-div-actual-message-h1'>Una herramienta para todos</h1>"
         +"<h3 class='message-div-actual-message-h3'>Éste portal es apartidario, y sólo busca contribuir a la calidad cívica y democrática de todos los argentinos, sin distinción de ideologías o preferencias</h3>"
      + "<h1 class='message-div-actual-message-h1'>Hoja de ruta recomendada:</h1>"
@@ -89,10 +89,9 @@ $(".landing-section").on('click', ".read-landing-message", function() {
         +"<h3 class='message-div-actual-message-h3'>Te invitamos a leer la sección 'Cómo apoyar el portal', donde te contamos por qué tu aporte vale mucho</h3>"
 
     )
-        console.log("si")
-   } else {
-        closeMessageDiv('.message-div')
 
+   } else {
+        closeMessageDiv('.message-div-landing')
     }
 })
 
@@ -1603,8 +1602,8 @@ $('.full-results-title-div').append("<div class='full-results-title-district'><h
  +"<div class='full-results-title-total-seats'><h5>Bancas totales</h5></div>"
  )
 
-$('.landing-section').append("<div class='message-div'>"
-    + "<a class='close-cross close-cross-landing-message' onclick='closeMessageDiv(\".message-div\")'>✘</a>"
+$('.landing-section').append("<div class='message-div message-div-landing'>"
+    + "<a class='close-cross close-cross-landing-message' onclick='closeMessageDiv(\".message-div-landing\")'>✘</a>"
     +"<h1>¿Primera vez en la página?</h1>"
     +"<h1>¡Leeme!</h1>"
     +"<h1 class='read-landing-message read-landing-message-yes'>Sí</h1>"

@@ -3332,6 +3332,9 @@ border: 3px solid #e7deea;
 padding:1.5% 3% 1.5% 3%;
 }
 
+.message-div-landing{
+}
+
 .message-div h1{
 text-align:center;
 padding:0% 0% 1% 0%;
@@ -3353,7 +3356,7 @@ font-weight:300;
 
 .message-div-actual-message-h1{
 text-align:left !important;
-padding:3% 0% 0% 0% !important;
+padding:2.5% 0% 0% 0% !important;
 }
 
 .message-div-actual-message-h3{
