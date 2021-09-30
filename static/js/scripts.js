@@ -9,9 +9,14 @@ var slideNumberOnTable = 0;
 var simulationSeats = 12;
 var scrollPosition = $(window).scrollTop();
 var simulation = ["Simulation",[["Partido A","AA",52,0],["Partido B","BB",25,0],["Partido C","CC",23,0]]];
-
-
-
+var explanationSlideNumber = 0
+var explanationSectionList = [["Completa",[1,115],18],
+                              ["Congreso",[2,21],2],
+                              ["Senadores",[22,37],2],
+                              ["Diputados",[38,57],3],
+                              ["D'Hondt",[58,115],11]]
+var explanationSection = [];
+var firstScroll = true;
 //Smooth scrolling---------------------------------------------------------------------------------------------
 
 
@@ -26,13 +31,19 @@ var simulation = ["Simulation",[["Partido A","AA",52,0],["Partido B","BB",25,0],
         target="map-section"
             if ($('.main-section-cover-div').length){
             } else {
-            startShowHelp();
+                if ($(window).width() >768){
+                    startShowHelp();
+                } else {
+                alert("Sólo disponible en pantalla ancha")
+                }
             }
        }
          if (target === "map-section" || target === "map-section-help"){
-            var position = $("#"+target)[0].offsetTop +63
+            var position = $("#"+target)[0].offsetTop + 210
+         } else if (target === "landing-section") {
+            var position = $("#"+target)[0].offsetTop - 38
          } else {
-            var position = $("#"+target)[0].offsetTop -37
+            var position = $("#"+target)[0].offsetTop +63
          }
 
 
@@ -46,10 +57,58 @@ var simulation = ["Simulation",[["Partido A","AA",52,0],["Partido B","BB",25,0],
     });
 })(jQuery); // End of use strict
 
+//Initial Message---------------------------------------------------------------------------------------------
+
+function closeMessageDiv(message){
+
+    $(message).remove()
+
+}
+
+
+$(".landing-section").on('click', ".read-landing-message", function() {
+
+    if ($(this).hasClass("read-landing-message-yes")){
+    $(".message-div h1").remove()
+     $(".message-div").css("top",30)
+     $(".message-div").css("padding-top", "0%")
+    $(".message-div").append(
+     "<h1 class='message-div-actual-message-h1'>Una herramienta para todos</h1>"
+        +"<h3 class='message-div-actual-message-h3'>Éste portal es apartidario, y sólo busca contribuir a la calidad cívica y democrática de todos los argentinos, sin distinción de ideologías o preferencias</h3>"
+     + "<h1 class='message-div-actual-message-h1'>Hoja de ruta recomendada:</h1>"
+        +"<h3 class='message-div-actual-message-h3'>1) Mirá el tutorial completo en 'Quiero Entender'</h3>"
+        +"<h3 class='message-div-actual-message-h3'>2) Presioná 'Ayuda', para aprender a usar el calculador de las elecciones nacionales</h3>"
+        +"<h3 class='message-div-actual-message-h3'>3) Jugá un rato con el calculador nacional hasta que lo entiendas bien</h3>"
+        +"<h3 class='message-div-actual-message-h3'>4) Si querés hacer una simulación personal, dirigite a la sección 'Calculador'</h3>"
+    + "<h1 class='message-div-actual-message-h1'>Usá la página en una computadora</h1>"
+        +"<h3 class='message-div-actual-message-h3'>De momento, la página está diseñada para que se vea bien en computadoras de escritorio o notebooks. En el futuro se ajustará bien para celulares</h3>"
+    + "<h1 class='message-div-actual-message-h1'>¿Usás una dipositivo de Apple (Mac, iPhone)?</h1>"
+        +"<h3 class='message-div-actual-message-h3'>Por inconvenientes técnicos de compatibilidad, el explorador Safari no posiciona corectamente algunos gráficos. Usá Firefox, Chrome, o algún otro explorador</h3>"
+    + "<h1 class='message-div-actual-message-h1'>Si la página te gusta y sirve, se agradece un aporte</h1>"
+        +"<h3 class='message-div-actual-message-h3'>La página es 100% gratuita, y podés usarla las veces que quieras</h3>"
+        +"<h3 class='message-div-actual-message-h3'>Te invitamos a leer la sección 'Cómo apoyar el portal', donde te contamos por qué tu aporte vale mucho</h3>"
+
+    )
+        console.log("si")
+   } else {
+        closeMessageDiv('.message-div')
+
+    }
+})
+
+
 //Check scrollPosition---------------------------------------------------------------------------------------------
 
 $(window).scroll(function (event) {
     scrollPosition = $(window).scrollTop();
+    console.log(scrollPosition)
+    if (scrollPosition > 1730 && scrollPosition < 2000){
+        if (firstScroll === true){
+        $('.message-div-results').addClass("show-party-results-div")
+        console.log(scrollPosition, "jassssssssss")
+        firstScroll = false;
+        }
+    }
 });
 
 //Round float value with passed precision when calling it (function)---------------------------------------------------------------------------------------------
@@ -226,7 +285,7 @@ $( ".main-section" ).on('click', ".help-slide-button", function() {
 })
 
 $("body").keydown(function(e) {
-    if (scrollPosition >= 1400 && scrollPosition <= 2200){
+    if (scrollPosition >= 1600 && scrollPosition <= 2400){
        if ($('.main-section-cover-div').length){
           if(e.keyCode == 37) { // left
              helpSlideNumberTracker("Left")
@@ -237,8 +296,22 @@ $("body").keydown(function(e) {
             exitHelp();
           }
           }
+    } else if (scrollPosition >= 600 && scrollPosition <= 1200){
+       if ($('.explanation-slide-button').length){
+
+          if(e.keyCode == 37) { // left
+            passExplanationSlide("left");
+          }
+          else if(e.keyCode == 39) { // right
+            passExplanationSlide("right");
+          }
+          }
     }
 });
+
+
+
+
 
 $( ".main-section" ).on('click', ".exit-help", function() {
     exitHelp();
@@ -283,7 +356,7 @@ function showHelp(helpSection){
      + '<polyline class="help-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 45.63,75.8 0.375,38.087 45.63,0.375 "/>'
      + '</svg></button>')
 
-     $('.main-section').append('<button class="help-slide-button help-slide-arrow help-slide-right onclick="pepe()">'
+     $('.main-section').append('<button class="help-slide-button help-slide-arrow help-slide-right">'
      + '<svg class="help-slide-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">'
      + '<polyline class="help-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 0.375,0.375 45.63,38.087 0.375,75.8 "/>'
      + '</svg></button>')
@@ -1322,15 +1395,17 @@ function showDhontSimulation(){
 }
 
 function displaySimulationDetailedSeatsDistribution(seatsDistributionDetailed, seats){
+     $('.simulation-detailed-seat-distribution-div-top-main-title').remove();
      $('.simulation-detailed-seat-distribution-div').remove();
-     $('.simulation-div').append('<div class="simulation-detailed-seat-distribution-div"></div>');
+     $('.simulation-div').append('<div class="simulation-detailed-seat-distribution-div-top-main-title"><h1>Los '+seats+' diputados calculados se asignarían de la siguiente forma:</h1></div></div>'
+     +'<div class="simulation-detailed-seat-distribution-div"></div>');
      var numberSeatsTitle = ""
 
       for (i=0; i < seats ; i++){
       numberSeatsTitle += "<div class='detailed-seat-distribution-div-title-seat-number simulation-standarized-color'><h3>"+(i+1)+"</h3></div>"
       }
      $('.simulation-detailed-seat-distribution-div').append('<div class="simulation-block-container ">'
-     +' <div class="simulation-detailed-seat-distribution-div-top-main-title"><h1>Los '+seats+' diputados calculados se asignarían de la siguiente forma:</h1></div></div>'
+
      +' <div class="simulation-block-container">'
      +' <div class="detailed-seat-distribution-div-top-left-title simulation-standarized-color">'
      + '<div class="detailed-seat-distribution-div-title-parties simulation-standarized-color"><h3>Partido</h3></div>'
@@ -1361,11 +1436,91 @@ function displaySimulationDetailedSeatsDistribution(seatsDistributionDetailed, s
          + '<div class="simulation-detailed-seat-distribution-div-party-total"><h3>'+seatsDistributionDetailed[i][0][1]+'</h3></div>'
          + '</div>');
      }
-     $('.simulation-detailed-seat-distribution-div').append('<div class="simulation-block-container" style="background-color:var(--simulation-lines-color);">'
+     $('.simulation-detailed-seat-distribution-div').append('<div class="simulation-block-container-bottom">'
              + '</div>');
 
 }
 
+
+
+function slideAppear(){
+
+        setTimeout(function(){
+
+        $('.explanation-slide-div').addClass('show-party-results-div')
+
+    },10)
+}
+
+
+function showExplanation(){
+    $('.explanation-slide-div').remove()
+    $('.explanation-slide-button').remove()
+
+
+
+     $('.explanation-div').append("<div class='explanation-slide-div '>"
+     + "<img class='explanation-slide-image' src='../static/images/explanation/Slide"+(explanationSection[explanationSlideNumber])+".jpg' alt=''>"
+     + "</div>")
+
+     $('.explanation-div').append('<button class="explanation-slide-button explanation-slide-arrow explanation-slide-left">'
+     + '<svg class="explanation-slide-svg" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">'
+     + '<polyline class="explanation-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 45.63,75.8 0.375,38.087 45.63,0.375 "/>'
+     + '</svg></button>')
+
+     $('.explanation-div').append('<button class="explanation-slide-button explanation-slide-arrow explanation-slide-right onclick="pepe()">'
+     + '<svg class="explanation-slide-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="80px" viewBox="0 0 50 80" xml:space="preserve">'
+     + '<polyline class="explanation-slide-polyline" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points=" 0.375,0.375 45.63,38.087 0.375,75.8 "/>'
+     + '</svg></button>')
+
+
+     slideAppear()
+}
+
+function passExplanationSlide(direction) {
+    if (direction === "left") {
+        if (explanationSlideNumber > 0){
+        explanationSlideNumber -= 1;
+        } else {
+        explanationSlideNumber = explanationSection.length - 1
+        }
+    } else if (direction === "right") {
+        if (explanationSlideNumber < explanationSection.length -1){
+        explanationSlideNumber += 1;
+        } else {
+         explanationSlideNumber = 0
+        }
+    }
+    showExplanation()
+}
+
+
+$(".explanation-section").on('click', ".explanation-slide-button", function() {
+
+    if ($(this).hasClass("explanation-slide-left")){
+        passExplanationSlide("left");
+   } else {
+        passExplanationSlide("right");
+    }
+})
+
+
+function trial(section){
+    console.log(section)
+    explanationSection =[]
+    explanationSlideNumber = 0
+    var found =explanationSectionList.find(function(foundSection) {
+              return foundSection[0] == section;
+            });
+    for (i=found[1][0] ; i <= found[1][1] ; i++){
+        explanationSection.push(i)
+    }
+    explanationSection.push(1001)
+    console.log(explanationSlideNumber, explanationSection)
+    showExplanation()
+    slideAppear()
+
+    }
 
 
 showDhontSimulation()
@@ -1380,6 +1535,53 @@ function updateAll(){
     calculateQuorum();
     drawChart();
 }
+
+
+
+
+
+
+ // Side Menu functionality---------------------------------------------
+
+$(".side-menu-item").click(function(){
+    $('.side-menu-item').removeClass('side-menu-item-clicked');
+    $('.side-menu-item h2').removeClass('side-menu-item-clicked-h2');
+    var itemClicked = $(this)[0].children[1].innerHTML;
+    $(this).addClass('side-menu-item-clicked');
+    $(this).find('h2').addClass('side-menu-item-clicked-h2');
+    anime({
+          targets: 'html, body',
+          scrollTop: $("#explanation-section")[0].offsetTop + 70,
+          duration: 1000,
+          easing: 'easeInOutExpo'
+        });
+    trial(itemClicked)
+})
+
+$(".side-menu-item")
+     .mouseenter(function() {
+    var item = $(this)
+    var section = item[0].children[1].innerHTML;
+    var found =explanationSectionList.find(function(foundSection) {
+              return foundSection[0] == section;
+            });
+    console.log(found)
+
+    $(".side-menu").append('<div class="side-menu-message-div"><h3>Tiempo de lectura '+ found[2]+' minutos</h3></div>')
+    var yPos = item[0].offsetTop + (item[0].clientHeight/2) + 10
+    if ( section === "Congreso"){
+        yPos = yPos + 20;
+    }
+    $('.side-menu-message-div').css("top",yPos)
+    $('.side-menu-message-div').css("left",70)
+    console.log(item[0].clientHeight)
+    console.log(item[0].offsetTop)
+    $('.side-menu-message-div').addClass("show-party-results-div")
+    })
+
+  .mouseleave(function() {
+    $('.side-menu-message-div').remove()
+  });
 
 
 // Basic rendered DIVs and Update All triggered on page initially rendered-------------------------------------------------------------------
@@ -1401,4 +1603,22 @@ $('.full-results-title-div').append("<div class='full-results-title-district'><h
  +"<div class='full-results-title-total-seats'><h5>Bancas totales</h5></div>"
  )
 
+$('.landing-section').append("<div class='message-div'>"
+    + "<a class='close-cross close-cross-landing-message' onclick='closeMessageDiv(\".message-div\")'>✘</a>"
+    +"<h1>¿Primera vez en la página?</h1>"
+    +"<h1>¡Leeme!</h1>"
+    +"<h1 class='read-landing-message read-landing-message-yes'>Sí</h1>"
+    +"<h1 class='read-landing-message read-landing-message-no'>No</h1>"
+    +"</div>")
+
+$('.map-section').append("<div class='message-div message-div-results'>"
+    + "<a class='close-cross close-cross-landing-message' onclick='closeMessageDiv(\".message-div-results\")'>✘</a>"
+    +"<h1>Datos precargados</h1>"
+    +"<h3>\nLos resultados para cada provincia y cada partido que verás precargados, son valores aproximados (algunos ajustados) del porcentaje neto (sin blancos ni nulos) que obtuvo cada partido en las PASO 2021\n\n Podés cambiar todos los valores y la alianzas, cuando quieras y como quieras\n\n</h3>"
+    +"</div>")
+
+
+
+
 updateAll()
+
