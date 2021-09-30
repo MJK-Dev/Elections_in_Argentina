@@ -106,8 +106,8 @@ background-image: var(--background-1);
 
 
 /* Headings */
-.
-landing-heading{
+
+.landing-heading{
 position:relative;
 top:25%;
 min-height:100px;
@@ -2984,7 +2984,11 @@ stroke-width: 4;
     }
 }
 
-
+@media only screen and (max-width: 1040px) {
+    .navbar{
+    height:40px;
+    }
+}
 
 @media only screen and (max-width: 768px) {
     .navbar{
