@@ -2991,9 +2991,9 @@ stroke-width: 4;
     height:40px;
     }
     .message-div{
-    top:100px !important;
-    width:70% !important;
-    left:15% !important;
+
+    width:90vw !important;
+    left:5vw !important;
     padding:5.5% 3% 1.5% 3% !important;
     }
 
@@ -3017,15 +3017,17 @@ stroke-width: 4;
 
     .landing-heading h3{
     font-size:2rem;
+    padding: 0 5%;
     }
 
     .landing-section{
     position:relative;
-
+    height:700px;
     width:auto;
     background-repeat: repeat;
-    background-size: 110% 110%;
-    background-position-x:-5vw;
+    background-size: 200% 100%;
+    background-position-x:30%;
+    background-position-y:60%;
     }
 
     .main-section-heading, .explanation-heading, .simulation-heading {
@@ -3037,6 +3039,10 @@ stroke-width: 4;
 
     .main-section-heading h1, .explanation-heading h1, .simulation-heading h1{
     font-size:1.7rem;
+    }
+
+    .explanation-section{
+    min-height:660px;
     }
 
     .explanation-div{
@@ -3063,16 +3069,20 @@ stroke-width: 4;
     .side-menu{
       width:80vw !important;
       height:170px !important;
-      top:65% !important;
-      left:10vw !important;
+      top:75% !important;
+      left:5vw !important;
       text-align:center;
+    }
+    .completa-div{
+    left:-1vw !important;
+
     }
     .congreso-div{
     left:28vw !important;
     top:-30px !important;
     }
     .senado-div{
-    left:55vw !important;
+    left:60vw !important;
     top:-10px !important;
     }
     .diputados-div{
@@ -3085,42 +3095,47 @@ stroke-width: 4;
     }
 
     .side-menu-item{
-    transform:scale(0.8) !important;
+    transform:scale(0.7) !important;
     }
 
 
 
     .map-section{
-    height:2300px;
+    height:2000px;
     }
     .country-map{
     left:10%;
     width:80vw;
     }
+    .help-sign-map {
+    left: 200px;
+    top: 550px;
+    }
+
     .full-results-div{
-    top:700px;
+    top:600px;
     left:-40vw;
-    transform: scale(0.4);
+    transform: scale(0.45);
     }
     .national-results-div{
-    top:1250px;
-    left:-10vw;
-    transform: scale(0.6);
+    top:1000px;
+    left:0vw;
+    transform: scale(0.7);
     }
 
     .graph-div{
-    top:1600px;
-    left:-10vw;
-    transform: scale(0.6);
+    top:1270px;
+    left:0vw;
+    transform: scale(0.7);
     }
     .province-results-div{
     left:10%;
     }
 
     .message-div-results{
-    top:1000px !important;
+    top:900px !important;
     width:70% !important;
-    left:15% !important;
+    left:15vw !important;
     }
 
     .message-div-results h1{
@@ -3143,7 +3158,7 @@ stroke-width: 4;
     }
 
     .simulation-detailed-seat-distribution-div-top-main-title h1 {
-    font-size:0.7rem;
+    font-size:0.6rem;
     }
 
 
@@ -3158,21 +3173,21 @@ stroke-width: 4;
     }
 
     .wrong-calculation{
-    left:-130px;
-        transform: scale(0.65);
+     left:-48vw;
+        transform: scale(0.45);
 
     }
 
     .simulation-results-div{
     width:100vw;
-    transform: scale(0.7);
-    left:-10vw;
+    transform: scale(0.6);
+    left:-14vw;
     }
     .simulation-detailed-seat-distribution-div{
     top:400px;
-    left:-8vw;
-    transform: scale(0.7);
-    max-width:110vw
+    left:-18vw;
+    transform: scale(0.6);
+    max-width:125vw
     }
     .footer-bottom-div{
     left:25vw !important;
@@ -3339,6 +3354,7 @@ padding:1.5% 3% 1.5% 3%;
 }
 
 .message-div-landing{
+transition: all 0.3s;
 }
 
 .message-div h1{
