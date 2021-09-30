@@ -3007,7 +3007,7 @@ stroke-width: 4;
 
     .close-cross-landing-message{
     top:5px !important;
-    left:95%!important;
+    left:93%!important;
     font-size:1rem!important;
     }
 
@@ -3061,14 +3061,14 @@ stroke-width: 4;
     }
 
     .explanation-slide-button{
-    transform:scale(0.8) !important;
+    transform:scale(0.4) !important;
     }
     .explanation-slide-left {
-      left: 3%;
+      left: 0%;
     }
 
     .explanation-slide-right {
-      left: 97%;
+      left: 100%;
     }
 
     .side-menu{
@@ -3142,7 +3142,11 @@ stroke-width: 4;
         left: -8vw;
         transform: scale(0.75);
     }
-
+    .detailed-seat-distribution-div {
+    max-width:135vw;
+    left:-16vw;
+    transform:scale(0.6);
+    }
     .results-graph-dynamic-div{
     max-width:340px;
     left:10px;
@@ -3195,8 +3199,9 @@ stroke-width: 4;
     }
     .simulation-seats{
     top:320px;
-    left:24vw;
+    left:22vw;
     z-index:10;
+    transform: scale(0.8);
     }
 
     .wrong-calculation{
