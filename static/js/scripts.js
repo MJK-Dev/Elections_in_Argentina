@@ -1136,7 +1136,22 @@ function drawChart() {
     }
     allegiances.push([finalQuorum[0][0],finalQuorum[0][1]+finalQuorum[0][2]])
     var data = google.visualization.arrayToDataTable(allegiances);
+    if ($( window ).width() < 768){
 
+     var options = {
+      title: 'My Daily Activities',
+      is3D: true,
+      pieSliceText: 'value',
+      pieHole: 0.4,
+      chartArea:{left:20,top:0,width:"100%",height:"100%"},
+      height: 260,
+      width: 340,
+      colors: allegiancesColors,
+      tooltip: {textStyle:  {fontName: 'Montserrat',fontSize: 8,bold: false}},
+      legend: {position:'middle',alignment: 'center' , textStyle:  {fontName: 'Montserrat',fontSize: 12,bold: false}},
+      pieSliceTextStyle: {color: '#190833',fontSize:24,fontName: 'Montserrat', bold: true}
+    };
+   } else{
     var options = {
       title: 'My Daily Activities',
       is3D: true,
@@ -1149,8 +1164,8 @@ function drawChart() {
       tooltip: {textStyle:  {fontName: 'Montserrat',fontSize: 16,bold: false}},
       legend: {position:'middle',alignment: 'center' , textStyle:  {fontName: 'Montserrat',fontSize: 12,bold: false}},
       pieSliceTextStyle: {color: '#190833',fontSize:24,fontName: 'Montserrat', bold: true}
+    }
     };
-
     var chart = new google.visualization.PieChart(document.getElementById('results-graph-dynamic-div'));
     chart.draw(data, options);
 }
@@ -1617,7 +1632,10 @@ $('.map-section').append("<div class='message-div message-div-results'>"
     +"</div>")
 
 
+console.log($( window ).width());
 
+// Returns width of HTML document
+console.log($( document ).width());
 
 updateAll()
 

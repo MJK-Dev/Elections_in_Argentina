@@ -106,8 +106,8 @@ background-image: var(--background-1);
 
 
 /* Headings */
-
-.landing-heading{
+.
+landing-heading{
 position:relative;
 top:25%;
 min-height:100px;
@@ -3011,12 +3011,17 @@ stroke-width: 4;
     font-size:1rem!important;
     }
 
+    .landing-heading{
+    position:absolute;
+    top: 15%;
+    }
+
     .landing-heading h1{
     font-size:3rem;
     }
 
     .landing-heading h3{
-    font-size:2rem;
+    font-size:1.8rem;
     padding: 0 5%;
     }
 
@@ -3051,8 +3056,8 @@ stroke-width: 4;
     height:50vw;
     }
     .explanation-slide-div {
-    width:84.3vw;
-    height:49.5vw;
+    width:84.2vw;
+    height:49.2vw;
     }
 
     .explanation-slide-button{
@@ -3070,7 +3075,7 @@ stroke-width: 4;
       width:80vw !important;
       height:170px !important;
       top:75% !important;
-      left:5vw !important;
+      left:2vw !important;
       text-align:center;
     }
     .completa-div{
@@ -3112,24 +3117,44 @@ stroke-width: 4;
     top: 550px;
     }
 
+    .switch-senate-house-div{
+    top:100px;
+    left: 1vw;
+    }
+
     .full-results-div{
     top:600px;
-    left:-40vw;
-    transform: scale(0.45);
+    left:-45vw;
+    transform: scale(0.5);
     }
     .national-results-div{
     top:1000px;
-    left:0vw;
-    transform: scale(0.7);
+    left:-7vw;
+    transform: scale(0.8);
     }
 
     .graph-div{
     top:1270px;
-    left:0vw;
-    transform: scale(0.7);
+    left:-2vw;
+    transform: scale(0.85);
     }
     .province-results-div{
-    left:10%;
+        left: -8vw;
+        transform: scale(0.75);
+    }
+
+    .results-graph-dynamic-div{
+    max-width:340px;
+    left:10px;
+    }
+    .help-sign-graph {
+    left: 330px;
+    top: 310px;
+    }
+
+    .national-results-div h1 {
+    font-size: 1.2rem;
+    padding: 2%;
     }
 
     .message-div-results{
@@ -3145,7 +3170,9 @@ stroke-width: 4;
      .message-div-results h3{
     font-size:0.8rem !important;
     }
-
+    .myButton2{
+    left:270px;
+    }
 
     .button-trial{
     left:300px;
@@ -3158,7 +3185,7 @@ stroke-width: 4;
     }
 
     .simulation-detailed-seat-distribution-div-top-main-title h1 {
-    font-size:0.6rem;
+    font-size:0.55rem;
     }
 
 
@@ -3180,17 +3207,17 @@ stroke-width: 4;
 
     .simulation-results-div{
     width:100vw;
-    transform: scale(0.6);
-    left:-14vw;
+    transform: scale(0.55);
+    left:-18vw;
     }
     .simulation-detailed-seat-distribution-div{
     top:400px;
-    left:-18vw;
+    left:-22vw;
     transform: scale(0.6);
-    max-width:125vw
+    max-width:140vw
     }
     .footer-bottom-div{
-    left:25vw !important;
+    left:21vw !important;
     }
 
 
