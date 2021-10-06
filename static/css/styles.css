@@ -25,7 +25,7 @@ body{
 
 .footer{
 position:relative;
-min-height:670px;
+min-height:1020px;
 }
 
 
@@ -667,6 +667,7 @@ border-radius:15px;
 color:white;
 text-align: left;
 padding: 1% 1% 1% 0.5%;
+box-shadow: 2px 8px 14px rgb(81 15 102 / 25%);
 }
 
 .national-results-div h1{
@@ -1715,7 +1716,7 @@ font-size:0.9rem;
     position: absolute;
     top: 8px;
     left:277px;
-	background:linear-gradient(to bottom, #875313  5%, #512709  100%);
+	background:linear-gradient(to bottom, #c27617  5%, #512709  100%);
 	background-color:#f274dd;
 	border-radius:9px;
 	cursor:pointer;
@@ -1734,7 +1735,7 @@ font-size:0.9rem;
 }
 
 .buttonSeatsDetailed:hover {
-background:linear-gradient(to bottom, var(--titles-background-color) 5%, #992386 100%);
+background:linear-gradient(to bottom, var(--titles-background-color) 5%, #7e1a6e 100%);
 	background-color:#4f848c;
 }
 
@@ -2982,6 +2983,23 @@ stroke-width: 4;
     top:750px;
     left:60%;
     }
+    .simulation-div{
+      overflow-y: visible; 
+    }
+    
+    .simulation-section{
+      min-height:2000px;
+      }
+    .simulation-detailed-seat-distribution-div-top-main-title{
+      top:725px;
+    left:30px;
+    }
+    .simulation-detailed-seat-distribution-div{
+      top:770px;
+      left:30px;
+
+    }
+
 }
 
 @media only screen and (max-width: 1040px) {
@@ -2994,6 +3012,11 @@ stroke-width: 4;
     .navbar{
     height:40px;
     }
+
+    .navbar-nav{
+    background-color: var(--titles-background-color);
+    }
+
     .message-div{
 
     width:90vw !important;
@@ -3049,6 +3072,50 @@ stroke-width: 4;
     .main-section-heading h1, .explanation-heading h1, .simulation-heading h1{
     font-size:1.7rem;
     }
+
+    .footer{
+    min-height:1520px;
+    }
+
+    .footer-acknowledgments-div{
+    top:1050px !important;
+    }
+
+     .footer-email-div{
+     top:1340px !important;;
+     }
+
+    .footer-cafecito-div h1, .footer-acknowledgments-div h1, .footer-email-div h1{
+     font-size:1.7rem !important;
+     text-align: center;
+    }
+
+    .footer-cafecito-div h3, .footer-acknowledgments-div h3{
+     font-size:1.0rem !important;
+     text-align: center;
+    }
+    .button-arrow {
+    width: 50px !important;
+    height: auto;
+    top: 890px !important;
+    left: 41% !important;
+    transform: rotate(90deg) !important;
+    }
+
+    .cafecito-button {
+    top: 940px !important;
+    left: 22% !important;
+}
+    .footer-email-div-i {
+    left: 40px !important;
+    top: 0px !important;
+    }
+
+   .footer-email-div h3{
+     font-size:1.1rem !important;
+     text-align: center;
+     width:200px !important;
+   }
 
     .explanation-section{
     min-height:660px;
@@ -3227,6 +3294,7 @@ stroke-width: 4;
     }
     .footer-bottom-div{
     left:21vw !important;
+    bottom:-30px !important;
     }
 
 
@@ -3453,75 +3521,131 @@ font-size:1.5rem;
 
 
 .footer-cafecito-div{
-position:absolute;
-top:10%;
-left:10%;
-width:70%;
-height:20%;
-background-color:red;
+position: absolute;
+min-height: 100px;
+text-align: left;
+width: 70%;
+left: 50px;
+top: 50px;
 }
 
 
 .footer-cafecito-div h1{
-font-family: 'Noto Sans JP', sans-serif;
-line-height:1.4;
-text-align:left;
-font-size: 2rem;
-color:white;
-white-space:pre-wrap;
-padding:0% 0% 0% 0%;
-font-weight:300;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1.0;
+    color: var(--titles-background-color);
+    text-shadow: 1px 2px 4px #b1abb4;
+    margin-bottom: 20px;
 }
 
 .footer-cafecito-div h3{
-font-family: 'Noto Sans JP', sans-serif;
-line-height:1.4;
-text-align:left;
-font-size: 0.9rem;
-color:white;
-white-space:pre-wrap;
-padding:0% 0% 0% 0%;
-font-weight:300;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #260b43;
+    white-space: pre-wrap;
 }
-
-
 
 
 .footer-acknowledgments-div{
-position:absolute;
-top:40%;
-left:10%;
-width:70%;
-height:20%;
-background-color:blue;
+position: absolute;
+min-height: 100px;
+text-align: left;
+width: 70%;
+left: 50px;
+top: 570px;
 }
 
 .footer-acknowledgments-div h1{
-font-family: 'Noto Sans JP', sans-serif;
-line-height:1.4;
-text-align:left;
-font-size: 1.2rem;
-color:white;
-white-space:pre-wrap;
-padding:0% 0% 0% 0%;
-font-weight:300;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1.0;
+    color: var(--titles-background-color);
+    text-shadow: 1px 2px 4px #b1abb4;
+    margin-bottom: 20px;
 }
 
 .footer-acknowledgments-div h3{
-font-family: 'Noto Sans JP', sans-serif;
-line-height:1.4;
-text-align:left;
-font-size: 0.9rem;
-color:white;
-white-space:pre-wrap;
-padding:0% 0% 0% 0%;
-font-weight:300;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #260b43;
+    white-space: pre-wrap;
 }
+
+
+.footer-email-div{
+position: absolute;
+min-height: 100px;
+text-align: left;
+width: 70%;
+left: 50px;
+top: 750px;
+}
+
+.footer-email-div-i{
+position: absolute;
+left: 150px;
+top: 11px;
+color:var(--titles-background-color);;
+}
+
+.footer-email-div h1{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1.0;
+    color: var(--titles-background-color);
+    text-shadow: 1px 2px 4px #b1abb4;
+    margin-bottom: 20px;
+    cursor:pointer;
+}
+
+.footer-email-div h3{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.6;
+    color: #260b43;
+    white-space: pre-wrap;
+    cursor:pointer;
+    width:500px
+}
+
+.footer-email-div-h3-hover{
+ color: #c08415 !important;
+}
+.footer-email-div h5{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #260b43;
+    white-space: pre-wrap;
+    opacity:0;
+    transition: all 0.5s;
+    font-style:italic;
+}
+
+
+.button-arrow{
+width:80px;
+height:auto;
+position:absolute;
+top:458px;
+left:460px;
+}
+
 
 .cafecito-button{
 position:absolute;
-top:30%;
-left:30%;
+top:460px;
+left:560px;
 }
 
 .footer-bottom-div{

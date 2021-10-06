@@ -3,10 +3,11 @@ from flask import Flask, render_template, request, redirect, url_for, flash, sen
 from datetime import date
 import pandas as pd
 from pprint import pprint
+
 from dhondt_calculator import DhondtCalculator
 from arrange_data import ArrangeData
 from data_input import DataInput
-import json
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "pepe"

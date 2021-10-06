@@ -17,6 +17,8 @@ var explanationSectionList = [["Completa",[1,115],18],
                               ["D'Hondt",[58,115],11]]
 var explanationSection = [];
 var firstScroll = true;
+
+
 //Smooth scrolling---------------------------------------------------------------------------------------------
 
 
@@ -24,9 +26,9 @@ var firstScroll = true;
     "use strict"; // Start of use strict
     // Smooth scrolling using anime.js
     $('a.nav-link[href*="#"]:not([href="#"])').on('click', function (e) {
-        console.log(e.target);
+
         var target = $(this)[0].hash.slice(1);
-        console.log(target)
+
         if (target === "map-section-help"){
         target="map-section"
             if ($('.main-section-cover-div').length){
@@ -42,7 +44,9 @@ var firstScroll = true;
             var position = $("#"+target)[0].offsetTop + 210
          } else if (target === "landing-section") {
             var position = $("#"+target)[0].offsetTop - 38
-         } else {
+         } else if (target === "footer") {
+            var position = $("#"+target)[0].offsetTop - 58
+         }else {
             var position = $("#"+target)[0].offsetTop +63
          }
 
@@ -100,11 +104,10 @@ $(".landing-section").on('click', ".read-landing-message", function() {
 
 $(window).scroll(function (event) {
     scrollPosition = $(window).scrollTop();
-    console.log(scrollPosition)
+
     if (scrollPosition > 1730 && scrollPosition < 2000){
         if (firstScroll === true){
         $('.message-div-results').addClass("show-party-results-div")
-        console.log(scrollPosition, "jassssssssss")
         firstScroll = false;
         }
     }
@@ -319,17 +322,21 @@ $( ".main-section" ).on('click', ".exit-help", function() {
 
    // Slicing the pageHelp when clicking on quetion marks (partial help for each section)------------------------
 $( ".main-section" ).on('click', ".help-sign", function() {
-        pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
-    if($(this).hasClass("help-sign-map")){
-        pageHelp = pageHelp.slice(1,11)
-    } else if ($(this).hasClass("help-sign-full-results")) {
-        pageHelp = pageHelp.slice(11,17)
-    } else if ($(this).hasClass("help-sign-national-results")) {
-        pageHelp = pageHelp.slice(17,21)
-    } else if ($(this).hasClass("help-sign-graph")) {
-        pageHelp = pageHelp.slice(21,26)
-    }
-    showHelp(pageHelp);
+    if ($(window).width() >768){
+       pageHelp = JSON.parse(JSON.stringify(pageHelpOriginal));
+        if($(this).hasClass("help-sign-map")){
+            pageHelp = pageHelp.slice(1,11)
+        } else if ($(this).hasClass("help-sign-full-results")) {
+            pageHelp = pageHelp.slice(11,17)
+        } else if ($(this).hasClass("help-sign-national-results")) {
+            pageHelp = pageHelp.slice(17,21)
+        } else if ($(this).hasClass("help-sign-graph")) {
+            pageHelp = pageHelp.slice(21,26)
+        }
+        showHelp(pageHelp);
+    } else {
+            alert("Sólo disponible en pantalla ancha")
+            }
 });
 
    // Show each slide using 3 functions defined previosuly (node function) -------------------------
@@ -429,8 +436,6 @@ function showProvince(selectedProvince){
         +"<div id='' class='party-results-div-percentage'> <input type='number' value='"+ partyPercentage +"' step='1'></div>"
         +"<div id='' class='party-results-div-seats'><h3>"+partySeats+"</h3></div>"
         +"</div>");
-        console.log(partyAllegiance);
-        console.log($('#'+thisId).val())
         $('#'+thisId).val(partyAllegiance);
     }
 
@@ -635,8 +640,7 @@ function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
 
 
 window.calculateDetailedSeatsDistribution = function(whoTriggered){
-    console.log(whoTriggered)
-     var seatsDistributionDetailed = []
+    var seatsDistributionDetailed = []
     if (whoTriggered === "table"){
     var found = provincesResults.find(function(foundProvince) {
               return foundProvince[0] == selectedProvince;
@@ -709,7 +713,6 @@ $('.main-section').on('change', '.province-results-div input', function(){
         found[1][i][2] = parseFloat(partyPercentages[i].value);
         found[1][i][3] = 0;
         }
-        console.log(found)
         var origin = "elections"
         found = calculateDistribution(seats,found,origin);
         var partySeats = $('.party-results-div-seats');
@@ -941,7 +944,6 @@ function calculateNationalResults(){
    } else {
       calculateQuorum();
       var orderedQuorum = JSON.parse(JSON.stringify(finalQuorum));
-      console.log(orderedQuorum)
       orderedQuorum.sort(function(a, b) {
            if (a[1] == b[1]) {
              return b[3] - a[3];
@@ -1271,13 +1273,13 @@ $('.simulation-section').on('change', '.party-simulation-div-percentage input', 
 
     var partyPercentages = $('.party-simulation-div-percentage input');
     var percentageTotal = 0;
-     console.log(partyPercentages)
+
     for(i=0; i <(partyPercentages.length) ; i++){
         var partyPercentage = parseFloat(partyPercentages[i].value);
         percentageTotal = percentageTotal + partyPercentage;
         simulation[1][i][2] = parseFloat(partyPercentages[i].value);
     }
-    console.log(simulation)
+
     $(".simulation-total-in-div").val(percentageTotal);
 
     if ($(".simulation-total-in-div").val() > 99.9999 && $(".simulation-total-in-div").val() < 100.0001 ){
@@ -1294,7 +1296,7 @@ $('.simulation-section').on('change', '.party-simulation-div-percentage input', 
         $('.simulation-party-results-sum-alert-div h3').text("")
         $('.wrong-calculation').remove();
         showDhontSimulation()
-        console.log(simulation)
+
      } else {
         checkSimulationSum()
      }
@@ -1343,9 +1345,9 @@ $('.simulation-section').on('change', '.new-party-simulation-div', function(){
     var newPartyAllegiance = $('.new-party-simulation-div .party-simulation-div-allegiance input').val()
     var newPartyPercentage = parseInt($('.new-party-simulation-div .new-party-simulation-div-percentage input').val())
     if (newPartyName === ""){
-        console.log("nombre");
+
     } else if (newPartyPercentage === 0){
-        console.log("porcentaje");
+
     } else {
         var newParty = [newPartyName, newPartyAllegiance, newPartyPercentage,0]
         simulation[1].push(newParty);
@@ -1353,8 +1355,6 @@ $('.simulation-section').on('change', '.new-party-simulation-div', function(){
         checkSimulationSum();
         
     }
-
-    console.log(newPartyPercentage, newPartyName);
 });
 
 
@@ -1378,7 +1378,6 @@ function showDhontSimulation(){
         var partyName = simulation[1][i][0];
         var partyAllegiance = simulation[1][i][1];
         var partyPercentage = simulation[1][i][2];
-        console.log(simulation[1][i][2])
         var partySeats = simulation[1][i][3];
         var thisId = "simulation_" + partyName.replaceAll(" ", "_");
         percentageTotal = percentageTotal + simulation[1][i][2];
@@ -1519,7 +1518,7 @@ $(".explanation-section").on('click', ".explanation-slide-button", function() {
 })
 
 
-function trial(section){
+function startPresentation(section){
     console.log(section)
     explanationSection =[]
     explanationSlideNumber = 0
@@ -1569,7 +1568,7 @@ $(".side-menu-item").click(function(){
           duration: 1000,
           easing: 'easeInOutExpo'
         });
-    trial(itemClicked)
+    startPresentation(itemClicked)
 })
 
 $(".side-menu-item")
@@ -1582,14 +1581,18 @@ $(".side-menu-item")
     console.log(found)
 
     $(".side-menu").append('<div class="side-menu-message-div"><h3>Tiempo de lectura '+ found[2]+' minutos</h3></div>')
-    var yPos = item[0].offsetTop + (item[0].clientHeight/2) + 10
-    if ( section === "Congreso"){
-        yPos = yPos + 20;
+    if ($(window).width() >768){
+        var yPos = item[0].offsetTop + (item[0].clientHeight/2) + 10;
+        var xPos = 70;
+        if ( section === "Congreso"){
+            yPos = yPos + 20;
+        }
+    } else {
+        var yPos =120;
+        var xPos = 30;
     }
     $('.side-menu-message-div').css("top",yPos)
-    $('.side-menu-message-div').css("left",70)
-    console.log(item[0].clientHeight)
-    console.log(item[0].offsetTop)
+    $('.side-menu-message-div').css("left",xPos+"%")
     $('.side-menu-message-div').addClass("show-party-results-div")
     })
 
@@ -1597,6 +1600,29 @@ $(".side-menu-item")
     $('.side-menu-message-div').remove()
   });
 
+$(".footer-email-div h3")
+  .mouseenter(function() {
+        $(this).addClass("footer-email-div-h3-hover")
+        $(".footer-email-div h5").css("opacity", 1)
+        })
+  .mouseleave(function() {
+        $(this).removeClass("footer-email-div-h3-hover")
+        $(".footer-email-div h5").css("opacity", 0);
+          setTimeout(function(){
+    $('.footer-email-div h5').text("Hacé click para copiar la dirección");
+}, 600);
+});
+
+$(".footer-email-div h3").click(function(){
+    var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(this)[0].innerText).select();
+  document.execCommand("copy");
+  $temp.remove();
+    $('.footer-email-div h5').text("¡Copiado!");
+
+
+});
 
 // Basic rendered DIVs and Update All triggered on page initially rendered-------------------------------------------------------------------
 
@@ -1631,11 +1657,6 @@ $('.map-section').append("<div class='message-div message-div-results'>"
     +"<h3>\nLos resultados para cada provincia y cada partido que verás precargados, son valores aproximados (algunos ajustados) del porcentaje neto (sin blancos ni nulos) que obtuvo cada partido en las PASO 2021\n\n Podés cambiar todos los valores y la alianzas, cuando quieras y como quieras\n\n</h3>"
     +"</div>")
 
-
-console.log($( window ).width());
-
-// Returns width of HTML document
-console.log($( document ).width());
 
 updateAll()
 
