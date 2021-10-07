@@ -36,7 +36,7 @@ var firstScroll = true;
                 if ($(window).width() >768){
                     startShowHelp();
                 } else {
-                alert("Sólo disponible en pantalla ancha")
+                alert("Momentáneamente la ayuda sólo disponible en notebooks o computadoras de escritorio")
                 }
             }
        }
@@ -489,7 +489,9 @@ $( ".main-section" ).on('click', ".province-full-results-div", function() {
     }
     selectedProvince = ((this.id).replaceAll("_", " ")).slice(0,-6);
     showProvince(selectedProvince);
-
+    if ($(window).width() <768){
+    $('.province-results-div').css("top",600);
+    }
 })
 
 
