@@ -628,7 +628,9 @@ function displayDetailedSeatsDistribution(seatsDistributionDetailed, seats){
          + '<div class="detailed-seat-distribution-div-party-total"><h3>'+seatsDistributionDetailed[i][0][1]+'</h3></div>'
          + '</div>');
      }
-
+ if ($(window).width() <768 && $('.province-results-div')[0].offsetTop === 600){
+    $('.detailed-seat-distribution-div').css("top",580)
+    }
  requestAnimationFrame(() =>
       setTimeout(() => {
       $(".detailed-seat-distribution-div").toggleClass("show-party-results-div");
