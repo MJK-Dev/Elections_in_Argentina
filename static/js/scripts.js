@@ -1238,7 +1238,9 @@ function updateSafeSeats(){
             +"</div>");
           $('#'+thisId).val(partyAllegiance);
         }
-
+      if ($(window).width() <768){
+          $('.province-results-div').css("top",1280);
+      }
       requestAnimationFrame(() =>
           setTimeout(() => {
           $(".province-results-div").toggleClass("show-party-results-div");
