@@ -1525,7 +1525,6 @@ $(".explanation-section").on('click', ".explanation-slide-button", function() {
 
 
 function startPresentation(section){
-    console.log(section)
     explanationSection =[]
     explanationSlideNumber = 0
     var found =explanationSectionList.find(function(foundSection) {
@@ -1535,7 +1534,6 @@ function startPresentation(section){
         explanationSection.push(i)
     }
     explanationSection.push(1001)
-    console.log(explanationSlideNumber, explanationSection)
     showExplanation()
     slideAppear()
 
@@ -1584,7 +1582,6 @@ $(".side-menu-item")
     var found =explanationSectionList.find(function(foundSection) {
               return foundSection[0] == section;
             });
-    console.log(found)
 
     $(".side-menu").append('<div class="side-menu-message-div"><h3>Tiempo de lectura '+ found[2]+' minutos</h3></div>')
     if ($(window).width() >768){
