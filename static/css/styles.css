@@ -2969,6 +2969,386 @@ stroke-width: 4;
 }
 
 
+
+
+
+
+/* Side Menu ------------------------------------------------------------------------ */
+
+.side-menu{
+  position:absolute;
+  width:70px;
+  height:260px;
+  top:350px;
+  left:83%;
+  text-align:center;
+
+  z-index:1000;
+  background-color:transparent;
+}
+
+.side-menu-item{
+transition: all 0.5s;
+position:absolute;
+}
+
+.side-menu-item img{
+position:relative;
+cursor:pointer;
+ filter: drop-shadow(4px 5px 5px #222);
+}
+
+.completa-div{
+top:0px;
+left:0px;
+}
+
+.completa-img{
+width:40px;
+height:100%;
+}
+
+.congreso-div{
+top:40px;
+left:0px;
+}
+
+.congreso-img{
+width:130px;
+height:100%;
+left:-20px;
+top:10px;
+}
+
+.senado-div{
+top:140px;
+left:0px;
+}
+
+.senado-img{
+width:70px;
+height:50%;
+}
+
+.diputados-div{
+top:220px;
+left:0px;
+}
+
+.diputados-img{
+width:80px;
+height:50%;
+}
+
+
+.dhondt-div{
+top:280px;
+left:0px;
+}
+
+.dhondt-img{
+width:40px;
+height:100%;
+transform: rotate(-20deg);
+}
+
+.side-menu-item h2 {
+    position: relative;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem !important;
+    color: #ffffff;
+    text-align:center;
+    text-shadow: 0px 4px 3px rgb(0 0 0 / 70%), 0px 0px 5px rgb(0 0 0 / 75%), 2px 2px 0px rgb(0 0 0 / 20%);
+    bottom:40px;
+    left:50px;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    width:70px;
+    }
+
+.side-menu-item:hover{
+
+transform: scale(1.1);
+}
+
+.side-menu-item-clicked{
+transform: scale(1.1);
+}
+
+.side-menu-item-clicked-h2{
+color:#ffd68a !important;
+}
+
+
+
+
+.side-menu-message-div{
+position:absolute;
+height:20px;
+width:180px;
+background-color:transparent;
+transition: all 1s;
+opacity:0;
+visibility:hidden;
+}
+
+.side-menu-message-div h3{
+    position: relative;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem !important;
+    font-style:italic;
+    color: #000000;
+    text-align:left;
+    text-shadow: 0px 1px 7px rgb(var(--titles-background-color); / 70%);
+    top:0px;
+    left:0px;
+    margin:0;
+    padding:0;
+}
+
+
+
+.message-div{
+position:absolute;
+background-color:rgb(44,11,47,0.95);
+min-height:200px;
+width:48%;
+left:26%;
+top:280px;
+border-radius:15px;
+z-index:2000;
+visibility: visible;
+opacity: 1;
+transition: all 0.3s;
+box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.25);
+border: 3px solid #e7deea;
+padding:1.5% 3% 1.5% 3%;
+}
+
+.message-div-landing{
+transition: all 0.3s;
+}
+
+.message-div h1{
+text-align:center;
+padding:0% 0% 1% 0%;
+font-size: 1.6rem;
+color:white;
+white-space:pre-wrap;
+}
+
+.message-div h3{
+line-height:1.4;
+text-align:center;
+font-size: 0.9rem;
+color:white;
+white-space:pre-wrap;
+padding:0% 3% 0% 0%;
+font-weight:300;
+
+}
+
+.message-div-actual-message-h1{
+text-align:left !important;
+padding:2.5% 0% 0% 0% !important;
+}
+
+.message-div-actual-message-h3{
+text-align:left !important;
+width:92%
+}
+
+.read-landing-message{
+font-size: 2.5rem !important;
+position:absolute;
+cursor:pointer;
+transition: all 0.3s;
+}
+
+.read-landing-message:hover{
+color: #ffd68a;
+transform: scale(1.2)
+}
+
+.read-landing-message-yes{
+left:30%;
+}
+
+.read-landing-message-no{
+left:65%;
+}
+
+.close-cross-landing-message{
+position:absolute;
+color:#ffd68a;
+top:10px;
+left:93%;
+font-size:1.5rem;
+height:30px;
+}
+
+.close-cross-landing-message:hover{
+text-decoration: none;
+color:#ffffff;
+}
+
+
+.footer-cafecito-div{
+position: absolute;
+min-height: 100px;
+text-align: left;
+width: 70%;
+left: 50px;
+top: 50px;
+}
+
+
+.footer-cafecito-div h1{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1.0;
+    color: var(--titles-background-color);
+    text-shadow: 1px 2px 4px #b1abb4;
+    margin-bottom: 20px;
+}
+
+.footer-cafecito-div h3{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #260b43;
+    white-space: pre-wrap;
+}
+
+
+.footer-acknowledgments-div{
+position: absolute;
+min-height: 100px;
+text-align: left;
+width: 70%;
+left: 50px;
+top: 570px;
+}
+
+.footer-acknowledgments-div h1{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1.0;
+    color: var(--titles-background-color);
+    text-shadow: 1px 2px 4px #b1abb4;
+    margin-bottom: 20px;
+}
+
+.footer-acknowledgments-div h3{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #260b43;
+    white-space: pre-wrap;
+}
+
+
+.footer-email-div{
+position: absolute;
+min-height: 100px;
+text-align: left;
+width: 70%;
+left: 50px;
+top: 750px;
+}
+
+.footer-email-div-i{
+position: absolute;
+left: 150px;
+top: 11px;
+color:var(--titles-background-color);;
+}
+
+.footer-email-div h1{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1.0;
+    color: var(--titles-background-color);
+    text-shadow: 1px 2px 4px #b1abb4;
+    margin-bottom: 20px;
+    cursor:pointer;
+}
+
+.footer-email-div h3{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.6;
+    color: #260b43;
+    white-space: pre-wrap;
+    cursor:pointer;
+    width:500px
+}
+
+.footer-email-div-h3-hover{
+ color: #c08415 !important;
+}
+.footer-email-div h5{
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #260b43;
+    white-space: pre-wrap;
+    opacity:0;
+    transition: all 0.5s;
+    font-style:italic;
+}
+
+
+.button-arrow{
+width:80px;
+height:auto;
+position:absolute;
+top:458px;
+left:460px;
+}
+
+
+.cafecito-button{
+position:absolute;
+top:460px;
+left:560px;
+}
+
+.footer-bottom-div{
+width:200px;
+height:80px;
+position:absolute;
+bottom:20px;
+left:45%;
+}
+
+.message-div-results{
+visibility:hidden;
+opacity:0;
+transition: all 1s;
+}
+
+.message-div-results h1{
+font-size:1.8rem;
+}
+
+ .message-div-results h3{
+font-size:1.4rem;
+}
+
+
+
+
 @media only screen and (min-width: 768px) and (max-width: 1150px){
     .map-section{
     min-height:1460px;
@@ -2984,9 +3364,9 @@ stroke-width: 4;
     left:60%;
     }
     .simulation-div{
-      overflow-y: visible; 
+      overflow-y: visible;
     }
-    
+
     .simulation-section{
       min-height:2000px;
       }
@@ -3024,7 +3404,10 @@ stroke-width: 4;
     padding:5.5% 3% 1.5% 3% !important;
     }
 
-    .message-div h1{
+    .read-landing-message{
+    font-size:2rem !important;
+    }
+    .message-div-landing-question{
     font-size:1.3rem !important;
     }
 
@@ -3038,6 +3421,19 @@ stroke-width: 4;
     font-size:1rem!important;
     }
 
+    .read-landing-message-yes{
+    top:55%;
+    left:25%;
+    font-size:2.5rem !important;
+    }
+    .read-landing-message-no{
+    top:55%;
+    left:60%;
+    font-size:2.5rem !important;
+    }
+    .message-div-actual-message-h1 {
+    font-size: 1.3rem !important;
+    }
     .landing-heading{
     position:absolute;
     top: 15%;
@@ -3057,8 +3453,8 @@ stroke-width: 4;
     height:700px;
     width:auto;
     background-repeat: repeat;
-    background-size: 200% 100%;
-    background-position-x:30%;
+    background-size: 350% 100%;
+    background-position-x:45%;
     background-position-y:60%;
     }
 
@@ -3298,374 +3694,4 @@ stroke-width: 4;
     }
 
 
-}
-
-
-
-/* Side Menu ------------------------------------------------------------------------ */
-
-.side-menu{
-  position:absolute;
-  width:70px;
-  height:260px;
-  top:350px;
-  left:83%;
-  text-align:center;
-
-  z-index:1000;
-  background-color:transparent;
-}
-
-.side-menu-item{
-transition: all 0.5s;
-position:absolute;
-}
-
-.side-menu-item img{
-position:relative;
-cursor:pointer;
- filter: drop-shadow(4px 5px 5px #222);
-}
-
-.completa-div{
-top:0px;
-left:0px;
-}
-
-.completa-img{
-width:40px;
-height:100%;
-}
-
-.congreso-div{
-top:40px;
-left:0px;
-}
-
-.congreso-img{
-width:130px;
-height:100%;
-left:-20px;
-top:10px;
-}
-
-.senado-div{
-top:140px;
-left:0px;
-}
-
-.senado-img{
-width:70px;
-height:50%;
-}
-
-.diputados-div{
-top:220px;
-left:0px;
-}
-
-.diputados-img{
-width:80px;
-height:50%;
-}
-
-
-.dhondt-div{
-top:280px;
-left:0px;
-}
-
-.dhondt-img{
-width:40px;
-height:100%;
-transform: rotate(-20deg);
-}
-
-.side-menu-item h2 {
-    position: relative;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 600;
-    font-size: 1.2rem !important;
-    color: #ffffff;
-    text-align:center;
-    text-shadow: 0px 4px 3px rgb(0 0 0 / 70%), 0px 0px 5px rgb(0 0 0 / 75%), 2px 2px 0px rgb(0 0 0 / 20%);
-    bottom:40px;
-    left:50px;
-    margin:0;
-    padding:0;
-    cursor: pointer;
-    width:70px;
-    }
-
-.side-menu-item:hover{
-
-transform: scale(1.1);
-}
-
-.side-menu-item-clicked{
-transform: scale(1.1);
-}
-
-.side-menu-item-clicked-h2{
-color:#ffd68a !important;
-}
-
-
-
-
-.side-menu-message-div{
-position:absolute;
-height:20px;
-width:180px;
-background-color:transparent;
-transition: all 1s;
-opacity:0;
-visibility:hidden;
-}
-
-.side-menu-message-div h3{
-    position: relative;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 500;
-    font-size: 0.7rem !important;
-    font-style:italic;
-    color: #000000;
-    text-align:left;
-    text-shadow: 0px 1px 7px rgb(var(--titles-background-color); / 70%);
-    top:0px;
-    left:0px;
-    margin:0;
-    padding:0;
-}
-
-
-
-.message-div{
-position:absolute;
-background-color:rgb(44,11,47,0.95);
-min-height:200px;
-width:48%;
-left:26%;
-top:280px;
-border-radius:15px;
-z-index:2000;
-visibility: visible;
-opacity: 1;
-transition: all 0.3s;
-box-shadow: 0px 5px 10px 15px rgba(0, 0, 0, 0.25);
-border: 3px solid #e7deea;
-padding:1.5% 3% 1.5% 3%;
-}
-
-.message-div-landing{
-transition: all 0.3s;
-}
-
-.message-div h1{
-text-align:center;
-padding:0% 0% 1% 0%;
-font-size: 1.6rem;
-color:white;
-white-space:pre-wrap;
-}
-
-.message-div h3{
-line-height:1.4;
-text-align:center;
-font-size: 0.9rem;
-color:white;
-white-space:pre-wrap;
-padding:0% 3% 0% 0%;
-font-weight:300;
-
-}
-
-.message-div-actual-message-h1{
-text-align:left !important;
-padding:2.5% 0% 0% 0% !important;
-}
-
-.message-div-actual-message-h3{
-text-align:left !important;
-width:92%
-}
-
-.read-landing-message{
-font-size: 2.5rem !important;
-position:absolute;
-cursor:pointer;
-transition: all 0.3s;
-}
-
-.read-landing-message:hover{
-color: #ffd68a;
-transform: scale(1.2)
-}
-
-.read-landing-message-yes{
-left:30%;
-}
-
-.read-landing-message-no{
-left:65%;
-}
-
-.close-cross-landing-message{
-position:absolute;
-color:#ffd68a;
-top:10px;
-left:93%;
-font-size:1.5rem;
-}
-
-
-
-.footer-cafecito-div{
-position: absolute;
-min-height: 100px;
-text-align: left;
-width: 70%;
-left: 50px;
-top: 50px;
-}
-
-
-.footer-cafecito-div h1{
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 500;
-    font-size: 2.5rem;
-    line-height: 1.0;
-    color: var(--titles-background-color);
-    text-shadow: 1px 2px 4px #b1abb4;
-    margin-bottom: 20px;
-}
-
-.footer-cafecito-div h3{
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: #260b43;
-    white-space: pre-wrap;
-}
-
-
-.footer-acknowledgments-div{
-position: absolute;
-min-height: 100px;
-text-align: left;
-width: 70%;
-left: 50px;
-top: 570px;
-}
-
-.footer-acknowledgments-div h1{
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 500;
-    font-size: 2.5rem;
-    line-height: 1.0;
-    color: var(--titles-background-color);
-    text-shadow: 1px 2px 4px #b1abb4;
-    margin-bottom: 20px;
-}
-
-.footer-acknowledgments-div h3{
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: 1.6;
-    color: #260b43;
-    white-space: pre-wrap;
-}
-
-
-.footer-email-div{
-position: absolute;
-min-height: 100px;
-text-align: left;
-width: 70%;
-left: 50px;
-top: 750px;
-}
-
-.footer-email-div-i{
-position: absolute;
-left: 150px;
-top: 11px;
-color:var(--titles-background-color);;
-}
-
-.footer-email-div h1{
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 500;
-    font-size: 2.5rem;
-    line-height: 1.0;
-    color: var(--titles-background-color);
-    text-shadow: 1px 2px 4px #b1abb4;
-    margin-bottom: 20px;
-    cursor:pointer;
-}
-
-.footer-email-div h3{
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 400;
-    font-size: 2rem;
-    line-height: 1.6;
-    color: #260b43;
-    white-space: pre-wrap;
-    cursor:pointer;
-    width:500px
-}
-
-.footer-email-div-h3-hover{
- color: #c08415 !important;
-}
-.footer-email-div h5{
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 400;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #260b43;
-    white-space: pre-wrap;
-    opacity:0;
-    transition: all 0.5s;
-    font-style:italic;
-}
-
-
-.button-arrow{
-width:80px;
-height:auto;
-position:absolute;
-top:458px;
-left:460px;
-}
-
-
-.cafecito-button{
-position:absolute;
-top:460px;
-left:560px;
-}
-
-.footer-bottom-div{
-width:200px;
-height:80px;
-position:absolute;
-bottom:20px;
-left:45%;
-}
-
-.message-div-results{
-visibility:hidden;
-opacity:0;
-transition: all 1s;
-}
-
-.message-div-results h1{
-font-size:1.8rem;
-}
-
- .message-div-results h3{
-font-size:1.4rem;
 }

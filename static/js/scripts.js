@@ -36,7 +36,7 @@ var firstScroll = true;
                 if ($(window).width() >768){
                     startShowHelp();
                 } else {
-                alert("Momentáneamente la ayuda sólo disponible en notebooks o computadoras de escritorio")
+                alert("Momentáneamente la ayuda sólo está disponible en notebooks o computadoras de escritorio")
                 }
             }
        }
@@ -78,19 +78,19 @@ $(".landing-section").on('click', ".read-landing-message", function() {
      $(".message-div-landing").css("padding-top", "0%")
     $(".message-div-landing").append(
      "<h1 class='message-div-actual-message-h1'>Una herramienta para todos</h1>"
-        +"<h3 class='message-div-actual-message-h3'>Éste portal es apartidario, y sólo busca contribuir a la calidad cívica y democrática de todos los argentinos, sin distinción de ideologías o preferencias</h3>"
+        +"<h3 class='message-div-actual-message-h3'>Éste portal busca contribuir a la calidad cívica y democrática de todos los argentinos. Es apartidario, y sin distinción de ideologías o preferencias de cada ciudadano</h3>"
      + "<h1 class='message-div-actual-message-h1'>Hoja de ruta recomendada:</h1>"
         +"<h3 class='message-div-actual-message-h3'>1) Mirá el tutorial completo en 'Quiero Entender'</h3>"
         +"<h3 class='message-div-actual-message-h3'>2) Presioná 'Ayuda', para aprender a usar el calculador de las elecciones nacionales</h3>"
-        +"<h3 class='message-div-actual-message-h3'>3) Jugá un rato con el calculador nacional hasta que lo entiendas bien</h3>"
+        +"<h3 class='message-div-actual-message-h3'>3) Jugá un rato con el calculador nacional hasta que lo hayas comprendido</h3>"
         +"<h3 class='message-div-actual-message-h3'>4) Si querés hacer una simulación personal, dirigite a la sección 'Calculador'</h3>"
     + "<h1 class='message-div-actual-message-h1'>Usá la página en una computadora</h1>"
-        +"<h3 class='message-div-actual-message-h3'>De momento, la página está diseñada para que sea dinámica en computadoras de escritorio o notebooks. Sin embargo, aunque es menos práctico y puede haber algunas incompatibilidades, la podés usar en el celular</h3>"
+        +"<h3 class='message-div-actual-message-h3'>La página está diseñada para que sea dinámica en computadoras de escritorio o notebooks. Sin embargo, aunque es menos práctico y puede haber algunas incompatibilidades, la podés usar en el celular</h3>"
     + "<h1 class='message-div-actual-message-h1'>¿Usás un dipositivo de Apple (Mac, iPhone)?</h1>"
-        +"<h3 class='message-div-actual-message-h3'>Por inconvenientes técnicos de compatibilidad, el explorador Safari no posiciona corectamente algunos gráficos. Usá Firefox, Chrome, o algún otro explorador</h3>"
+        +"<h3 class='message-div-actual-message-h3'>Por inconvenientes técnicos de compatibilidad, el explorador Safari no posiciona correctamente algunos gráficos. Usá Firefox, Chrome, o algún otro explorador</h3>"
     + "<h1 class='message-div-actual-message-h1'>Si la página te gusta y sirve, se agradece un aporte</h1>"
         +"<h3 class='message-div-actual-message-h3'>La página es 100% gratuita, y podés usarla las veces que quieras</h3>"
-        +"<h3 class='message-div-actual-message-h3'>Te invitamos a leer la sección 'Cómo apoyar el portal', donde te contamos por qué tu aporte vale mucho</h3>"
+        +"<h3 class='message-div-actual-message-h3'>Te invitamos a leer la sección 'Cómo apoyar el portal', donde te contamos por qué tu aporte, por más pequeño que sea, vale muchísimo</h3>"
 
     )
 
@@ -335,7 +335,7 @@ $( ".main-section" ).on('click', ".help-sign", function() {
         }
         showHelp(pageHelp);
     } else {
-            alert("Sólo disponible en pantalla ancha")
+            alert("Momentáneamente la ayuda sólo está disponible en notebooks o computadoras de escritorio")
             }
 });
 
@@ -1651,8 +1651,8 @@ $('.full-results-title-div').append("<div class='full-results-title-district'><h
 
 $('.landing-section').append("<div class='message-div message-div-landing'>"
     + "<a class='close-cross close-cross-landing-message' onclick='closeMessageDiv(\".message-div-landing\")'>✘</a>"
-    +"<h1>¿Primera vez en la página?</h1>"
-    +"<h1>¡Leeme!</h1>"
+    +"<h1 class='message-div-landing-question'>¿Primera vez en la página?</h1>"
+    +"<h1 class='message-div-landing-question'>¡Leeme!</h1>"
     +"<h1 class='read-landing-message read-landing-message-yes'>Sí</h1>"
     +"<h1 class='read-landing-message read-landing-message-no'>No</h1>"
     +"</div>")
