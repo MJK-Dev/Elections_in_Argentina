@@ -1627,6 +1627,12 @@ $(".footer-email-div h3").click(function(){
 
 });
 
+
+
+
+
+
+
 // Basic rendered DIVs and Update All triggered on page initially rendered-------------------------------------------------------------------
 
 $('.full-results-div').append("<div class='full-results-title-div'></div>")

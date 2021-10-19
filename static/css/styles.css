@@ -3054,6 +3054,12 @@ height:100%;
 transform: rotate(-20deg);
 }
 
+.presentation-download-div{
+top:380px;
+left: 0px;
+width: 150px;
+}
+
 .side-menu-item h2 {
     position: relative;
     font-family: 'Noto Sans JP', sans-serif;
@@ -3348,6 +3354,23 @@ font-size:1.8rem;
 font-size:1.4rem;
 }
 
+.presentation-download-button{
+width:50px;
+height:20px;
+position:relative;
+bottom:0px;
+left:0px;
+font-family: 'Noto Sans JP', sans-serif;
+font-weight:400;
+color: var(--titles-background-color);
+font-size:0.9rem;
+text-decoration:none !important;
+font-style:italic;
+}
+
+
+
+
 
 
 
@@ -3566,6 +3589,10 @@ font-size:1.4rem;
     .dhondt-div{
     left:45vw !important;
     top:60px !important;
+    }
+    .presentation-download-div{
+    left: 25vw !important;
+    top: 120px !important;
     }
 
     .side-menu-item{

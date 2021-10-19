@@ -1,7 +1,8 @@
 from flask_bootstrap import Bootstrap
-from flask import Flask, render_template, request, redirect, url_for, flash, send_file
+from flask import Flask, render_template, request, redirect, url_for, flash, send_file, send_from_directory
 from datetime import date
 import pandas as pd
+import os
 from pprint import pprint
 
 from dhondt_calculator import DhondtCalculator
@@ -9,9 +10,12 @@ from arrange_data import ArrangeData
 from data_input import DataInput
 
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "pepe"
 Bootstrap(app)
+app.config['UPLOAD_FOLDER'] = 'static/'
+
 
 dc = DhondtCalculator()
 ad = ArrangeData()
@@ -69,6 +73,15 @@ def home():
 def calculate_results():
 
     return render_template("index.html")
+
+@app.route('/download_presentation', methods=['GET','POST'])
+def download_presentation():
+    presentation = request.args.get("presentation")
+    filename= str(presentation) + ".pdf"
+    file = os.path.join(app.config['UPLOAD_FOLDER'] + "images/")
+    return send_from_directory(directory=file, filename=filename)
+
+
 
 
 @app.context_processor
