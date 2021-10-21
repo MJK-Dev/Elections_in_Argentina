@@ -3231,6 +3231,7 @@ top: 50px;
     line-height: 1.6;
     color: #260b43;
     white-space: pre-wrap;
+    text-align: justify;
 }
 
 
@@ -3513,7 +3514,7 @@ font-style:italic;
 
     .footer-cafecito-div h3, .footer-acknowledgments-div h3{
      font-size:1.0rem !important;
-     text-align: center;
+     text-align: justify;
     }
     .button-arrow {
     width: 50px !important;
@@ -3723,4 +3724,27 @@ font-style:italic;
     }
 
 
+}
+
+.top-parties-province-div{
+position:absolute;
+min-width:50px;
+min-height:30px;
+background-color:#dcd9de;
+transition: all 1s;
+opacity:0;
+visibility:hidden;
+z-index:1000;
+text-align: left;
+pointer-events:none;
+padding: 1% 1%;
+border-radius: 10px;
+border: 1px solid var(--titles-background-color);
+}
+
+.top-parties-province-div h3 {
+font-size:0.8rem;
+font-family: 'Noto Sans JP', sans-serif;
+font-weight:300;
+color: var(--titles-background-color);
 }

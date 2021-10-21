@@ -468,6 +468,66 @@ function closeDetailedSeatDistributionDiv(){
 
 //Open Each Province Results when clicking on each province map------------------------------------------------------------------------------------------------------------
 
+function getOffset(element)
+{
+    var bound = element.getBoundingClientRect();
+    var html = document.documentElement;
+
+    return {
+        top: bound.top + window.pageYOffset - html.clientTop,
+        left: bound.left + window.pageXOffset - html.clientLeft
+    };
+}
+
+
+
+$( ".main-section .svg-color2" )
+ .mouseenter (function() {
+ if ($(window).width() >768){
+ var hoveredProvince = (this.id).replaceAll("_", " ");
+     if (hoveredProvince === "Islas Malvinas"){
+    hoveredProvince = "Tierra Del Fuego";
+    }
+    if ($('.input-senate-house').hasClass("show-house")) {
+        var found = provincesResults.find(function(foundProvince) {
+              return foundProvince[0] == hoveredProvince;
+            });
+    } else {
+        var found = provincesSenateResults.find(function(foundProvince) {
+              return foundProvince[0] == hoveredProvince;
+            });
+    }
+    var orderedParties = JSON.parse(JSON.stringify(found[1]));
+    orderedParties.sort(function(a, b) {
+           if (a[2] == b[2]) {
+             return b[3] - a[3];
+        }
+          return b[2] - a[2];
+        })
+    $(".country-map").append('<div class="top-parties-province-div">'
+    +'<h3 style="text-decoration:underline;">'+ hoveredProvince+'</h3>'
+    +'<h3>1º) '+orderedParties[0][0]+":   "+orderedParties[0][2] +"% "+'</h3>'
+    +'<h3>2º) '+orderedParties[1][0]+":   "+orderedParties[1][2] +"% "+'</h3>'
+    + '</div>')
+
+    var offset = getOffset($(this)[0]);
+    var x = offset.left;
+    var y = offset.top;
+
+    $('.top-parties-province-div').css("top",y-1960)
+    $('.top-parties-province-div').css("left",x+30)
+    $('.top-parties-province-div').addClass("show-party-results-div")
+
+
+    }
+})
+  .mouseleave(function() {
+    $('.top-parties-province-div').remove()
+});
+
+
+
+
 $( ".main-section" ).on('click', ".svg-size2 g", function() {
     if ($(".province-results-div").hasClass("show-party-results-div")){
     closeProvinceDiv();
