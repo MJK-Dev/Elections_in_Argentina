@@ -1,6 +1,22 @@
+
+# Calculating full results for each province in each chamber (House and Senate)-------------------------------
+
 import pandas as pd
 
 class DataInput:
+    """
+    This class has 3 extractors. All of them take a raw Pandas Dataframe as input
+
+    1) csv_extractor takes the results for all provinces and returns new arranged Pandas Dataframes.
+    Both used for Senate or House
+
+    2) csv_seats_not_up_for_election_extractor takes the seats that are not up for election in both chambers,
+    and returns a list with the arranged data
+
+    3) csv_page_help_extractor takes the information needed to display all the 'help slides' for the main
+    calculator
+    """
+
     def __init__(self):
         pass
 

@@ -1,6 +1,20 @@
 
 
 class DhondtCalculator:
+    """
+    This class has 4 functions:
+
+    1) new_province() returns a dictionary with the results of a given province
+
+    2) calculate_distribution() calculates the D'Hondt distribution (seat allocation) for a given
+    province in the House
+
+    3) calculate_distribution_senate() calculates the seat distribution (2 for majority and 1 for minority)
+    for a given province in the Senate
+
+    4) national_results() calculate the sum of all seats for a given party nationally, both for House or for
+    Senate
+    """
 
     def __init__(self):
         self.number_seats = 1

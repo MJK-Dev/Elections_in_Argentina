@@ -2,6 +2,11 @@
 
 class ArrangeData:
 
+    """
+    To arrange data for a specific display.
+    Not in use
+    """
+
     def __init__(self):
         self.national_results = [["","",""]]
 
